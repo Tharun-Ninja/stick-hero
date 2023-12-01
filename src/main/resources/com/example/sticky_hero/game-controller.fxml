@@ -4,12 +4,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="anchorPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" onMousePressed="#setOnMousePressed" onMouseReleased="#setOnMouseReleased" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sticky_hero.GameController">
    <children>
-      <ImageView fx:id="image_view" fitHeight="723.0" fitWidth="500.0" layoutX="-1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="image_view" fitHeight="723.0" fitWidth="500.0" layoutX="-1.0" layoutY="1.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="file:C:\Users\hp\IdeaProjects\Sticky Hero\src\main\java\com\example\sticky_hero\assets\wall.jpg" />
          </image></ImageView>
@@ -31,5 +32,11 @@
       </Text>
       <Text fx:id="perfectText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text fx:id="perfectText2" strokeType="OUTSIDE" strokeWidth="0.0" text="PERFECT!!" />
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#b9ddff" height="52.0" layoutX="210.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="80.0" />
+      <Text fx:id="gameScore" boundsType="VISUAL" layoutX="243.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textOrigin="CENTER" wrappingWidth="36.21630859375">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

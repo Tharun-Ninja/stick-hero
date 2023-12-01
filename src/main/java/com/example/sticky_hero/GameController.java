@@ -26,6 +26,16 @@ import javafx.animation.*;
 
 public class GameController implements Initializable {
 
+    @FXML
+    private Text gameScore;
+    private int gameScoreInt = 0;
+
+    public void addGameScore(int x){
+        this.gameScoreInt += x;
+        gameScore.setText(String.valueOf(gameScoreInt));
+    }
+
+
     public double getSpeed_for_cherry() {
         return speed_for_cherry;
     }

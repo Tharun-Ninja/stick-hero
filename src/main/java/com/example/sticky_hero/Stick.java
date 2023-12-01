@@ -235,9 +235,11 @@ public class Stick implements Movable
             //        PARALLEL
             if ((stick_rectangle.getHeight() > (gameController.getCurrent_gap())+plat1.getBlock().getWidth()/2-plat1.getDelta())&((stick_rectangle.getHeight() < (gameController.getCurrent_gap())+plat1.getBlock().getWidth()/2+plat1.getDelta())))
             {
+                gameController.addGameScore(1);
                 this.gameController.start_Perfect_Score_Animation();
             }
 
+            gameController.addGameScore(1);
             this.gameController.getHero().startHorizontal_Motion_Animation();
 //        }
 
