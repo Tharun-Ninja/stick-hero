@@ -29,5 +29,6 @@
             <Font size="22.0" />
          </font>
       </Text>
+      <Text fx:id="perfectText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
    </children>
 </AnchorPane>

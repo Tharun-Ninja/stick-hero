@@ -22,6 +22,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.Random;
 import java.util.ResourceBundle;
+import javafx.animation.*;
 
 public class GameController implements Initializable {
 
@@ -512,9 +513,40 @@ public void initializePlatforms()
         return   centre_position-10 ;
     }
 
+    @FXML
+    private Text perfectText;
     public void start_Perfect_Score_Animation()
     {
-        System.out.println("PERFECT");
+        System.out.println("perfect");
+        perfectText.setX(platforms.get(1).getMark().getX());
+        perfectText.setText("+1");
+
+        TranslateTransition transition = new TranslateTransition();
+        transition.setNode(perfectText);
+        transition.setFromY(235);
+        transition.setFromX(platforms.get(0).getMark().getX()-(platforms.get(0).getBlock().getWidth()/2.2));
+        transition.setByY(-50);
+        transition.setDuration(Duration.millis(1000));
+
+
+        FadeTransition fade = new FadeTransition();
+        fade.setNode(perfectText);
+        fade.setFromValue(100);
+        fade.setToValue(0);
+        fade.setDuration(Duration.millis(1000));
+
+        ScaleTransition scale = new ScaleTransition();
+        scale.setNode(perfectText);
+        scale.setFromX(1);
+        scale.setFromY(1);
+        scale.setByX(1.1);
+        scale.setToY(1.5);
+        scale.setDuration(Duration.millis(2000));
+
+        transition.play();
+        fade.play();
+        scale.play();
+
     }
 
 
