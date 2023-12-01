@@ -515,15 +515,19 @@ public void initializePlatforms()
 
     @FXML
     private Text perfectText;
+
+    @FXML
+    private Text perfectText2;
     public void start_Perfect_Score_Animation()
     {
         System.out.println("perfect");
         perfectText.setX(platforms.get(1).getMark().getX());
         perfectText.setText("+1");
 
+
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(perfectText);
-        transition.setFromY(235);
+        transition.setFromY(240);
         transition.setFromX(platforms.get(0).getMark().getX()-(platforms.get(0).getBlock().getWidth()/2.2));
         transition.setByY(-50);
         transition.setDuration(Duration.millis(1000));
@@ -540,12 +544,36 @@ public void initializePlatforms()
         scale.setFromX(1);
         scale.setFromY(1);
         scale.setByX(1.1);
-        scale.setToY(1.5);
+        scale.setByY(1.5);
         scale.setDuration(Duration.millis(2000));
+
+
+        perfectText2.setX(200);
+        perfectText2.setY(100);
+
+        FadeTransition fade2 = new FadeTransition();
+        fade2.setNode(perfectText2);
+        fade2.setFromValue(100);
+        fade2.setToValue(0);
+        fade2.setDuration(Duration.millis(1000));
+
+
+        ScaleTransition scale2 = new ScaleTransition();
+        scale2.setNode(perfectText2);
+        scale2.setFromX(1);
+        scale2.setFromY(1);
+        scale2.setToX(1.15);
+        scale2.setToY(1.15);
+        scale2.setDuration(Duration.millis(200));
+        scale2.setAutoReverse(true);
+        scale2.setCycleCount(5);
+
 
         transition.play();
         fade.play();
+        fade2.play();
         scale.play();
+        scale2.play();
 
     }
 

@@ -30,5 +30,6 @@
          </font>
       </Text>
       <Text fx:id="perfectText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="perfectText2" strokeType="OUTSIDE" strokeWidth="0.0" text="PERFECT!!" />
    </children>
 </AnchorPane>
