@@ -97,13 +97,24 @@ public class Stick implements Movable
     }
     private Timeline erecting_timeline;
 
-    public Timeline getRotating_timeline() {
+    public Timeline getRotating_timeline()
+    {
         return rotating_timeline;
     }
     public void setRotating_timeline(Timeline rotating_timeline) {
         this.rotating_timeline = rotating_timeline;
     }
     private Timeline rotating_timeline;
+
+    public Timeline getFalling_timeline() {
+        return falling_timeline;
+    }
+
+    public void setFalling_timeline(Timeline falling_timeline) {
+        this.falling_timeline = falling_timeline;
+    }
+
+    private Timeline falling_timeline;
 
 
     public TranslateTransition getTransition_erect() {
@@ -132,11 +143,6 @@ public class Stick implements Movable
     }
     private RotateTransition rotateTransition;
 
-
-
-
-
-
     Stick(GameController gameController)
     {
         stick_width = gameController.getStandard_stick_width();
@@ -149,17 +155,67 @@ public class Stick implements Movable
 
         erecting_timeline = new Timeline();
         rotating_timeline = new Timeline();
+        falling_timeline = new Timeline();
+
         KeyFrame keyFrame_erect  = new KeyFrame(Duration.seconds(0.01), e-> erect_Stick());
         KeyFrame keyFrame_rotate = new KeyFrame(Duration.seconds(0.01), e->rotate_Stick());
+        KeyFrame keyFrame_fall = new KeyFrame(Duration.seconds(0.01), e->make_stick_fall());
 
         erecting_timeline.getKeyFrames().add(keyFrame_erect);
         rotating_timeline.getKeyFrames().add(keyFrame_rotate);
+        falling_timeline.getKeyFrames().add(keyFrame_fall);
 
         rotateTransition = new RotateTransition(Duration.seconds(0.5), stick_rectangle);
 
         erecting_timeline.setCycleCount(Animation.INDEFINITE);
         rotating_timeline.setCycleCount(Animation.INDEFINITE);
+        falling_timeline.setCycleCount(Animation.INDEFINITE);
     }
+
+    public void rotate_Stick()
+    {
+        if ((this.make_it_flat)&(gameController.isRotation_allowed()))
+        {
+            if (angle_covered >=90)
+            {
+                this.make_it_flat = false;
+                gameController.setRotation_allowed(false);
+                stopRotationAnimation();
+                return;
+            }
+            rotate_helper();
+
+        }
+    }
+
+
+
+    private void make_stick_fall()
+    {
+        System.out.println("make_stick_fall");
+        if (angle_covered >=180)
+        {
+            System.out.println("angle_covered >=180");
+            falling_timeline.stop();
+            return;
+        }
+
+        rotate_helper();
+    }
+
+    private void rotate_helper() {
+        double pivotY = stick_rectangle.getY() + stick_rectangle.getHeight();
+        double pivotX = stick_rectangle.getX() + stick_rectangle.getWidth()/2;
+
+        Rotate rotate = new Rotate(rotation_speed, pivotX, pivotY);
+        rotate.setAxis(Rotate.Z_AXIS);
+
+        stick_rectangle.getTransforms().add(rotate);
+        rotateTransition.setNode(stick_rectangle);
+        rotateTransition.play();
+        this.angle_covered+=rotation_speed;
+    }
+
 
     public void startErectAnimation()
     {
@@ -170,7 +226,6 @@ public class Stick implements Movable
     public void stopRotationAnimation()
     {
 //        gameController.setRotation_allowed(false);
-
         rotating_timeline.stop();
 
 //        if (this.press_count == 1)
@@ -200,51 +255,11 @@ public class Stick implements Movable
 
     public void erect_Stick()
     {
-        System.out.println("pressing = true");
-
-        System.out.println("getPress_count");
-        System.out.println(this.getPress_count());
-
-        System.out.println("isMake_it_flat");
-        System.out.println(this.isMake_it_flat());
-
-        System.out.println("isMake_it_fall");
-        System.out.println(this.isMake_it_fall());
-
-        System.out.println("isWalking");
-        System.out.println(gameController.getHero().isWalking());
-        System.out.println("isRotation_allowed");
-        System.out.println(gameController.isRotation_allowed());
 //        should I put more brackets ?
         if (this.gameController.isPressing()&gameController.isErection_allowed()&(press_count==1))
         {
             this.stick_rectangle.setHeight(this.stick_rectangle.getHeight()+erect_speed);
             this.stick_rectangle.setY(this.stick_rectangle.getY()-erect_speed);
-        }
-    }
-    public void rotate_Stick()
-    {
-        if ((this.make_it_flat)&(gameController.isRotation_allowed()))
-        {
-            if (angle_covered >=90)
-            {
-                this.make_it_flat = false;
-                gameController.setRotation_allowed(false);
-                stopRotationAnimation();
-                return;
-            }
-            double pivotY = stick_rectangle.getY() + stick_rectangle.getHeight();
-            double pivotX = stick_rectangle.getX() + stick_rectangle.getWidth()/2;
-
-            Rotate rotate = new Rotate(rotation_speed, pivotX, pivotY);
-            rotate.setAxis(Rotate.Z_AXIS);
-
-            stick_rectangle.getTransforms().add(rotate);
-            rotateTransition.setNode(stick_rectangle);
-            rotateTransition.play();
-            this.angle_covered+=rotation_speed;
-//            System.out.printf("%f-%f-%f-%f-%d\n", rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight(), angle_covered);
-
         }
     }
 

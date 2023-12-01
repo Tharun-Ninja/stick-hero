@@ -1,6 +1,7 @@
 package com.example.sticky_hero;
 
 import javafx.animation.*;
+import javafx.application.Platform;
 import javafx.scene.image.ImageView;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
@@ -109,8 +110,6 @@ public class Hero
         this.hero_Fall_Motion_timeline = hero_Fall_Motion_timeline;
     }
     private Timeline hero_Fall_Motion_timeline;
-//    private RotateTransition rotateTransition;
-//    private ScaleTransition scaleTransition;
 
     Hero(GameController gameController , ImageView hero_image)
     {
@@ -215,7 +214,8 @@ public class Hero
         {
             stopHorizontal_Motion_Animation();
             System.out.println("startVertical_Motion_Animation");
-            startVertical_Motion_Animation();
+            Platform.runLater(this::startVertical_Motion_Animation);
+            gameController.getCurrent_stick().getFalling_timeline().play();
         }
 
         else if ((!will_fall)&(length_moved_on_current_bridge>=gameController.getCurrent_gap()+ gameController.getPlatforms().get(1).getBlock().getWidth() ))

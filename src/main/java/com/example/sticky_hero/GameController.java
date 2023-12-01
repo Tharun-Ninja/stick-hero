@@ -24,6 +24,7 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
+
     public double getSpeed_for_cherry() {
         return speed_for_cherry;
     }
@@ -207,6 +208,8 @@ public class GameController implements Initializable {
     private final int minWidth = 30;
     private final int maxWidth = 60;
 
+
+
     public Timeline getMotion_of_all_bridge_timeline() {
         return motion_of_all_bridge_timeline;
     }
@@ -238,7 +241,7 @@ public class GameController implements Initializable {
 
 
         motion_of_all_bridge_timeline = new Timeline();
-        KeyFrame keyFrame_all_component_motion = new KeyFrame(Duration.seconds(0.01)   , e-> move_All_Platforms());
+        KeyFrame keyFrame_all_component_motion = new KeyFrame(Duration.seconds(0.001)   , e-> move_All_Platforms());
         motion_of_all_bridge_timeline.getKeyFrames().add(keyFrame_all_component_motion);
         motion_of_all_bridge_timeline.setCycleCount(Animation.INDEFINITE);
 
@@ -269,7 +272,8 @@ public class GameController implements Initializable {
 
 
 //        here we decide if cherry is present or absent
-        if ((this.random_position_for_new_1 - platforms.get(1).getBlock().getWidth())>60)
+        double min_width_for_cherry_spawn = 70;
+        if ((this.random_position_for_new_1 - platforms.get(1).getBlock().getWidth())> min_width_for_cherry_spawn)
         {
             this.cherry_is_present = true;
             this.random_position_for_cherry_corner = get_cherry_position(platforms.get(1).getBlock().getWidth(), this.random_position_for_new_1);
@@ -445,17 +449,13 @@ public void initializePlatforms()
             double lower_bound = current_gap;
             hero.setWill_fall(!((this.current_stick.getStick_rectangle().getHeight() >= lower_bound) & (this.current_stick.getStick_rectangle().getHeight() <= upper_bound)));
             current_stick.setMake_it_flat(true);
+
             current_stick.stopErectAnimation();
             current_stick.startRotationAnimation();
         }
 
 
-        Platform.runLater(() -> {
 
-
-
-//            current_stick.startRotationAnimation();
-        });
     }
 
 

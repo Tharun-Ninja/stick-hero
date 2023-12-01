@@ -50,7 +50,6 @@ public class GamePlatform implements Movable {
         mark = new Rectangle(position+(length/2-delta),gameController.getGap_land_zenith(),2*delta,2);
         mark.setFill(Color.web("#FF0000"));
 
-
     }
 
     @Override
