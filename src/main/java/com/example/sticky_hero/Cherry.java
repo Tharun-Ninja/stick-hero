@@ -4,6 +4,8 @@ import javafx.scene.image.ImageView;
 
 public class Cherry implements Movable
 {
+
+
     public void setGameController(GameController gameController) {
         this.gameController = gameController;
     }
@@ -11,8 +13,6 @@ public class Cherry implements Movable
         return gameController;
     }
     private GameController gameController;
-
-
 
     public ImageView getCherry_image() {
         return cherry_image;

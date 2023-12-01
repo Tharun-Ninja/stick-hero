@@ -19,6 +19,7 @@ public class Stick implements Movable
 
     private int press_count=0;
 
+
     public boolean isMake_it_flat() {
         return make_it_flat;
     }
@@ -26,7 +27,6 @@ public class Stick implements Movable
         this.make_it_flat = make_it_flat;
     }
     private boolean make_it_flat = false;
-
 
     public boolean isMake_it_fall() {
         return make_it_fall;
@@ -89,13 +89,22 @@ public class Stick implements Movable
     }
     private double erect_speed = 1;
 
-    public Timeline getMain_timeline() {
-        return main_timeline;
+    public Timeline getErecting_timeline() {
+        return erecting_timeline;
     }
-    public void setMain_timeline(Timeline main_timeline) {
-        this.main_timeline = main_timeline;
+    public void setErecting_timeline(Timeline erecting_timeline) {
+        this.erecting_timeline = erecting_timeline;
     }
-    private Timeline main_timeline;
+    private Timeline erecting_timeline;
+
+    public Timeline getRotating_timeline() {
+        return rotating_timeline;
+    }
+    public void setRotating_timeline(Timeline rotating_timeline) {
+        this.rotating_timeline = rotating_timeline;
+    }
+    private Timeline rotating_timeline;
+
 
     public TranslateTransition getTransition_erect() {
         return transition_erect;
@@ -104,6 +113,7 @@ public class Stick implements Movable
         this.transition_erect = transition_erect;
     }
     private TranslateTransition transition_erect;
+
 
 //    public double getMove_stick_Speed() {
 //        return move_stick_Speed;
@@ -137,30 +147,31 @@ public class Stick implements Movable
         stick_rectangle = new Rectangle(x_cord+ (double) stick_width /2, 250.0,stick_width,0);
         stick_rectangle.setFill(Color.web("#0000FB"));
 
-        main_timeline = new Timeline();
-
-        KeyFrame keyFrame_erect = new KeyFrame(Duration.seconds(0.01)   , e-> erect_Stick());
+        erecting_timeline = new Timeline();
+        rotating_timeline = new Timeline();
+        KeyFrame keyFrame_erect  = new KeyFrame(Duration.seconds(0.01), e-> erect_Stick());
         KeyFrame keyFrame_rotate = new KeyFrame(Duration.seconds(0.01), e->rotate_Stick());
 
-        main_timeline.getKeyFrames().add(keyFrame_erect);
-        main_timeline.getKeyFrames().add(keyFrame_rotate);
+        erecting_timeline.getKeyFrames().add(keyFrame_erect);
+        rotating_timeline.getKeyFrames().add(keyFrame_rotate);
 
         rotateTransition = new RotateTransition(Duration.seconds(0.5), stick_rectangle);
 
-        main_timeline.setCycleCount(Animation.INDEFINITE);
-
+        erecting_timeline.setCycleCount(Animation.INDEFINITE);
+        rotating_timeline.setCycleCount(Animation.INDEFINITE);
     }
 
     public void startErectAnimation()
     {
-        gameController.setRotation_allowed(true);
         gameController.setErection_allowed(true);
 
-        main_timeline.play();
+        erecting_timeline.play();
     }
     public void stopRotationAnimation()
     {
-        main_timeline.stop();
+//        gameController.setRotation_allowed(false);
+
+        rotating_timeline.stop();
 
 //        if (this.press_count == 1)
 //        {
@@ -178,21 +189,34 @@ public class Stick implements Movable
     }
 
     public void stopErectAnimation() {
-        main_timeline.stop();
+        erecting_timeline.stop();
     }
 
     public void startRotationAnimation()
     {
-        main_timeline.play();
+        rotating_timeline.play();
     }
 
 
     public void erect_Stick()
     {
-//        setErection_rotation_allowed
+        System.out.println("pressing = true");
 
+        System.out.println("getPress_count");
+        System.out.println(this.getPress_count());
+
+        System.out.println("isMake_it_flat");
+        System.out.println(this.isMake_it_flat());
+
+        System.out.println("isMake_it_fall");
+        System.out.println(this.isMake_it_fall());
+
+        System.out.println("isWalking");
+        System.out.println(gameController.getHero().isWalking());
+        System.out.println("isRotation_allowed");
+        System.out.println(gameController.isRotation_allowed());
 //        should I put more brackets ?
-        if (this.gameController.isPressing()&gameController.isRotation_allowed()&(press_count==1))
+        if (this.gameController.isPressing()&gameController.isErection_allowed()&(press_count==1))
         {
             this.stick_rectangle.setHeight(this.stick_rectangle.getHeight()+erect_speed);
             this.stick_rectangle.setY(this.stick_rectangle.getY()-erect_speed);
@@ -200,7 +224,6 @@ public class Stick implements Movable
     }
     public void rotate_Stick()
     {
-
         if ((this.make_it_flat)&(gameController.isRotation_allowed()))
         {
             if (angle_covered >=90)

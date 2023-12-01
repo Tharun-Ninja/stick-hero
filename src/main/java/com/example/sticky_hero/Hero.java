@@ -26,7 +26,6 @@ public class Hero
     private int current_score  = 0;
 
 
-    
     private GameController gameController;
     private double position_X;
     private double position_Y;

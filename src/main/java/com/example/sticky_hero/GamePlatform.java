@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class GamePlatform implements Movable {
 
-
     public GameController getGameController() {
         return gameController;
     }

@@ -64,7 +64,8 @@ public class GameController implements Initializable {
     public boolean isErection_allowed() {
         return erection_allowed;
     }
-    public void setErection_allowed(boolean erection_allowed) {
+    public void setErection_allowed(boolean erection_allowed)
+    {
         this.erection_allowed = erection_allowed;
     }
     private boolean erection_allowed = false;
@@ -169,12 +170,11 @@ public class GameController implements Initializable {
     }
     private double speed_for_new_1;
 
-
-
     public double getRandom_position_for_new_1() {
         return random_position_for_new_1;
     }
-    public void setRandom_position_for_new_1(double random_position_for_new_1) {
+    public void setRandom_position_for_new_1(double random_position_for_new_1)
+    {
         this.random_position_for_new_1 = random_position_for_new_1;
     }
     private double random_position_for_new_1;
@@ -402,12 +402,14 @@ public void initializePlatforms()
     @FXML
     void setOnMousePressed(MouseEvent event)
     {
+
+
+
         if (hero.isWalking())
         {
             hero.flipHeroImage();
             return;
         }
-        System.out.println("pressing = true");
         current_stick.setPress_count(current_stick.getPress_count()+1);
         // Run the time-consuming task in a separate thread
         if (current_stick.getPress_count() == 1)
@@ -427,30 +429,31 @@ public void initializePlatforms()
     void setOnMouseReleased(MouseEvent event)
     {
         pressing = false;
-        erection_allowed = false;
 
         if (hero.isWalking())
         {
             hero.flipHeroImage();
             return;
         }
+
+        if(current_stick.getPress_count()!=0)
+        {
+            erection_allowed = false;
+            setRotation_allowed(true);
+            System.out.println("pressing = false");
+            double upper_bound = current_gap + getPlatforms().get(1).getBlock().getWidth();
+            double lower_bound = current_gap;
+            hero.setWill_fall(!((this.current_stick.getStick_rectangle().getHeight() >= lower_bound) & (this.current_stick.getStick_rectangle().getHeight() <= upper_bound)));
+            current_stick.setMake_it_flat(true);
+            current_stick.stopErectAnimation();
+            current_stick.startRotationAnimation();
+        }
+
+
         Platform.runLater(() -> {
 
 
-            System.out.println("pressing = false");
-            double upper_bound = current_gap+ getPlatforms().get(1).getBlock().getWidth();
-            double lower_bound = current_gap;
-            hero.setWill_fall(!((this.current_stick.getStick_rectangle().getHeight() >= lower_bound) & (this.current_stick.getStick_rectangle().getHeight() <= upper_bound)));
 
-
-//            System.out.println(current_gap);
-//            System.out.println(getPlatforms().get(1).getBlock().getWidth());
-//            System.out.println(upper_bound);
-//            System.out.println(this.current_stick.getRectangle().getHeight());
-//            System.out.println(hero.isWill_fall());
-
-//            current_stick.stopErectAnimation();
-            current_stick.setMake_it_flat(true) ;
 //            current_stick.startRotationAnimation();
         });
     }
