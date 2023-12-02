@@ -13,16 +13,16 @@
    <children>
       <ImageView fx:id="image_view" fitHeight="723.0" fitWidth="500.0" layoutX="-1.0" layoutY="1.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:C:\Users\hp\IdeaProjects\Sticky Hero\src\main\java\com\example\sticky_hero\assets\wall.jpg" />
+            <Image url="@/assets/wall.jpg" />
          </image></ImageView>
       <ImageView fx:id="hero_image" fitHeight="19.0" fitWidth="20.0" layoutX="-19.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:C:\Users\hp\IdeaProjects\Sticky Hero\src\main\java\com\example\sticky_hero\assets\hero.png" />
+            <Image url="@/assets/hero.png" />
          </image>
       </ImageView>
       <ImageView fx:id="cherry_image" fitHeight="30.0" fitWidth="20.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:C:\Users\hp\IdeaProjects\Sticky Hero\src\main\java\com\example\sticky_hero\assets\cherry.png" />
+            <Image url="@/assets/cherry.png" />
          </image>
       </ImageView>
       <Line fx:id="hint_line" endX="100.0" layoutX="130.0" startX="-100.0" />

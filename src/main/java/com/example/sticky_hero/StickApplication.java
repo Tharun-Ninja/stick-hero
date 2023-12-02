@@ -8,9 +8,8 @@ import java.io.IOException;
 
 public class StickApplication extends javafx.application.Application {
     @Override
-    public void start(Stage stage) throws IOException
-    {
-//        System.out.println((char)-1);
+    public void start(Stage stage) throws IOException {
+        // System.out.println((char)-1);
         FXMLLoader fxmlLoader = new FXMLLoader(StickApplication.class.getResource("home-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 
@@ -21,10 +20,8 @@ public class StickApplication extends javafx.application.Application {
         stage.show();
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         launch();
     }
-
 
 }
