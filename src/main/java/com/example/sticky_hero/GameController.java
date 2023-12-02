@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -37,6 +38,14 @@ public class GameController implements Initializable {
         gameScore.setText(String.valueOf(hero.get_current_score()));
     }
 
+    @FXML
+    private Button hint_button;
+
+    @FXML
+    void hint_pressed(ActionEvent event)
+    {
+        hint_line.setVisible(!hint_line.isVisible());
+    }
     public double getSpeed_for_cherry() {
         return speed_for_cherry;
     }
@@ -396,7 +405,13 @@ public class GameController implements Initializable {
 
         hero_image.setRotationAxis(Rotate.X_AXIS);
         // https://gist.github.com/jewelsea/1436941
+        double ideal_stick_length = current_gap + platforms.get(1).getBlock().getWidth() / 2;
 
+        // System.out.println(ideal_stick_length);
+        // System.out.println(gap_land_zenith);
+
+        hint_line.setEndY(this.gap_land_zenith - ideal_stick_length);
+        hint_line.setStartY(this.gap_land_zenith - ideal_stick_length);
     }
 
     @FXML
