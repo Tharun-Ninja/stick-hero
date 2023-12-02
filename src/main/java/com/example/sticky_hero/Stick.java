@@ -1,6 +1,7 @@
 package com.example.sticky_hero;
 
 import javafx.animation.*;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
@@ -254,6 +255,7 @@ public class Stick implements Movable
         rotating_timeline.play();
     }
 
+    AudioClip stickGrowSound = new AudioClip(getClass().getResource("/stickSound.mp3").toString());
 
     public void erect_Stick()
     {
@@ -262,6 +264,7 @@ public class Stick implements Movable
         {
             this.stick_rectangle.setHeight(this.stick_rectangle.getHeight()+erect_speed);
             this.stick_rectangle.setY(this.stick_rectangle.getY()-erect_speed);
+            stickGrowSound.play();
         }
     }
 

@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SceneController {
-    AudioClip buttonClickSound = new AudioClip(getClass().getResource("/click-button.wav").toString());
+    AudioClip buttonClickSound = new AudioClip(getClass().getResource("/click-button.mp3").toString());
 
     public void play_start_mouse_clicked(MouseEvent e) throws IOException {
         buttonClickSound.play();
@@ -34,6 +34,7 @@ public class SceneController {
     }
 
     public void switchHomeScreen(MouseEvent e) throws IOException {
+        buttonClickSound.play();
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("home-view.fxml")));
         stage.setTitle("Game!");
@@ -44,6 +45,7 @@ public class SceneController {
     }
 
     public void quitGame(MouseEvent e) throws IOException {
+        buttonClickSound.play();
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.close();
     }
