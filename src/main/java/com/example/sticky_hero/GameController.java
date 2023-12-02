@@ -30,11 +30,11 @@ public class GameController implements Initializable {
 
     @FXML
     private Text gameScore;
-    private int gameScoreInt = 0;
+//    private int gameScoreInt = 0;
 
     public void addGameScore(int x) {
-        this.gameScoreInt += x;
-        gameScore.setText(String.valueOf(gameScoreInt));
+        hero.set_current_score(hero.get_current_score() + x);
+        gameScore.setText(String.valueOf(hero.get_current_score()));
     }
 
     public double getSpeed_for_cherry() {

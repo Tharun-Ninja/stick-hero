@@ -42,4 +42,9 @@ public class SceneController {
         stage.show();
     }
 
+    public void quitGame(MouseEvent e) throws IOException{
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
 }

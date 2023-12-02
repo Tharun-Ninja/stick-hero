@@ -35,6 +35,8 @@ public class Hero {
 
     private int current_score = 0;
 
+
+
     private GameController gameController;
     private double position_X;
     private double position_Y;
@@ -235,6 +237,7 @@ public class Hero {
         else if ((!will_fall) & (length_moved_on_current_bridge >= gameController.getCurrent_gap()
                 + gameController.getPlatforms().get(1).getBlock().getWidth())) {
 
+            gameController.addGameScore(1);
             stopHorizontal_Motion_Animation();
             length_moved_on_current_bridge = 0;
             gameController.start_all_bridge_motion_Animation();

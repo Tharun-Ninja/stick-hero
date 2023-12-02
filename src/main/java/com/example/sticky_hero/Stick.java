@@ -239,7 +239,7 @@ public class Stick implements Movable
                 this.gameController.start_Perfect_Score_Animation();
             }
 
-            gameController.addGameScore(1);
+
             this.gameController.getHero().startHorizontal_Motion_Animation();
 //        }
 

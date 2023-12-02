@@ -14,7 +14,7 @@
             <Font name="Arial Hebrew Bold" size="80.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="201.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="START" textAlignment="CENTER" wrappingWidth="105.78515625">
+      <Text fill="WHITE" layoutX="201.0" layoutY="358.0" onMouseClicked="#play_start_mouse_clicked" strokeType="OUTSIDE" strokeWidth="0.0" text="START" textAlignment="CENTER" wrappingWidth="105.78515625">
          <font>
             <Font name="Helvetica Bold" size="30.0" />
          </font>
