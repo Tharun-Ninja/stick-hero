@@ -11,9 +11,10 @@ public class StickApplication extends javafx.application.Application {
     public void start(Stage stage) throws IOException
     {
 //        System.out.println((char)-1);
-        FXMLLoader fxmlLoader = new FXMLLoader(StickApplication.class.getResource("game-controller.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(StickApplication.class.getResource("home-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+
+        stage.setTitle("Home!");
         stage.setScene(scene);
         stage.setWidth(500);
         stage.setHeight(700);
@@ -24,4 +25,6 @@ public class StickApplication extends javafx.application.Application {
     {
         launch();
     }
+
+
 }
