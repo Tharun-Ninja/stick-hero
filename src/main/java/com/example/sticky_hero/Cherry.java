@@ -32,25 +32,11 @@ public class Cherry implements Movable
     }
     private int reward;
 
-
-
-
-
-    Cherry(int reward, GameController gameController , double setX)
+    Cherry(int reward, GameController gameController , ImageView cherry_image )
     {
         this.reward = reward;
         this.gameController = gameController;
-
-        ImageView cherry_image_new = new ImageView("file:C:\\Users\\hp\\IdeaProjects\\Sticky Hero\\src\\main\\java\\com\\example\\sticky_hero\\assets\\cherry.png");
-        cherry_image_new.setX(setX);
-        cherry_image_new.setY(gameController.getGap_land_zenith()+5);
-        cherry_image_new.setPickOnBounds(true);
-        cherry_image_new.setFitHeight(20);
-        cherry_image_new.setFitWidth(20);
-        gameController.getAnchorPane().getChildren().add(cherry_image_new);
-
-        this.cherry_image = cherry_image_new;
-
+        this.cherry_image = cherry_image;
     }
 
 

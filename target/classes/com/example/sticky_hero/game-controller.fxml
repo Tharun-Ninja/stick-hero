@@ -9,12 +9,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" onMousePressed="#setOnMousePressed" onMouseReleased="#setOnMouseReleased" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sticky_hero.GameController">
+<AnchorPane fx:id="anchorPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMousePressed="#setOnMousePressed" onMouseReleased="#setOnMouseReleased" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sticky_hero.GameController">
    <children>
-      <ImageView fx:id="image_view" fitHeight="723.0" fitWidth="500.0" layoutX="-1.0" layoutY="1.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../assets/wall.jpg" />
-         </image></ImageView>
+      <ImageView fx:id="image_view" fitHeight="723.0" fitWidth="500.0" layoutX="-1.0" layoutY="1.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="hero_image" fitHeight="19.0" fitWidth="20.0" layoutX="-19.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/hero.png" />
@@ -39,6 +36,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Button layoutX="427.0" layoutY="35.0" mnemonicParsing="false" onAction="#hint_pressed" text="Hint" />
+      <Button layoutX="427.0" layoutY="35.0" mnemonicParsing="false" onAction="#hint_pressed" prefHeight="25.0" prefWidth="41.0" text="Hint" />
+      <Button fx:id="saveButton" layoutX="427.0" layoutY="69.0" mnemonicParsing="false" onAction="#saveButtonClicked" text="Save" />
    </children>
 </AnchorPane>

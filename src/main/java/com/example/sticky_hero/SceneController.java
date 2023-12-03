@@ -1,19 +1,89 @@
 package com.example.sticky_hero;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
+import javafx.scene.text.Text;
+
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class SceneController {
+public class SceneController implements Initializable
+{
+    private final int cherries_to_revive = 5;
+
+    DeserializePoints deserializePoints = new DeserializePoints();
+    SerializePoints serializePoints = new SerializePoints();
+
+    Points points;
+    @FXML
+    private Text best_score_screen;
+
+    @FXML
+    private Text current_score_screen;
+
+    @FXML
+    private ImageView cherry_image_game_over;
+
+    @FXML
+    private Text cherry_score_display_game_over;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle)
+    {
+        try
+        {
+            this.points =  deserializePoints.deserialize("src/main/java/com/example/sticky_hero/saved.txt");
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            points = new Points(0, 0, 0 );
+            System.out.println("Invalid file found during initialize of SceneController. new Points(0, 0, 0 );");
+            serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
+
+        }
+
+//        System.out.println(Integer.toString(points.getCurrent_score()));
+//        System.out.println(Integer.toString(points.getBest_score()));
+        cherry_score_display_game_over.setText(Integer.toString(points.getCherry_count()));
+        current_score_screen.setText(Integer.toString(points.getCurrent_score()));
+        best_score_screen.setText(Integer.toString(points.getBest_score()));
+
+    }
+
+
+    @FXML
+    private Text notEnoughCherries;
+
     AudioClip buttonClickSound = new AudioClip(getClass().getResource("/click-button.mp3").toString());
-
-    public void play_start_mouse_clicked(MouseEvent e) throws IOException {
+    @FXML
+    void revive_clicked(MouseEvent e) throws IOException {
         buttonClickSound.play();
+
+        if (points.getCherry_count()>=cherries_to_revive)
+        {
+            points.setCherry_count(points.getCherry_count()-cherries_to_revive);
+            serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
+            start_game_scene(e);
+        }
+
+        else
+        {
+            notEnoughCherries.setVisible(true);
+        }
+    }
+
+
+
+
+    private void start_game_scene(MouseEvent e) throws IOException {
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("game-controller.fxml")));
         stage.setTitle("Game!");
@@ -33,6 +103,20 @@ public class SceneController {
         stage.show();
     }
 
+
+    public void play_start_mouse_clicked(MouseEvent e) throws IOException {
+        buttonClickSound.play();
+        if (points!=null)
+        {
+            points.setCurrent_score(0);
+        }
+        else
+        {
+            points = new Points(0,0,0);
+        }
+        serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
+        start_game_scene(e);
+    }
     public void switchHomeScreen(MouseEvent e) throws IOException {
         buttonClickSound.play();
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();

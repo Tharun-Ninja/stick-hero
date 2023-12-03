@@ -3,38 +3,14 @@ package com.example.sticky_hero;
 import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.scene.image.ImageView;
-import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Hero {
 
-    // private Stage stage;
 
-    // public Hero(Stage stage) {
-    // this.stage = stage;
-    // }
 
-    public int getCherry_score() {
-        return cherry_score;
-    }
-
-    public void setCherry_score(int cherry_score) {
-        this.cherry_score = cherry_score;
-    }
-
-    public int cherry_score;
-
-    public int get_current_score() {
-        return current_score;
-    }
-
-    public void set_current_score(int current_score) {
-        this.current_score = current_score;
-    }
-
-    private int current_score = 0;
-
+//    private int current_score;
 
 
     private GameController gameController;
@@ -129,10 +105,13 @@ public class Hero {
     public void setHero_Fall_Motion_timeline(Timeline hero_Fall_Motion_timeline) {
         this.hero_Fall_Motion_timeline = hero_Fall_Motion_timeline;
     }
-
     private Timeline hero_Fall_Motion_timeline;
 
-    Hero(GameController gameController, ImageView hero_image) {
+
+    Hero(GameController gameController, ImageView hero_image)
+    {
+
+
         this.gameController = gameController;
         this.hero_image = hero_image;
 
@@ -145,14 +124,9 @@ public class Hero {
         KeyFrame keyFrame_vertical_motion = new KeyFrame(Duration.seconds(0.01), e -> vertical_Motion());
         hero_Fall_Motion_timeline.getKeyFrames().add(keyFrame_vertical_motion);
         hero_Fall_Motion_timeline.setCycleCount(Animation.INDEFINITE);
-
-        // rotateTransition = new RotateTransition(Duration.seconds(0.1), hero_image);
-        //// rotateTransition.setAxis(RotateTransition.Axis.Y);
-        // rotateTransition.setByAngle(180);
-        //
-        // scaleTransition = new ScaleTransition(Duration.seconds(1), hero_image);
-        // scaleTransition.setToY(-1); // Flip about the y-axis
     }
+
+
 
     public void flipHeroImage() {
         this.flip_count += 1;
@@ -185,15 +159,20 @@ public class Hero {
         hero_Fall_Motion_timeline.play();
     }
 
-    private void stopVertical_Motion_Animation() {
+
+    private void stopVertical_Motion_Animation()
+    {
+
         hero_Fall_Motion_timeline.stop();
         System.out.println("Game Over");
 
-        try {
+        try
+        {
             SceneController sceneController = new SceneController();
             sceneController.switchGameOver((Stage) hero_image.getScene().getWindow());
             System.out.println("done switching");
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println("error");
             System.out.println(e.getMessage());
         }
@@ -207,10 +186,26 @@ public class Hero {
 
                 gameController.setCherry_is_present(false);
                 gameController.getCherry_List().get(0).getCherry_image().setVisible(false);
-                cherry_score += gameController.getCherry_List().get(1).getReward();
-                gameController.getCherry_score_display().setText(String.valueOf(cherry_score));
+
+                int new_cherry_count =  gameController.getPoints().getCherry_count()+ gameController.getCherry_List().get(1).getReward();
+                gameController.getPoints().setCherry_count(  new_cherry_count );
+
+                gameController.serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", gameController.getPoints());
+
+                gameController.getCherry_score_display().setText(String.valueOf(gameController.getPoints().getCherry_count()));
             }
         }
+//        public static void main(String[] args) {
+//            // Create an instance of the Person class
+//            Person person = new Person("John", 25);
+//
+//            // Serialization
+//
+//
+//            // Deserialization
+//            Person deserializedPerson = deserializePerson("person.ser");
+//            System.out.println("Deserialized Person: " + deserializedPerson);
+//        }
 
         if (gameController.getHero().isWalking()
                 & gameController.checkCollision(hero_image, gameController.getPlatforms().get(1).getBlock())) {

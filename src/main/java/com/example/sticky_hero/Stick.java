@@ -1,6 +1,7 @@
 package com.example.sticky_hero;
 
 import javafx.animation.*;
+import javafx.application.Platform;
 import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -10,6 +11,8 @@ import javafx.util.Duration;
 
 public class Stick implements Movable
 {
+
+
     public int getPress_count() {
         return press_count;
     }
@@ -117,14 +120,7 @@ public class Stick implements Movable
 
     private Timeline falling_timeline;
 
-
-    public TranslateTransition getTransition_erect() {
-        return transition_erect;
-    }
-    public void setTransition_erect(TranslateTransition transition_erect) {
-        this.transition_erect = transition_erect;
-    }
-    private TranslateTransition transition_erect;
+    private Timeline grow_sound_timeline;
 
 
 //    public double getMove_stick_Speed() {
@@ -157,12 +153,16 @@ public class Stick implements Movable
         erecting_timeline = new Timeline();
         rotating_timeline = new Timeline();
         falling_timeline = new Timeline();
+        grow_sound_timeline = new Timeline();
 
         KeyFrame keyFrame_erect  = new KeyFrame(Duration.seconds(0.01), e-> erect_Stick());
         KeyFrame keyFrame_rotate = new KeyFrame(Duration.seconds(0.01), e->rotate_Stick());
         KeyFrame keyFrame_fall = new KeyFrame(Duration.seconds(0.01), e->make_stick_fall());
+        KeyFrame keyFrame_grow_sound = new KeyFrame(Duration.seconds(0.1), e-> stickGrowSound.play());
 
         erecting_timeline.getKeyFrames().add(keyFrame_erect);
+        grow_sound_timeline.getKeyFrames().add(keyFrame_grow_sound);
+
         rotating_timeline.getKeyFrames().add(keyFrame_rotate);
         falling_timeline.getKeyFrames().add(keyFrame_fall);
 
@@ -171,6 +171,7 @@ public class Stick implements Movable
         erecting_timeline.setCycleCount(Animation.INDEFINITE);
         rotating_timeline.setCycleCount(Animation.INDEFINITE);
         falling_timeline.setCycleCount(Animation.INDEFINITE);
+        grow_sound_timeline.setCycleCount(Animation.INDEFINITE);
     }
 
     public void rotate_Stick()
@@ -193,7 +194,7 @@ public class Stick implements Movable
 
     private void make_stick_fall()
     {
-        System.out.println("make_stick_fall");
+//        System.out.println("make_stick_fall");
         if (angle_covered >=180)
         {
             System.out.println("angle_covered >=180");
@@ -204,7 +205,8 @@ public class Stick implements Movable
         rotate_helper();
     }
 
-    private void rotate_helper() {
+    private void rotate_helper()
+    {
         double pivotY = stick_rectangle.getY() + stick_rectangle.getHeight();
         double pivotX = stick_rectangle.getX() + stick_rectangle.getWidth()/2;
 
@@ -223,6 +225,10 @@ public class Stick implements Movable
         gameController.setErection_allowed(true);
 
         erecting_timeline.play();
+        Platform.runLater(() -> {
+            grow_sound_timeline.play();
+        });
+//        grow_sound_timeline.play();
     }
     public void stopRotationAnimation()
     {
@@ -240,7 +246,6 @@ public class Stick implements Movable
                 this.gameController.start_Perfect_Score_Animation();
             }
 
-
             this.gameController.getHero().startHorizontal_Motion_Animation();
 //        }
 
@@ -248,6 +253,7 @@ public class Stick implements Movable
 
     public void stopErectAnimation() {
         erecting_timeline.stop();
+        grow_sound_timeline.stop();
     }
 
     public void startRotationAnimation()
@@ -255,7 +261,16 @@ public class Stick implements Movable
         rotating_timeline.play();
     }
 
-    AudioClip stickGrowSound = new AudioClip(getClass().getResource("/stickSound.mp3").toString());
+    public AudioClip getStickGrowSound()
+    {
+        return stickGrowSound;
+    }
+
+    public void setStickGrowSound(AudioClip stickGrowSound) {
+        this.stickGrowSound = stickGrowSound;
+    }
+
+    private AudioClip stickGrowSound = new AudioClip(getClass().getResource("/stickSound.mp3").toString());
 
     public void erect_Stick()
     {
@@ -264,7 +279,6 @@ public class Stick implements Movable
         {
             this.stick_rectangle.setHeight(this.stick_rectangle.getHeight()+erect_speed);
             this.stick_rectangle.setY(this.stick_rectangle.getY()-erect_speed);
-            stickGrowSound.play();
         }
     }
 

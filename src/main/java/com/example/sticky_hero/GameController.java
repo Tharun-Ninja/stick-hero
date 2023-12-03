@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -18,28 +19,71 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.net.URL;
-import java.util.Objects;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.animation.*;
 
+import static java.lang.Thread.sleep;
+
 public class GameController implements Initializable {
+
+
 
     @FXML
     private Text gameScore;
-//    private int gameScoreInt = 0;
 
-    public void addGameScore(int x) {
-        hero.set_current_score(hero.get_current_score() + x);
-        gameScore.setText(String.valueOf(hero.get_current_score()));
+    public void addGameScore(int x)
+    {
+        System.out.println("--1");
+        points.setCurrent_score(points.getCurrent_score() + x);
+
+        if( points.getCurrent_score() > points.getBest_score())
+        {
+            points.setBest_score( points.getCurrent_score());
+        }
+
+        gameScore.setText(String.valueOf(points.getCurrent_score()));
+
+//        System.out.printf("%d %d %d \n", hero.getCherry_score(), hero.get_current_score(), hero.getBest_score());
+        serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
+
     }
+
+
 
     @FXML
     private Button hint_button;
+    @FXML
+    private Button saveButton;
+
+    @FXML
+    void saveButtonClicked(ActionEvent event)
+    {
+        serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", this.points);
+
+        try
+        {
+            Stage stage = (Stage) hero_image.getScene().getWindow();
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("home-view.fxml")));
+            stage.setTitle("Sticky Game!");
+            stage.setScene(scene);
+            stage.setWidth(500);
+            stage.setHeight(700);
+            stage.show();
+        }
+        catch (IOException e)
+        {
+            System.out.println("error on saveButtonClicked");
+            System.out.println(e.getMessage());
+        }
+
+    }
 
     @FXML
     void hint_pressed(ActionEvent event)
@@ -136,15 +180,6 @@ public class GameController implements Initializable {
 
     private boolean pressing;
 
-    public int getHighest_score() {
-        return highest_score;
-    }
-
-    public void setHighest_score(int highest_score) {
-        this.highest_score = highest_score;
-    }
-
-    private int highest_score = 0;
 
     public ArrayList<GamePlatform> getPlatforms() {
         return platforms;
@@ -272,14 +307,64 @@ public class GameController implements Initializable {
     private boolean moving_of_platform_Stopped = false;
 
     Random random = new Random();
+    DeserializePoints deserializePoints = new DeserializePoints();
+    SerializePoints serializePoints = new SerializePoints();
 
-    public GameController() {
-        hero = new Hero(this, hero_image);
+    public Points getPoints() {
+        return points;
+    }
+
+    public void setPoints(Points points) {
+        this.points = points;
+    }
+
+    private Points points;
+
+//    public int getBest_score() {
+//        return points.getBest_score();
+//    }
+//
+//    public void setBest_score(int best_score)
+//    {
+//        System.out.println("set_best_score");
+//        System.out.println(best_score);
+//        points.setBest_score(best_score);
+//    }
+//
+//    public int getCherry_score()
+//    {
+//
+//        return points.getCherry_count();
+//    }
+//
+//    public void setCherry_score(int cherry_score)
+//    {
+//        System.out.println("set_cherry_score");
+//        System.out.println(cherry_score);
+//        points.setCherry_count(cherry_score);
+//    }
+//
+//
+//    public int get_current_score() {
+//        return points.getCurrent_score();
+//    }
+//
+//    public void set_current_score(int current_score)
+//    {
+//        System.out.println("set_current_score");
+//        System.out.println(current_score);
+//        points.setCurrent_score(current_score);
+//    }
+//
+
+    public GameController()
+    {
+
+        System.out.println("GameController called");
 
         platforms = new ArrayList<>();
         initializePlatforms();
         current_stick = new Stick(this);
-        System.out.println("GameController done");
 
         motion_of_all_bridge_timeline = new Timeline();
         KeyFrame keyFrame_all_component_motion = new KeyFrame(Duration.seconds(0.001), e -> move_All_Platforms());
@@ -288,8 +373,72 @@ public class GameController implements Initializable {
 
         cherry_List = new ArrayList<>();
 
-        System.out.println("new ArrayList<>(2)");
-        System.out.println(cherry_List);
+        points = null;
+        try
+        {
+            points = deserializePoints.deserialize("src/main/java/com/example/sticky_hero/saved.txt" );
+        }
+        catch (IOException | ClassNotFoundException e)
+        {
+            points = new Points(0, 0, 0 );
+            System.out.println("Invalid file. new Points(0, 0, 0 );");
+        }
+
+        points.print_point();
+        System.out.println("GameController done");
+
+    }
+    public Cherry cherryFactory(double setX)
+    {
+        ImageView cherry_image_new = new ImageView("file:C:\\Users\\hp\\IdeaProjects\\Sticky Hero\\src\\main\\java\\com\\example\\sticky_hero\\assets\\cherry.png");
+        cherry_image_new.setX(setX);
+        cherry_image_new.setY(getGap_land_zenith()+5);
+        cherry_image_new.setPickOnBounds(true);
+        cherry_image_new.setFitHeight(20);
+        cherry_image_new.setFitWidth(20);
+        getAnchorPane().getChildren().add(cherry_image_new);
+
+        return new Cherry(1, this, cherry_image_new);
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle)
+    {
+        System.out.println("initialize called");
+
+        ImageView wall = new ImageView("file:C:\\Users\\hp\\IdeaProjects\\Sticky Hero\\src\\main\\java\\com\\example\\sticky_hero\\assets\\wall.jpg");
+        ImageView wall2 = new ImageView("file:C:\\Users\\hp\\IdeaProjects\\Sticky Hero\\src\\main\\java\\com\\example\\sticky_hero\\assets\\wall2.jpg");
+
+        ImageView selectedWall = (Math.random() < 0.5) ? wall : wall2;
+
+        image_view.setImage(selectedWall.getImage());
+
+        anchorPane.getChildren().add(current_stick.getStick_rectangle());
+
+        anchorPane.getChildren().addAll(platforms.get(0).getBlock(), platforms.get(0).getMark());
+        anchorPane.getChildren().addAll(platforms.get(1).getBlock(), platforms.get(1).getMark());
+        anchorPane.getChildren().addAll(platforms.get(2).getBlock(), platforms.get(2).getMark());
+        anchorPane.requestFocus();
+
+        System.out.println("Hero not created");
+        System.out.println(points);
+        hero = new Hero(this, hero_image);
+        System.out.println("Hero created");
+        System.out.println(points);
+        cherry_List.add(null);
+
+        cherry_List.add(cherryFactory(600));
+
+        hero_image.setRotationAxis(Rotate.X_AXIS);
+        // https://gist.github.com/jewelsea/1436941
+        double ideal_stick_length = current_gap + platforms.get(1).getBlock().getWidth() / 2;
+
+        hint_line.setEndY(this.gap_land_zenith - ideal_stick_length);
+        hint_line.setStartY(this.gap_land_zenith - ideal_stick_length);
+
+        gameScore.setText(Integer.toString(points.getCurrent_score()));
+        cherry_score_display.setText(Integer.toString(points.getCherry_count()));
+        System.out.println("Override initialize done");
+
     }
 
     public void start_all_bridge_motion_Animation() {
@@ -350,7 +499,7 @@ public class GameController implements Initializable {
         anchorPane.getChildren().add(current_stick.getStick_rectangle());
         // at this point cherry_1 has been moved from 600 to position
         cherry_List.set(0, cherry_List.get(1));
-        cherry_List.set(1, new Cherry(1, this, 600));
+        cherry_List.set(1, cherryFactory(600));
 
     }
 
@@ -360,7 +509,9 @@ public class GameController implements Initializable {
         });
     }
 
-    public void initializePlatforms() {
+    public void initializePlatforms()
+    {
+        System.out.println("initializePlatforms called");
 
         double platformWidth = random.nextDouble(maxWidth - minWidth) + minWidth;
         GamePlatform platform = new GamePlatform(platformWidth, 0, this);
@@ -385,40 +536,6 @@ public class GameController implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        anchorPane.getChildren().add(current_stick.getStick_rectangle());
-
-        anchorPane.getChildren().addAll(platforms.get(0).getBlock(), platforms.get(0).getMark());
-        anchorPane.getChildren().addAll(platforms.get(1).getBlock(), platforms.get(1).getMark());
-        anchorPane.getChildren().addAll(platforms.get(2).getBlock(), platforms.get(2).getMark());
-        anchorPane.requestFocus();
-
-        System.out.println("Override initialize done");
-        hero = new Hero(this, hero_image);
-
-        //
-
-        cherry_List.add(null);
-
-        cherry_List.add(new Cherry(1, this, 600));
-
-        hero_image.setRotationAxis(Rotate.X_AXIS);
-        // https://gist.github.com/jewelsea/1436941
-        double ideal_stick_length = current_gap + platforms.get(1).getBlock().getWidth() / 2;
-
-        // System.out.println(ideal_stick_length);
-        // System.out.println(gap_land_zenith);
-
-        hint_line.setEndY(this.gap_land_zenith - ideal_stick_length);
-        hint_line.setStartY(this.gap_land_zenith - ideal_stick_length);
-    }
-
-    @FXML
-    void keyPressed(KeyEvent event) {
-        System.out.println("keyPressed");
-        hero.flipHeroImage();
-    }
 
     @FXML
     void setOnMousePressed(MouseEvent event) {
@@ -427,6 +544,15 @@ public class GameController implements Initializable {
             hero.flipHeroImage();
             return;
         }
+         current_stick.getStickGrowSound().play();
+        try
+        {
+            sleep(50);
+        } catch (InterruptedException e) {
+            System.out.println("InterruptedException");
+        }
+        current_stick.getStickGrowSound().play();
+
         current_stick.setPress_count(current_stick.getPress_count() + 1);
         // Run the time-consuming task in a separate thread
         if (current_stick.getPress_count() == 1) {
@@ -453,6 +579,7 @@ public class GameController implements Initializable {
             erection_allowed = false;
             setRotation_allowed(true);
             System.out.println("pressing = false");
+            System.out.println();
             double upper_bound = current_gap + getPlatforms().get(1).getBlock().getWidth();
             double lower_bound = current_gap;
             hero.setWill_fall(!((this.current_stick.getStick_rectangle().getHeight() >= lower_bound)

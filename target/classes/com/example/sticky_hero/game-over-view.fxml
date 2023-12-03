@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -7,48 +9,65 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sticky_hero.SceneController">
    <children>
-      <Text layoutX="78.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Over!" wrappingWidth="381.96875">
+      <Text layoutX="79.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Over!" wrappingWidth="381.96875">
          <font>
             <Font name="System Bold Italic" size="60.0" />
          </font>
       </Text>
-      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#9bceff" height="59.0" layoutX="162.0" layoutY="386.0" onMouseClicked="#switchHomeScreen" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Text layoutX="221.0" layoutY="426.0" onMouseClicked="#switchHomeScreen" strokeType="OUTSIDE" strokeWidth="0.0" text="HOME" textAlignment="CENTER">
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#9bceff" height="59.0" layoutX="163.0" layoutY="353.0" onMouseClicked="#switchHomeScreen" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Text layoutX="222.0" layoutY="393.0" onMouseClicked="#switchHomeScreen" strokeType="OUTSIDE" strokeWidth="0.0" text="HOME" textAlignment="CENTER">
          <font>
             <Font size="28.0" />
          </font>
       </Text>
-      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#9bceff" height="200.0" layoutX="135.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="254.0" />
-      <Text layoutX="228.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SCORE" textAlignment="CENTER">
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#9bceff" height="200.0" layoutX="136.0" layoutY="117.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="254.0" />
+      <Text layoutX="229.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SCORE" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="237.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BEST" textAlignment="CENTER">
+      <Text layoutX="238.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BEST" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="current_score_screen" layoutX="253.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER">
+      <Text fx:id="current_score_screen" layoutX="254.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="best_score_screen" layoutX="247.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16" textAlignment="CENTER">
+      <Text fx:id="best_score_screen" layoutX="248.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#9bceff" height="59.0" layoutX="160.0" layoutY="464.0" onMouseClicked="#play_start_mouse_clicked" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Text fx:id="replay_button_game_over_page" layoutX="213.0" layoutY="504.0" onMouseClicked="#play_start_mouse_clicked" strokeType="OUTSIDE" strokeWidth="0.0" text="REPLAY" textAlignment="CENTER">
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#9bceff" height="59.0" layoutX="161.0" layoutY="431.0" onMouseClicked="#play_start_mouse_clicked" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Text fx:id="replay_button_game_over_page" layoutX="216.0" layoutY="471.0" onMouseClicked="#play_start_mouse_clicked" strokeType="OUTSIDE" strokeWidth="0.0" text="REPLAY" textAlignment="CENTER">
          <font>
             <Font size="28.0" />
          </font>
       </Text>
-      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#9bceff" height="59.0" layoutX="160.0" layoutY="546.0" onMouseClicked="#quitGame" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Text fx:id="replay_button_game_over_page1" layoutX="231.0" layoutY="586.0" onMouseClicked="#quitGame" strokeType="OUTSIDE" strokeWidth="0.0" text="QUIT" textAlignment="CENTER">
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#9bceff" height="59.0" layoutX="161.0" layoutY="511.0" onMouseClicked="#revive_clicked" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Text fx:id="replay_button_game_over_page1" layoutX="220.0" layoutY="551.0" onMouseClicked="#revive_clicked" strokeType="OUTSIDE" strokeWidth="0.0" text="REVIVE" textAlignment="CENTER">
          <font>
             <Font size="28.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#9bceff" height="59.0" layoutX="161.0" layoutY="589.0" onMouseClicked="#quitGame" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Text fx:id="replay_button_game_over_page11" layoutX="232.0" layoutY="629.0" onMouseClicked="#quitGame" strokeType="OUTSIDE" strokeWidth="0.0" text="QUIT" textAlignment="CENTER">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <Text fx:id="notEnoughCherries" fill="RED" layoutX="170.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="!!You don't have enough cherries!!" visible="false" />
+      <ImageView fx:id="cherry_image" fitHeight="30.0" fitWidth="20.0" layoutX="4.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/cherry.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="cherry_score_display_game_over" layoutX="27.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="27.192718505859375">
+         <font>
+            <Font size="22.0" />
          </font>
       </Text>
    </children>
