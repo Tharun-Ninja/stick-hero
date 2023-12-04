@@ -60,7 +60,7 @@
          </font>
       </Text>
       <Text fx:id="notEnoughCherries" fill="RED" layoutX="170.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="!!You don't have enough cherries!!" visible="false" />
-      <ImageView fx:id="cherry_image" fitHeight="30.0" fitWidth="20.0" layoutX="4.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cherry_image_game_over" fitHeight="30.0" fitWidth="20.0" layoutX="4.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/cherry.png" />
          </image>
