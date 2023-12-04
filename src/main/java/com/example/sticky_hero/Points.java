@@ -3,56 +3,56 @@ package com.example.sticky_hero;
 import java.io.Serializable;
 
 public class Points implements Serializable {
-    public int getCherry_count() {
-        return cherry_count;
+    public int getCherryCount() {
+        return cherryCount;
     }
 
-    public void setCherry_count(int cherry_count)
+    public void setCherryCount(int cherryCount)
     {
 
         System.out.println("setCherry_count");
-        System.out.println(cherry_count);
-        this.cherry_count = cherry_count;
+        System.out.println(cherryCount);
+        this.cherryCount = cherryCount;
     }
 
-    private int cherry_count;
+    private int cherryCount;
 
-    public int getCurrent_score()
+    public int getCurrentScore()
     {
-        return current_score;
+        return currentScore;
     }
 
-    public void setCurrent_score(int current_score)
+    public void setCurrentScore(int currentScore)
     {
         System.out.println("setCurrent_score");
-        System.out.println(current_score);
-        this.current_score = current_score;
+        System.out.println(currentScore);
+        this.currentScore = currentScore;
     }
 
-    private int current_score;
+    private int currentScore;
 
-    public int getBest_score() {
-        return best_score;
+    public int getBestScore() {
+        return bestScore;
     }
 
-    public void setBest_score(int best_score) {
-        this.best_score = best_score;
+    public void setBestScore(int bestScore) {
+        this.bestScore = bestScore;
     }
 
-    private int best_score;
+    private int bestScore;
 
-    public Points (int cherry_count, int current_score, int best_score) {
+    public Points (int cherryCount, int currentScore, int bestScore) {
 
-        this.cherry_count = cherry_count;
-        this.current_score = current_score;
-        this.best_score = best_score;
+        this.cherryCount = cherryCount;
+        this.currentScore = currentScore;
+        this.bestScore = bestScore;
 
     }
 
-     public void print_point()
+     public void printPoint()
     {
-        System.out.printf("cherry_count:%d ", cherry_count);
-        System.out.printf("current_score:%d ", current_score);
-        System.out.printf("best_score:%d\n", best_score);
+        System.out.printf("cherry_count:%d ", cherryCount);
+        System.out.printf("current_score:%d ", currentScore);
+        System.out.printf("best_score:%d\n", bestScore);
     }
 }

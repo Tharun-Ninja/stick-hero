@@ -31,18 +31,18 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="current_score_screen" layoutX="254.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER">
+      <Text fx:id="currentScoreScreen" layoutX="254.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fx:id="best_score_screen" layoutX="248.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16" textAlignment="CENTER">
+      <Text fx:id="bestScoreScreen" layoutX="248.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#9bceff" height="59.0" layoutX="161.0" layoutY="431.0" onMouseClicked="#play_start_mouse_clicked" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Text fx:id="replay_button_game_over_page" layoutX="216.0" layoutY="471.0" onMouseClicked="#play_start_mouse_clicked" strokeType="OUTSIDE" strokeWidth="0.0" text="REPLAY" textAlignment="CENTER">
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#9bceff" height="59.0" layoutX="161.0" layoutY="431.0" onMouseClicked="#playStartMouseClicked" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Text fx:id="replay_button_game_over_page" layoutX="216.0" layoutY="471.0" onMouseClicked="#playStartMouseClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="REPLAY" textAlignment="CENTER">
          <font>
             <Font size="28.0" />
          </font>
@@ -65,7 +65,7 @@
             <Image url="@../../../assets/cherry.png" />
          </image>
       </ImageView>
-      <Text fx:id="cherry_score_display_game_over" layoutX="27.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="27.192718505859375">
+      <Text fx:id="cherryScoreDisplayGameOver" layoutX="27.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="27.192718505859375">
          <font>
             <Font size="22.0" />
          </font>

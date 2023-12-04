@@ -17,7 +17,7 @@ public class DeserializePoints
         System.out.println(points);
         if (points!=null)
         {
-            points.print_point();
+            points.printPoint();
         }
         return points;
     }

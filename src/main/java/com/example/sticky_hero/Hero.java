@@ -14,19 +14,17 @@ public class Hero {
 
 
     private GameController gameController;
-    private double position_X;
-    private double position_Y;
-    private int flip_count = 0;
+    private int flipCount = 0;
 
-    public boolean isWill_fall() {
-        return will_fall;
+    public boolean isWillFall() {
+        return willFall;
     }
 
-    public void setWill_fall(boolean will_fall) {
-        this.will_fall = will_fall;
+    public void setWillFall(boolean willFall) {
+        this.willFall = willFall;
     }
 
-    private boolean will_fall;
+    private boolean willFall;
 
     public boolean isWalking() {
         return walking;
@@ -38,138 +36,138 @@ public class Hero {
 
     private boolean walking = false;
 
-    public ImageView getHero_image() {
-        return hero_image;
+    public ImageView getHeroImage() {
+        return heroImage;
     }
 
-    public void setHero_image(ImageView hero_image) {
-        this.hero_image = hero_image;
+    public void setHeroImage(ImageView heroImage) {
+        this.heroImage = heroImage;
     }
 
-    private ImageView hero_image;
+    private ImageView heroImage;
 
-    public double getHorizontal_motion_speed() {
-        return horizontal_motion_speed;
+    public double getHorizontalMotionSpeed() {
+        return horizontalMotionSpeed;
     }
 
-    public void setHorizontal_motion_speed(double horizontal_motion_speed) {
-        this.horizontal_motion_speed = horizontal_motion_speed;
+    public void setHorizontalMotionSpeed(double horizontalMotionSpeed) {
+        this.horizontalMotionSpeed = horizontalMotionSpeed;
     }
 
-    private double horizontal_motion_speed = 1;
+    private double horizontalMotionSpeed = 1;
 
-    public double getVertical_motion_speed() {
-        return vertical_motion_speed;
+    public double getVerticalMotionSpeed() {
+        return verticalMotionSpeed;
     }
 
-    public void setVertical_motion_speed(double vertical_motion_speed) {
-        this.vertical_motion_speed = vertical_motion_speed;
+    public void setVerticalMotionSpeed(double verticalMotionSpeed) {
+        this.verticalMotionSpeed = verticalMotionSpeed;
     }
 
-    private double vertical_motion_speed = 5;
+    private double verticalMotionSpeed = 5;
 
-    public double getLength_moved_on_current_bridge() {
-        return length_moved_on_current_bridge;
+    public double getLengthMovedOnCurrentBridge() {
+        return lengthMovedOnCurrentBridge;
     }
 
-    public void setLength_moved_on_current_bridge(double length_moved_on_current_bridge) {
-        this.length_moved_on_current_bridge = length_moved_on_current_bridge;
+    public void setLengthMovedOnCurrentBridge(double lengthMovedOnCurrentBridge) {
+        this.lengthMovedOnCurrentBridge = lengthMovedOnCurrentBridge;
     }
 
-    private double length_moved_on_current_bridge = 0;
+    private double lengthMovedOnCurrentBridge = 0;
 
-    public double getLength_fallen() {
-        return length_fallen;
+    public double getLengthFallen() {
+        return lengthFallen;
     }
 
-    public void setLength_fallen(double length_fallen) {
-        this.length_fallen = length_fallen;
+    public void setLengthFallen(double lengthFallen) {
+        this.lengthFallen = lengthFallen;
     }
 
-    private double length_fallen = 0;
+    private double lengthFallen = 0;
 
-    public Timeline getMotion_on_bridge_timeline() {
-        return motion_on_bridge_timeline;
+    public Timeline getMotionOnBridgeTimeline() {
+        return motionOnBridgeTimeline;
     }
 
-    public void setMotion_on_bridge_timeline(Timeline motion_on_bridge_timeline) {
-        this.motion_on_bridge_timeline = motion_on_bridge_timeline;
+    public void setMotionOnBridgeTimeline(Timeline motionOnBridgeTimeline) {
+        this.motionOnBridgeTimeline = motionOnBridgeTimeline;
     }
 
-    private Timeline motion_on_bridge_timeline;
+    private Timeline motionOnBridgeTimeline;
 
-    public Timeline getHero_Fall_Motion_timeline() {
-        return hero_Fall_Motion_timeline;
+    public Timeline getHeroFallMotionTimeline() {
+        return heroFallMotionTimeline;
     }
 
-    public void setHero_Fall_Motion_timeline(Timeline hero_Fall_Motion_timeline) {
-        this.hero_Fall_Motion_timeline = hero_Fall_Motion_timeline;
+    public void setHeroFallMotionTimeline(Timeline heroFallMotionTimeline) {
+        this.heroFallMotionTimeline = heroFallMotionTimeline;
     }
-    private Timeline hero_Fall_Motion_timeline;
+    private Timeline heroFallMotionTimeline;
 
 
-    Hero(GameController gameController, ImageView hero_image)
+    Hero(GameController gameController, ImageView heroImage)
     {
 
 
         this.gameController = gameController;
-        this.hero_image = hero_image;
+        this.heroImage = heroImage;
 
-        motion_on_bridge_timeline = new Timeline();
-        KeyFrame keyFrame_horizontal_motion = new KeyFrame(Duration.seconds(0.005), e -> move_horizontal_motion());
-        motion_on_bridge_timeline.getKeyFrames().add(keyFrame_horizontal_motion);
-        motion_on_bridge_timeline.setCycleCount(Animation.INDEFINITE);
+        motionOnBridgeTimeline = new Timeline();
+        KeyFrame keyFrameHorizontalMotion = new KeyFrame(Duration.seconds(0.005), e -> moveHorizontalMotion());
+        motionOnBridgeTimeline.getKeyFrames().add(keyFrameHorizontalMotion);
+        motionOnBridgeTimeline.setCycleCount(Animation.INDEFINITE);
 
-        hero_Fall_Motion_timeline = new Timeline();
-        KeyFrame keyFrame_vertical_motion = new KeyFrame(Duration.seconds(0.01), e -> vertical_Motion());
-        hero_Fall_Motion_timeline.getKeyFrames().add(keyFrame_vertical_motion);
-        hero_Fall_Motion_timeline.setCycleCount(Animation.INDEFINITE);
+        heroFallMotionTimeline = new Timeline();
+        KeyFrame keyFrameVerticalMotion = new KeyFrame(Duration.seconds(0.01), e -> verticalMotion());
+        heroFallMotionTimeline.getKeyFrames().add(keyFrameVerticalMotion);
+        heroFallMotionTimeline.setCycleCount(Animation.INDEFINITE);
     }
 
 
 
     public void flipHeroImage() {
-        this.flip_count += 1;
+        this.flipCount += 1;
         System.out.println("FLIP");
 
-        if (this.flip_count % 2 == 1) {
-            hero_image.setRotate(180);
-            hero_image.setTranslateY(hero_image.getBoundsInLocal().getWidth() - 1);
+        if (this.flipCount % 2 == 1) {
+            heroImage.setRotate(180);
+            heroImage.setTranslateY(heroImage.getBoundsInLocal().getWidth() - 1);
         } else {
-            hero_image.setRotate(360);
-            hero_image.setTranslateY(0);
+            heroImage.setRotate(360);
+            heroImage.setTranslateY(0);
         }
     }
 
-    private void vertical_Motion() {
-        this.setHeroImageY(this.hero_image.getY() + vertical_motion_speed);
-        length_fallen += vertical_motion_speed;
+    private void verticalMotion() {
+        this.setHeroImageY(this.heroImage.getY() + verticalMotionSpeed);
+        lengthFallen += verticalMotionSpeed;
         // System.out.println("OKK");
         // System.out.println(length_fallen);
         // System.out.println(this.hero_image.getY());
 
-        if (length_fallen >= 440) {
+        if (lengthFallen >= 440) {
             System.out.println("length_fallen>=440");
-            stopVertical_Motion_Animation();
+            stopVerticalMotionAnimation();
         }
 
     }
 
-    private void startVertical_Motion_Animation() {
-        hero_Fall_Motion_timeline.play();
+    private void startVerticalMotionAnimation() {
+        heroFallMotionTimeline.play();
     }
 
 
-    private void stopVertical_Motion_Animation()
+    private void stopVerticalMotionAnimation()
     {
 
-        hero_Fall_Motion_timeline.stop();
+        heroFallMotionTimeline.stop();
         System.out.println("Game Over");
 
         try
         {
             SceneController sceneController = new SceneController();
-            sceneController.switchGameOver((Stage) hero_image.getScene().getWindow());
+            sceneController.switchGameOver((Stage) heroImage.getScene().getWindow());
             System.out.println("done switching");
         }
         catch (Exception e) {
@@ -178,21 +176,21 @@ public class Hero {
         }
     }
 
-    public void move_horizontal_motion() {
+    public void moveHorizontalMotion() {
 
-        if (gameController.getCherry_List().get(0) != null) {
-            if (gameController.isCherry_is_present() & gameController.getHero().isWalking() & gameController
-                    .checkCollision(hero_image, gameController.getCherry_List().get(0).getCherry_image())) {
+        if (gameController.getCherryList().get(0) != null) {
+            if (gameController.isCherryIsPresent() & gameController.getHero().isWalking() & gameController
+                    .checkCollision(heroImage, gameController.getCherryList().get(0).getCherryImage())) {
 
-                gameController.setCherry_is_present(false);
-                gameController.getCherry_List().get(0).getCherry_image().setVisible(false);
+                gameController.setCherryIsPresent(false);
+                gameController.getCherryList().get(0).getCherryImage().setVisible(false);
 
-                int new_cherry_count =  gameController.getPoints().getCherry_count()+ gameController.getCherry_List().get(1).getReward();
-                gameController.getPoints().setCherry_count(  new_cherry_count );
+                int newCherryCount =  gameController.getPoints().getCherryCount()+ gameController.getCherryList().get(1).getReward();
+                gameController.getPoints().setCherryCount(  newCherryCount );
 
                 gameController.serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", gameController.getPoints());
 
-                gameController.getCherry_score_display().setText(String.valueOf(gameController.getPoints().getCherry_count()));
+                gameController.getCherryScoreDisplay().setText(String.valueOf(gameController.getPoints().getCherryCount()));
             }
         }
 //        public static void main(String[] args) {
@@ -208,54 +206,54 @@ public class Hero {
 //        }
 
         if (gameController.getHero().isWalking()
-                & gameController.checkCollision(hero_image, gameController.getPlatforms().get(1).getBlock())) {
+                & gameController.checkCollision(heroImage, gameController.getPlatforms().get(1).getBlock())) {
             System.out.println("Game Over");
-            stopHorizontal_Motion_Animation();
-            startVertical_Motion_Animation();
+            stopHorizontalMotionAnimation();
+            startVerticalMotionAnimation();
 
         }
 
-        this.setHeroImageX(this.hero_image.getX() + horizontal_motion_speed);
-        length_moved_on_current_bridge += horizontal_motion_speed;
+        this.setHeroImageX(this.heroImage.getX() + horizontalMotionSpeed);
+        lengthMovedOnCurrentBridge += horizontalMotionSpeed;
         // System.out.println("OKK");
         // System.out.println(length_moved_on_current_bridge);
         // System.out.println(this.gameController.getCurrent_stick().getRectangle().getHeight());
 
-        if ((will_fall) & (length_moved_on_current_bridge >= (this.gameController.getCurrent_stick()
-                .getStick_rectangle().getHeight() + gameController.getStandard_stick_width() + 3))) {
-            stopHorizontal_Motion_Animation();
+        if ((willFall) & (lengthMovedOnCurrentBridge >= (this.gameController.getCurrentStick()
+                .getStickRectangle().getHeight() + gameController.getStandardStickWidth() + 3))) {
+            stopHorizontalMotionAnimation();
             System.out.println("startVertical_Motion_Animation");
-            Platform.runLater(this::startVertical_Motion_Animation);
-            gameController.getCurrent_stick().getFalling_timeline().play();
+            Platform.runLater(this::startVerticalMotionAnimation);
+            gameController.getCurrentStick().getFallingTimeline().play();
         }
 
-        else if ((!will_fall) & (length_moved_on_current_bridge >= gameController.getCurrent_gap()
+        else if ((!willFall) & (lengthMovedOnCurrentBridge >= gameController.getCurrentGap()
                 + gameController.getPlatforms().get(1).getBlock().getWidth())) {
 
             gameController.addGameScore(1);
-            stopHorizontal_Motion_Animation();
-            length_moved_on_current_bridge = 0;
-            gameController.start_all_bridge_motion_Animation();
+            stopHorizontalMotionAnimation();
+            lengthMovedOnCurrentBridge = 0;
+            gameController.startAllBridgeMotionAnimation();
         }
 
     }
 
     public void setHeroImageX(double x) {
-        hero_image.setX(x);
+        heroImage.setX(x);
     }
 
     public void setHeroImageY(double y) {
-        hero_image.setY(y);
+        heroImage.setY(y);
     }
 
-    public void stopHorizontal_Motion_Animation() {
+    public void stopHorizontalMotionAnimation() {
         walking = false;
-        motion_on_bridge_timeline.stop();
+        motionOnBridgeTimeline.stop();
     }
 
-    public void startHorizontal_Motion_Animation() {
+    public void startHorizontalMotionAnimation() {
         walking = true;
-        motion_on_bridge_timeline.play();
+        motionOnBridgeTimeline.play();
     }
 
 }

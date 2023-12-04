@@ -14,41 +14,38 @@ public class Cherry implements Movable
     }
     private GameController gameController;
 
-    public ImageView getCherry_image() {
-        return cherry_image;
+    public ImageView getCherryImage() {
+        return cherryImage;
     }
-    public void setCherry_image(ImageView cherry_image) {
-        this.cherry_image = cherry_image;
+    public void setCherryImage(ImageView cherryImage) {
+        this.cherryImage = cherryImage;
     }
-    private ImageView cherry_image;
+    private ImageView cherryImage;
 
 
 
     public int getReward() {
         return reward;
     }
-    public void setReward(int reward) {
-        this.reward = reward;
-    }
     private int reward;
 
-    Cherry(int reward, GameController gameController , ImageView cherry_image )
+    Cherry(int reward, GameController gameController , ImageView cherryImage )
     {
         this.reward = reward;
         this.gameController = gameController;
-        this.cherry_image = cherry_image;
+        this.cherryImage = cherryImage;
     }
 
 
 
     @Override
-    public double move(double block_final_position ,double move_cherry_Speed )
+    public double move(double blockFinalPosition ,double movePlatformSpeed)
     {
 //        System.out.println(this.cherry_image.isVisible());
 //        System.out.printf("%f - %f\n", block_final_position,  this.cherry_image.getX());
-        if (block_final_position < this.cherry_image.getX())
+        if (blockFinalPosition < this.cherryImage.getX())
         {
-            this.cherry_image.setX(this.cherry_image.getX()-move_cherry_Speed);
+            this.cherryImage.setX(this.cherryImage.getX()- movePlatformSpeed);
         }
         return Double.MAX_VALUE ;
 

@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
@@ -18,23 +17,21 @@ import java.util.ResourceBundle;
 
 public class SceneController implements Initializable
 {
-    private final int cherries_to_revive = 5;
+    private final int cherriesToRevive = 5;
 
     DeserializePoints deserializePoints = new DeserializePoints();
     SerializePoints serializePoints = new SerializePoints();
 
     Points points;
     @FXML
-    private Text best_score_screen;
+    private Text bestScoreScreen;
 
     @FXML
-    private Text current_score_screen;
+    private Text currentScoreScreen;
+
 
     @FXML
-    private ImageView cherry_image_game_over;
-
-    @FXML
-    private Text cherry_score_display_game_over;
+    private Text cherryScoreDisplayGameOver;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
@@ -52,9 +49,9 @@ public class SceneController implements Initializable
 
 //        System.out.println(Integer.toString(points.getCurrent_score()));
 //        System.out.println(Integer.toString(points.getBest_score()));
-        cherry_score_display_game_over.setText(Integer.toString(points.getCherry_count()));
-        current_score_screen.setText(Integer.toString(points.getCurrent_score()));
-        best_score_screen.setText(Integer.toString(points.getBest_score()));
+        cherryScoreDisplayGameOver.setText(Integer.toString(points.getCherryCount()));
+        currentScoreScreen.setText(Integer.toString(points.getCurrentScore()));
+        bestScoreScreen.setText(Integer.toString(points.getBestScore()));
 
     }
 
@@ -67,11 +64,11 @@ public class SceneController implements Initializable
     void revive_clicked(MouseEvent e) throws IOException {
         buttonClickSound.play();
 
-        if (points.getCherry_count()>=cherries_to_revive)
+        if (points.getCherryCount()>= cherriesToRevive)
         {
-            points.setCherry_count(points.getCherry_count()-cherries_to_revive);
+            points.setCherryCount(points.getCherryCount()- cherriesToRevive);
             serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
-            start_game_scene(e);
+            startGameScene(e);
         }
 
         else
@@ -83,7 +80,7 @@ public class SceneController implements Initializable
 
 
 
-    private void start_game_scene(MouseEvent e) throws IOException {
+    private void startGameScene(MouseEvent e) throws IOException {
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("game-controller.fxml")));
         stage.setTitle("Game!");
@@ -104,18 +101,18 @@ public class SceneController implements Initializable
     }
 
 
-    public void play_start_mouse_clicked(MouseEvent e) throws IOException {
+    public void playStartMouseClicked(MouseEvent e) throws IOException {
         buttonClickSound.play();
         if (points!=null)
         {
-            points.setCurrent_score(0);
+            points.setCurrentScore(0);
         }
         else
         {
             points = new Points(0,0,0);
         }
         serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
-        start_game_scene(e);
+        startGameScene(e);
     }
     public void switchHomeScreen(MouseEvent e) throws IOException {
         buttonClickSound.play();

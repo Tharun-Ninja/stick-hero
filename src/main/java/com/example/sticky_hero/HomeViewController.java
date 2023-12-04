@@ -4,10 +4,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.AudioClip;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -15,11 +13,7 @@ import java.util.ResourceBundle;
 
 public class HomeViewController implements Initializable
 {
-    @FXML
-    private Button loadLastSaved;
 
-    @FXML
-    private Circle play_start;
 
     DeserializePoints deserializePoints = new DeserializePoints();
     SerializePoints serializePoints = new SerializePoints();
@@ -53,20 +47,20 @@ public class HomeViewController implements Initializable
     {
         buttonClickSound.play();
         serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
-        start_game_scene(event);
+        startGameScene(event);
 
 
     }
     @FXML
-    public void play_start_mouse_clicked(MouseEvent e)
+    public void playStartMouseClicked(MouseEvent e)
     {
         buttonClickSound.play();
-        points.setCurrent_score(0);
+        points.setCurrentScore(0);
         serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
-        start_game_scene(e);
+        startGameScene(e);
     }
 
-    private void start_game_scene(MouseEvent e) {
+    private void startGameScene(MouseEvent e) {
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Scene scene = null;
         try

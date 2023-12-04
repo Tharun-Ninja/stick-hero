@@ -13,59 +13,59 @@ public class Stick implements Movable
 {
 
 
-    public int getPress_count() {
-        return press_count;
+    public int getPressCount() {
+        return pressCount;
     }
 
-    public void setPress_count(int press_count) {
-        this.press_count = press_count;
+    public void setPressCount(int press_count) {
+        this.pressCount = press_count;
     }
 
-    private int press_count=0;
+    private int pressCount =0;
 
 
-    public boolean isMake_it_flat() {
-        return make_it_flat;
+    public boolean isMakeItFlat() {
+        return makeItFlat;
     }
-    public void setMake_it_flat(boolean make_it_flat) {
-        this.make_it_flat = make_it_flat;
+    public void setMakeItFlat(boolean make_it_flat) {
+        this.makeItFlat = make_it_flat;
     }
-    private boolean make_it_flat = false;
+    private boolean makeItFlat = false;
 
-    public boolean isMake_it_fall() {
-        return make_it_fall;
+    public boolean isMakeItFall() {
+        return makeItFall;
     }
-    public void setMake_it_fall(boolean make_it_fall) {
-        this.make_it_fall = make_it_fall;
+    public void setMakeItFall(boolean makeItFall) {
+        this.makeItFall = makeItFall;
     }
-    private boolean make_it_fall = false;
-
-
-    public int getAngle_covered() {
-        return angle_covered;
-    }
-    public void setAngle_covered(int angle_covered) {
-        this.angle_covered = angle_covered;
-    }
-    private int angle_covered = 0;
+    private boolean makeItFall = false;
 
 
-    public int getRotation_speed() {
-        return rotation_speed;
+    public int getAngleCovered() {
+        return angleCovered;
     }
-    public void setRotation_speed(int rotation_speed) {
-        this.rotation_speed = rotation_speed;
+    public void setAngleCovered(int angleCovered) {
+        this.angleCovered = angleCovered;
     }
-    private int rotation_speed = 1;
+    private int angleCovered = 0;
 
 
-    public int getStick_width() {
-        return stick_width;
+    public int getRotationSpeed() {
+        return rotationSpeed;
     }
-    public void setStick_width(int stick_width) {
-        this.stick_width = stick_width;
+    public void setRotationSpeed(int rotationSpeed) {
+        this.rotationSpeed = rotationSpeed;
     }
-    private int stick_width;
+    private int rotationSpeed = 1;
+
+
+    public int getStickWidth() {
+        return stickWidth;
+    }
+    public void setStickWidth(int stickWidth) {
+        this.stickWidth = stickWidth;
+    }
+    private int stickWidth;
 
 
     public void setGameController(GameController gameController)
@@ -77,50 +77,50 @@ public class Stick implements Movable
     }
     private GameController gameController;
 
-    public Rectangle getStick_rectangle() {
-        return stick_rectangle;
+    public Rectangle getStickRectangle() {
+        return stickRectangle;
     }
-    public void setStick_rectangle(Rectangle stick_rectangle) {
-        this.stick_rectangle = stick_rectangle;
+    public void setStickRectangle(Rectangle stickRectangle) {
+        this.stickRectangle = stickRectangle;
     }
-    private Rectangle stick_rectangle;
+    private Rectangle stickRectangle;
 
-    public double getErect_speed() {
-        return erect_speed;
+    public double getErectSpeed() {
+        return erectSpeed;
     }
-    public void setErect_speed(double erect_speed) {
-        this.erect_speed = erect_speed;
+    public void setErectSpeed(double erectSpeed) {
+        this.erectSpeed = erectSpeed;
     }
-    private double erect_speed = 1;
+    private double erectSpeed = 1;
 
-    public Timeline getErecting_timeline() {
-        return erecting_timeline;
+    public Timeline getErectingTimeline() {
+        return erectingTimeline;
     }
-    public void setErecting_timeline(Timeline erecting_timeline) {
-        this.erecting_timeline = erecting_timeline;
+    public void setErectingTimeline(Timeline erectingTimeline) {
+        this.erectingTimeline = erectingTimeline;
     }
-    private Timeline erecting_timeline;
+    private Timeline erectingTimeline;
 
-    public Timeline getRotating_timeline()
+    public Timeline getRotatingTimeline()
     {
-        return rotating_timeline;
+        return rotatingTimeline;
     }
-    public void setRotating_timeline(Timeline rotating_timeline) {
-        this.rotating_timeline = rotating_timeline;
+    public void setRotatingTimeline(Timeline rotatingTimeline) {
+        this.rotatingTimeline = rotatingTimeline;
     }
-    private Timeline rotating_timeline;
+    private Timeline rotatingTimeline;
 
-    public Timeline getFalling_timeline() {
-        return falling_timeline;
-    }
-
-    public void setFalling_timeline(Timeline falling_timeline) {
-        this.falling_timeline = falling_timeline;
+    public Timeline getFallingTimeline() {
+        return fallingTimeline;
     }
 
-    private Timeline falling_timeline;
+    public void setFallingTimeline(Timeline fallingTimeline) {
+        this.fallingTimeline = fallingTimeline;
+    }
 
-    private Timeline grow_sound_timeline;
+    private Timeline fallingTimeline;
+
+    private Timeline growSoundTimeline;
 
 
 //    public double getMove_stick_Speed() {
@@ -142,123 +142,123 @@ public class Stick implements Movable
 
     Stick(GameController gameController)
     {
-        stick_width = gameController.getStandard_stick_width();
+        stickWidth = gameController.getStandardStickWidth();
 
         this.gameController = gameController;
 
-        double x_cord = gameController.getCurrent_platform().getBlock().getX()+ gameController.getCurrent_platform().getBlock().getWidth()-stick_width;
-        stick_rectangle = new Rectangle(x_cord+ (double) stick_width /2, 250.0,stick_width,0);
-        stick_rectangle.setFill(Color.web("#0000FB"));
+        double xCord = gameController.getCurrentPlatform().getBlock().getX()+ gameController.getCurrentPlatform().getBlock().getWidth()- stickWidth;
+        stickRectangle = new Rectangle(xCord+ (double) stickWidth /2, 250.0, stickWidth,0);
+        stickRectangle.setFill(Color.web("#0000FB"));
 
-        erecting_timeline = new Timeline();
-        rotating_timeline = new Timeline();
-        falling_timeline = new Timeline();
-        grow_sound_timeline = new Timeline();
+        erectingTimeline = new Timeline();
+        rotatingTimeline = new Timeline();
+        fallingTimeline = new Timeline();
+        growSoundTimeline = new Timeline();
 
-        KeyFrame keyFrame_erect  = new KeyFrame(Duration.seconds(0.01), e-> erect_Stick());
-        KeyFrame keyFrame_rotate = new KeyFrame(Duration.seconds(0.01), e->rotate_Stick());
-        KeyFrame keyFrame_fall = new KeyFrame(Duration.seconds(0.01), e->make_stick_fall());
-        KeyFrame keyFrame_grow_sound = new KeyFrame(Duration.seconds(0.1), e-> stickGrowSound.play());
+        KeyFrame keyFrameErect  = new KeyFrame(Duration.seconds(0.01), e-> erectStick());
+        KeyFrame keyFrameRotate = new KeyFrame(Duration.seconds(0.01), e-> rotateStick());
+        KeyFrame keyFrameFall = new KeyFrame(Duration.seconds(0.01), e-> makeStickFall());
+        KeyFrame keyFrameGrowSound = new KeyFrame(Duration.seconds(0.1), e-> stickGrowSound.play());
 
-        erecting_timeline.getKeyFrames().add(keyFrame_erect);
-        grow_sound_timeline.getKeyFrames().add(keyFrame_grow_sound);
+        erectingTimeline.getKeyFrames().add(keyFrameErect);
+        growSoundTimeline.getKeyFrames().add(keyFrameGrowSound);
 
-        rotating_timeline.getKeyFrames().add(keyFrame_rotate);
-        falling_timeline.getKeyFrames().add(keyFrame_fall);
+        rotatingTimeline.getKeyFrames().add(keyFrameRotate);
+        fallingTimeline.getKeyFrames().add(keyFrameFall);
 
-        rotateTransition = new RotateTransition(Duration.seconds(0.5), stick_rectangle);
+        rotateTransition = new RotateTransition(Duration.seconds(0.5), stickRectangle);
 
-        erecting_timeline.setCycleCount(Animation.INDEFINITE);
-        rotating_timeline.setCycleCount(Animation.INDEFINITE);
-        falling_timeline.setCycleCount(Animation.INDEFINITE);
-        grow_sound_timeline.setCycleCount(Animation.INDEFINITE);
+        erectingTimeline.setCycleCount(Animation.INDEFINITE);
+        rotatingTimeline.setCycleCount(Animation.INDEFINITE);
+        fallingTimeline.setCycleCount(Animation.INDEFINITE);
+        growSoundTimeline.setCycleCount(Animation.INDEFINITE);
     }
 
-    public void rotate_Stick()
+    public void rotateStick()
     {
-        if ((this.make_it_flat)&(gameController.isRotation_allowed()))
+        if ((this.makeItFlat)&(gameController.isRotationAllowed()))
         {
-            if (angle_covered >=90)
+            if (angleCovered >=90)
             {
-                this.make_it_flat = false;
-                gameController.setRotation_allowed(false);
+                this.makeItFlat = false;
+                gameController.setRotationAllowed(false);
                 stopRotationAnimation();
                 return;
             }
-            rotate_helper();
+            rotateHelper();
 
         }
     }
 
 
 
-    private void make_stick_fall()
+    private void makeStickFall()
     {
 //        System.out.println("make_stick_fall");
-        if (angle_covered >=180)
+        if (angleCovered >=180)
         {
             System.out.println("angle_covered >=180");
-            falling_timeline.stop();
+            fallingTimeline.stop();
             return;
         }
 
-        rotate_helper();
+        rotateHelper();
     }
 
-    private void rotate_helper()
+    private void rotateHelper()
     {
-        double pivotY = stick_rectangle.getY() + stick_rectangle.getHeight();
-        double pivotX = stick_rectangle.getX() + stick_rectangle.getWidth()/2;
+        double pivotY = stickRectangle.getY() + stickRectangle.getHeight();
+        double pivotX = stickRectangle.getX() + stickRectangle.getWidth()/2;
 
-        Rotate rotate = new Rotate(rotation_speed, pivotX, pivotY);
+        Rotate rotate = new Rotate(rotationSpeed, pivotX, pivotY);
         rotate.setAxis(Rotate.Z_AXIS);
 
-        stick_rectangle.getTransforms().add(rotate);
-        rotateTransition.setNode(stick_rectangle);
+        stickRectangle.getTransforms().add(rotate);
+        rotateTransition.setNode(stickRectangle);
         rotateTransition.play();
-        this.angle_covered+=rotation_speed;
+        this.angleCovered += rotationSpeed;
     }
 
 
     public void startErectAnimation()
     {
-        gameController.setErection_allowed(true);
+        gameController.setErectionAllowed(true);
 
-        erecting_timeline.play();
+        erectingTimeline.play();
         Platform.runLater(() -> {
-            grow_sound_timeline.play();
+            growSoundTimeline.play();
         });
 //        grow_sound_timeline.play();
     }
     public void stopRotationAnimation()
     {
 //        gameController.setRotation_allowed(false);
-        rotating_timeline.stop();
+        rotatingTimeline.stop();
 
 //        if (this.press_count == 1)
 //        {
             GamePlatform plat1=  gameController.getPlatforms().get(1);
             // try to make start_Perfect_Score_Animation and startHorizontal_Motion_Animation
             //        PARALLEL
-            if ((stick_rectangle.getHeight() > (gameController.getCurrent_gap())+plat1.getBlock().getWidth()/2-plat1.getDelta())&((stick_rectangle.getHeight() < (gameController.getCurrent_gap())+plat1.getBlock().getWidth()/2+plat1.getDelta())))
+            if ((stickRectangle.getHeight() > (gameController.getCurrentGap())+plat1.getBlock().getWidth()/2-plat1.getDelta())&((stickRectangle.getHeight() < (gameController.getCurrentGap())+plat1.getBlock().getWidth()/2+plat1.getDelta())))
             {
                 gameController.addGameScore(1);
-                this.gameController.start_Perfect_Score_Animation();
+                this.gameController.startPerfectScoreAnimation();
             }
 
-            this.gameController.getHero().startHorizontal_Motion_Animation();
+            this.gameController.getHero().startHorizontalMotionAnimation();
 //        }
 
     }
 
     public void stopErectAnimation() {
-        erecting_timeline.stop();
-        grow_sound_timeline.stop();
+        erectingTimeline.stop();
+        growSoundTimeline.stop();
     }
 
     public void startRotationAnimation()
     {
-        rotating_timeline.play();
+        rotatingTimeline.play();
     }
 
     public AudioClip getStickGrowSound()
@@ -266,29 +266,26 @@ public class Stick implements Movable
         return stickGrowSound;
     }
 
-    public void setStickGrowSound(AudioClip stickGrowSound) {
-        this.stickGrowSound = stickGrowSound;
-    }
 
     private AudioClip stickGrowSound = new AudioClip(getClass().getResource("/stickSound.mp3").toString());
 
-    public void erect_Stick()
+    public void erectStick()
     {
 //        should I put more brackets ?
-        if (this.gameController.isPressing()&gameController.isErection_allowed()&(press_count==1))
+        if (this.gameController.isPressing()&gameController.isErectionAllowed()&(pressCount ==1))
         {
-            this.stick_rectangle.setHeight(this.stick_rectangle.getHeight()+erect_speed);
-            this.stick_rectangle.setY(this.stick_rectangle.getY()-erect_speed);
+            this.stickRectangle.setHeight(this.stickRectangle.getHeight()+ erectSpeed);
+            this.stickRectangle.setY(this.stickRectangle.getY()- erectSpeed);
         }
     }
 
 
     @Override
-    public double move(double block_final_position ,double move_stick_Speed)
+    public double move(double blockFinalPosition, double movePlatformSpeed)
     {
 //        if (!gameController.isMoving_of_platform_Stopped())
         {
-            this.stick_rectangle.setY(this.stick_rectangle.getY()+move_stick_Speed);
+            this.stickRectangle.setY(this.stickRectangle.getY()+ movePlatformSpeed);
         }
         return Double.MAX_VALUE ;
 

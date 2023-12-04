@@ -22,7 +22,7 @@ public class SerializePoints
         System.out.println("serialized");
         System.out.println(points);
         if (points!=null) {
-            points.print_point();
+            points.printPoint();
         }
 
     }

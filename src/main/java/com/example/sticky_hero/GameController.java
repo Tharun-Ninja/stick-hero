@@ -10,9 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
@@ -41,26 +39,20 @@ public class GameController implements Initializable {
     public void addGameScore(int x)
     {
         System.out.println("--1");
-        points.setCurrent_score(points.getCurrent_score() + x);
+        points.setCurrentScore(points.getCurrentScore() + x);
 
-        if( points.getCurrent_score() > points.getBest_score())
+        if( points.getCurrentScore() > points.getBestScore())
         {
-            points.setBest_score( points.getCurrent_score());
+            points.setBestScore( points.getCurrentScore());
         }
 
-        gameScore.setText(String.valueOf(points.getCurrent_score()));
+        gameScore.setText(String.valueOf(points.getCurrentScore()));
 
-//        System.out.printf("%d %d %d \n", hero.getCherry_score(), hero.get_current_score(), hero.getBest_score());
         serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
 
     }
 
 
-
-    @FXML
-    private Button hint_button;
-    @FXML
-    private Button saveButton;
 
     @FXML
     void saveButtonClicked(ActionEvent event)
@@ -69,7 +61,7 @@ public class GameController implements Initializable {
 
         try
         {
-            Stage stage = (Stage) hero_image.getScene().getWindow();
+            Stage stage = (Stage) heroImage.getScene().getWindow();
             Scene scene = new Scene(FXMLLoader.load(getClass().getResource("home-view.fxml")));
             stage.setTitle("Sticky Game!");
             stage.setScene(scene);
@@ -86,89 +78,84 @@ public class GameController implements Initializable {
     }
 
     @FXML
-    void hint_pressed(ActionEvent event)
+    void hintPressed(ActionEvent event)
     {
-        hint_line.setVisible(!hint_line.isVisible());
-    }
-    public double getSpeed_for_cherry() {
-        return speed_for_cherry;
+        hintLine.setVisible(!hintLine.isVisible());
     }
 
-    public void setSpeed_for_cherry(double speed_for_cherry) {
-        this.speed_for_cherry = speed_for_cherry;
+
+
+    private double speedForCherry;
+
+    public Text getCherryScoreDisplay() {
+        return cherryScoreDisplay;
     }
 
-    private double speed_for_cherry;
-
-    public Text getCherry_score_display() {
-        return cherry_score_display;
-    }
-
-    public void setCherry_score_display(Text cherry_score_display) {
-        this.cherry_score_display = cherry_score_display;
+    public void setCherryScoreDisplay(Text cherryScoreDisplay) {
+        this.cherryScoreDisplay = cherryScoreDisplay;
     }
 
     @FXML
-    private Text cherry_score_display;
+    private Text cherryScoreDisplay;
 
-    public boolean isCherry_is_present() {
-        return cherry_is_present;
+    public boolean isCherryIsPresent() {
+        return cherryIsPresent;
     }
 
-    public void setCherry_is_present(boolean cherry_is_present) {
-        this.cherry_is_present = cherry_is_present;
+    public void setCherryIsPresent(boolean cherryIsPresent) {
+        this.cherryIsPresent = cherryIsPresent;
     }
 
-    private boolean cherry_is_present = false;
+    private boolean cherryIsPresent = false;
 
-    public boolean isRotation_allowed() {
-        return rotation_allowed;
+    public boolean isRotationAllowed() {
+        return rotationAllowed;
     }
 
-    public void setRotation_allowed(boolean rotation_allowed) {
-        this.rotation_allowed = rotation_allowed;
+    public void setRotationAllowed(boolean rotationAllowed) {
+        this.rotationAllowed = rotationAllowed;
     }
 
-    private boolean rotation_allowed = false;
+    private boolean rotationAllowed = false;
 
-    public boolean isErection_allowed() {
-        return erection_allowed;
+    public boolean isErectionAllowed() {
+        return erectionAllowed;
     }
 
-    public void setErection_allowed(boolean erection_allowed) {
-        this.erection_allowed = erection_allowed;
+    public void setErectionAllowed(boolean erectionAllowed) {
+        this.erectionAllowed = erectionAllowed;
     }
 
-    private boolean erection_allowed = false;
+    private boolean erectionAllowed = false;
 
-    private double random_position_for_cherry_corner;
-    private double remaining_length_for_platform = Double.MAX_VALUE;
+    private double randomPositionForCherryCorner;
+    private double remainingLengthForPlatform = Double.MAX_VALUE;
 
-    public double getGap_land_zenith() {
-        return gap_land_zenith;
+    public double getGapLandZenith() {
+        return gapLandZenith;
     }
 
-    private final double gap_land_zenith = 250;
+    private final double gapLandZenith = 250;
 
-    public Stick getCurrent_stick() {
-        return current_stick;
+    public Stick getCurrentStick() {
+        return currentStick;
     }
 
-    public void setCurrent_stick(Stick current_stick) {
-        this.current_stick = current_stick;
+    public void setCurrentStick(Stick currentStick) {
+        this.currentStick = currentStick;
     }
 
-    private Stick current_stick;
+    private Stick currentStick;
 
-    public Stick getRedundant_stick() {
-        return redundant_stick;
+    public Stick getRedundantStick() {
+        return redundantStick;
     }
 
-    public void setRedundant_stick(Stick redundant_stick) {
-        this.redundant_stick = redundant_stick;
+    public void setRedundantStick(Stick redundantStick) {
+        this.redundantStick = redundantStick;
     }
 
-    private Stick redundant_stick;
+    private Stick redundantStick;
 
     public boolean isPressing() {
         return pressing;
@@ -191,42 +178,42 @@ public class GameController implements Initializable {
 
     private ArrayList<GamePlatform> platforms;
 
-    public ArrayList<Cherry> getCherry_List() {
-        return cherry_List;
+    public ArrayList<Cherry> getCherryList() {
+        return cherryList;
     }
 
-    public void setCherry_List(ArrayList<Cherry> cherry_List) {
-        this.cherry_List = cherry_List;
+    public void setCherryList(ArrayList<Cherry> cherryList) {
+        this.cherryList = cherryList;
     }
 
-    private ArrayList<Cherry> cherry_List;
+    private ArrayList<Cherry> cherryList;
 
-    public GamePlatform getCurrent_platform() {
-        return current_platform;
+    public GamePlatform getCurrentPlatform() {
+        return currentPlatform;
     }
 
-    public void setCurrent_platform(GamePlatform current_platform) {
-        this.current_platform = current_platform;
+    public void setCurrentPlatform(GamePlatform currentPlatform) {
+        this.currentPlatform = currentPlatform;
     }
 
-    private GamePlatform current_platform;
+    private GamePlatform currentPlatform;
 
-    public double getCurrent_gap() {
-        return current_gap;
+    public double getCurrentGap() {
+        return currentGap;
     }
 
-    public void setCurrent_gap(double current_gap) {
-        this.current_gap = current_gap;
+    public void setCurrentGap(double currentGap) {
+        this.currentGap = currentGap;
     }
 
-    private double current_gap;
+    private double currentGap;
 
-    public ImageView getImage_view() {
-        return image_view;
+    public ImageView getImageView() {
+        return imageView;
     }
 
     @FXML
-    private ImageView image_view;
+    private ImageView imageView;
 
     public AnchorPane getAnchorPane() {
         return anchorPane;
@@ -235,76 +222,72 @@ public class GameController implements Initializable {
     @FXML
     private AnchorPane anchorPane;
     @FXML
-    private Line hint_line;
+    private Line hintLine;
 
-    public double getSpeed_for_new_1() {
-        return speed_for_new_1;
+    public double getSpeedForNew1() {
+        return speedForNew1;
     }
 
-    public void setSpeed_for_new_1(double speed_for_new_1) {
-        this.speed_for_new_1 = speed_for_new_1;
+    public void setSpeedForNew1(double speedForNew1) {
+        this.speedForNew1 = speedForNew1;
     }
 
-    private double speed_for_new_1;
+    private double speedForNew1;
 
-    public double getRandom_position_for_new_1() {
-        return random_position_for_new_1;
+    public double getRandomPositionForNew1() {
+        return randomPositionForNew1;
     }
 
-    public void setRandom_position_for_new_1(double random_position_for_new_1) {
-        this.random_position_for_new_1 = random_position_for_new_1;
+    public void setRandomPositionForNew1(double randomPositionForNew1) {
+        this.randomPositionForNew1 = randomPositionForNew1;
     }
 
-    private double random_position_for_new_1;
+    private double randomPositionForNew1;
 
-    public ImageView getHero_image() {
-        return hero_image;
+    public ImageView getHeroImage() {
+        return heroImage;
     }
 
     @FXML
-    private ImageView hero_image;
+    private ImageView heroImage;
 
     @FXML
-    private ImageView cherry_image;
 
     public Hero getHero() {
         return hero;
     }
 
-    public void setHero(Hero hero) {
-        this.hero = hero;
-    }
 
     private Hero hero;
 
-    public int getStandard_stick_width() {
-        return standard_stick_width;
+    public int getStandardStickWidth() {
+        return standardStickWidth;
     }
 
-    private final int standard_stick_width = 2;
+    private final int standardStickWidth = 2;
 
     private final int minWidth = 30;
     private final int maxWidth = 60;
 
-    public Timeline getMotion_of_all_bridge_timeline() {
-        return motion_of_all_bridge_timeline;
+    public Timeline getMotionOfAllBridgeTimeline() {
+        return motionOfAllBridgeTimeline;
     }
 
-    public void setMotion_of_all_bridge_timeline(Timeline motion_of_all_bridge_timeline) {
-        this.motion_of_all_bridge_timeline = motion_of_all_bridge_timeline;
+    public void setMotionOfAllBridgeTimeline(Timeline motionOfAllBridgeTimeline) {
+        this.motionOfAllBridgeTimeline = motionOfAllBridgeTimeline;
     }
 
-    private Timeline motion_of_all_bridge_timeline;
+    private Timeline motionOfAllBridgeTimeline;
 
-    public boolean isMoving_of_platform_Stopped() {
-        return moving_of_platform_Stopped;
+    public boolean isMovingOfPlatformStopped() {
+        return movingOfPlatformStopped;
     }
 
-    public void setMoving_of_platform_Stopped(boolean moving_of_platform_Stopped) {
-        this.moving_of_platform_Stopped = moving_of_platform_Stopped;
+    public void setMovingOfPlatformStopped(boolean movingOfPlatformStopped) {
+        this.movingOfPlatformStopped = movingOfPlatformStopped;
     }
 
-    private boolean moving_of_platform_Stopped = false;
+    private boolean movingOfPlatformStopped = false;
 
     Random random = new Random();
     DeserializePoints deserializePoints = new DeserializePoints();
@@ -364,14 +347,14 @@ public class GameController implements Initializable {
 
         platforms = new ArrayList<>();
         initializePlatforms();
-        current_stick = new Stick(this);
+        currentStick = new Stick(this);
 
-        motion_of_all_bridge_timeline = new Timeline();
-        KeyFrame keyFrame_all_component_motion = new KeyFrame(Duration.seconds(0.001), e -> move_All_Platforms());
-        motion_of_all_bridge_timeline.getKeyFrames().add(keyFrame_all_component_motion);
-        motion_of_all_bridge_timeline.setCycleCount(Animation.INDEFINITE);
+        motionOfAllBridgeTimeline = new Timeline();
+        KeyFrame keyFrameAllComponentMotion = new KeyFrame(Duration.seconds(0.001), e -> moveAllPlatforms());
+        motionOfAllBridgeTimeline.getKeyFrames().add(keyFrameAllComponentMotion);
+        motionOfAllBridgeTimeline.setCycleCount(Animation.INDEFINITE);
 
-        cherry_List = new ArrayList<>();
+        cherryList = new ArrayList<>();
 
         points = null;
         try
@@ -384,21 +367,21 @@ public class GameController implements Initializable {
             System.out.println("Invalid file. new Points(0, 0, 0 );");
         }
 
-        points.print_point();
+        points.printPoint();
         System.out.println("GameController done");
 
     }
     public Cherry cherryFactory(double setX)
     {
-        ImageView cherry_image_new = new ImageView("file:C:\\Users\\hp\\IdeaProjects\\Sticky Hero\\src\\main\\java\\com\\example\\sticky_hero\\assets\\cherry.png");
-        cherry_image_new.setX(setX);
-        cherry_image_new.setY(getGap_land_zenith()+5);
-        cherry_image_new.setPickOnBounds(true);
-        cherry_image_new.setFitHeight(20);
-        cherry_image_new.setFitWidth(20);
-        getAnchorPane().getChildren().add(cherry_image_new);
+        ImageView cherryImageNew = new ImageView("file:C:\\Users\\hp\\IdeaProjects\\Sticky Hero\\src\\main\\java\\com\\example\\sticky_hero\\assets\\cherry.png");
+        cherryImageNew.setX(setX);
+        cherryImageNew.setY(getGapLandZenith()+5);
+        cherryImageNew.setPickOnBounds(true);
+        cherryImageNew.setFitHeight(20);
+        cherryImageNew.setFitWidth(20);
+        getAnchorPane().getChildren().add(cherryImageNew);
 
-        return new Cherry(1, this, cherry_image_new);
+        return new Cherry(1, this, cherryImageNew);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
@@ -410,9 +393,9 @@ public class GameController implements Initializable {
 
         ImageView selectedWall = (Math.random() < 0.5) ? wall : wall2;
 
-        image_view.setImage(selectedWall.getImage());
+        imageView.setImage(selectedWall.getImage());
 
-        anchorPane.getChildren().add(current_stick.getStick_rectangle());
+        anchorPane.getChildren().add(currentStick.getStickRectangle());
 
         anchorPane.getChildren().addAll(platforms.get(0).getBlock(), platforms.get(0).getMark());
         anchorPane.getChildren().addAll(platforms.get(1).getBlock(), platforms.get(1).getMark());
@@ -421,56 +404,56 @@ public class GameController implements Initializable {
 
         System.out.println("Hero not created");
         System.out.println(points);
-        hero = new Hero(this, hero_image);
+        hero = new Hero(this, heroImage);
         System.out.println("Hero created");
         System.out.println(points);
-        cherry_List.add(null);
+        cherryList.add(null);
 
-        cherry_List.add(cherryFactory(600));
+        cherryList.add(cherryFactory(600));
 
-        hero_image.setRotationAxis(Rotate.X_AXIS);
+        heroImage.setRotationAxis(Rotate.X_AXIS);
         // https://gist.github.com/jewelsea/1436941
-        double ideal_stick_length = current_gap + platforms.get(1).getBlock().getWidth() / 2;
+        double idealStickLength = currentGap + platforms.get(1).getBlock().getWidth() / 2;
 
-        hint_line.setEndY(this.gap_land_zenith - ideal_stick_length);
-        hint_line.setStartY(this.gap_land_zenith - ideal_stick_length);
+        hintLine.setEndY(this.gapLandZenith - idealStickLength);
+        hintLine.setStartY(this.gapLandZenith - idealStickLength);
 
-        gameScore.setText(Integer.toString(points.getCurrent_score()));
-        cherry_score_display.setText(Integer.toString(points.getCherry_count()));
+        gameScore.setText(Integer.toString(points.getCurrentScore()));
+        cherryScoreDisplay.setText(Integer.toString(points.getCherryCount()));
         System.out.println("Override initialize done");
 
     }
 
-    public void start_all_bridge_motion_Animation() {
-        double random_position = get_position(50, 200);
-        while (!((random_position + platforms.get(2).getBlock().getWidth() < 400))) {
+    public void startAllBridgeMotionAnimation() {
+        double randomPosition = getPosition(50, 200);
+        while (!((randomPosition + platforms.get(2).getBlock().getWidth() < 400))) {
             // to ensure position is such the plat2 is visible and doesn't exceed 400px
-            random_position = get_position(50, 200);
+            randomPosition = getPosition(50, 200);
         }
-        double speed_for_platform_2 = (platforms.get(2).getBlock().getX() - random_position)
+        double speedForPlatform2 = (platforms.get(2).getBlock().getX() - randomPosition)
                 / (platforms.get(1).getBlock().getX());
 
-        this.random_position_for_new_1 = random_position;
-        this.speed_for_new_1 = speed_for_platform_2;
+        this.randomPositionForNew1 = randomPosition;
+        this.speedForNew1 = speedForPlatform2;
 
         // here we decide if cherry is present or absent
-        double min_width_for_cherry_spawn = 70;
-        if ((this.random_position_for_new_1 - platforms.get(1).getBlock().getWidth()) > min_width_for_cherry_spawn) {
-            this.cherry_is_present = true;
-            this.random_position_for_cherry_corner = get_cherry_position(platforms.get(1).getBlock().getWidth(),
-                    this.random_position_for_new_1);
-            this.speed_for_cherry = (cherry_List.get(1).getCherry_image().getX() - random_position_for_cherry_corner)
+        double minWidthForCherrySpawn = 70;
+        if ((this.randomPositionForNew1 - platforms.get(1).getBlock().getWidth()) > minWidthForCherrySpawn) {
+            this.cherryIsPresent = true;
+            this.randomPositionForCherryCorner = getCherryPosition(platforms.get(1).getBlock().getWidth(),
+                    this.randomPositionForNew1);
+            this.speedForCherry = (cherryList.get(1).getCherryImage().getX() - randomPositionForCherryCorner)
                     / (platforms.get(1).getBlock().getX());
         } else {
-            this.cherry_is_present = false;
-            cherry_List.get(1).getCherry_image().setVisible(false);
+            this.cherryIsPresent = false;
+            cherryList.get(1).getCherryImage().setVisible(false);
         }
 
-        motion_of_all_bridge_timeline.play();
+        motionOfAllBridgeTimeline.play();
     }
 
-    public void stop_all_bridge_motion_Animation() {
-        motion_of_all_bridge_timeline.stop();
+    public void stopAllBridgeMotionAnimation() {
+        motionOfAllBridgeTimeline.stop();
         // transition_place
         // spawn new stick, platform, cherry
 
@@ -480,32 +463,32 @@ public class GameController implements Initializable {
         double platformWidth = random.nextDouble(maxWidth - minWidth) + minWidth;
         platforms.set(2, new GamePlatform(platformWidth, 600, this));
 
-        current_platform = platforms.get(0);
+        currentPlatform = platforms.get(0);
         anchorPane.getChildren().addAll(platforms.get(2).getBlock(), platforms.get(2).getMark());
-        current_gap = platforms.get(1).getBlock().getX()
+        currentGap = platforms.get(1).getBlock().getX()
                 - (platforms.get(0).getBlock().getX() + platforms.get(0).getBlock().getWidth());
-        double ideal_stick_length = current_gap + platforms.get(1).getBlock().getWidth() / 2;
+        double idealStickLength = currentGap + platforms.get(1).getBlock().getWidth() / 2;
 
         // System.out.println(ideal_stick_length);
         // System.out.println(gap_land_zenith);
 
-        hint_line.setEndY(this.gap_land_zenith - ideal_stick_length);
-        hint_line.setStartY(this.gap_land_zenith - ideal_stick_length);
-        moving_of_platform_Stopped = false;
-        this.remaining_length_for_platform = Double.MAX_VALUE;
+        hintLine.setEndY(this.gapLandZenith - idealStickLength);
+        hintLine.setStartY(this.gapLandZenith - idealStickLength);
+        movingOfPlatformStopped = false;
+        this.remainingLengthForPlatform = Double.MAX_VALUE;
 
-        redundant_stick = current_stick;
-        current_stick = new Stick(this);
-        anchorPane.getChildren().add(current_stick.getStick_rectangle());
+        redundantStick = currentStick;
+        currentStick = new Stick(this);
+        anchorPane.getChildren().add(currentStick.getStickRectangle());
         // at this point cherry_1 has been moved from 600 to position
-        cherry_List.set(0, cherry_List.get(1));
-        cherry_List.set(1, cherryFactory(600));
+        cherryList.set(0, cherryList.get(1));
+        cherryList.set(1, cherryFactory(600));
 
     }
 
     public void setHeroImageX(double x) {
         Platform.runLater(() -> {
-            hero_image.setX(x);
+            heroImage.setX(x);
         });
     }
 
@@ -517,12 +500,12 @@ public class GameController implements Initializable {
         GamePlatform platform = new GamePlatform(platformWidth, 0, this);
 
         platforms.add(platform);
-        this.setHeroImageX(platformWidth - this.getStandard_stick_width());
+        this.setHeroImageX(platformWidth - this.getStandardStickWidth());
         // subtracted to give space for stick
 
         platformWidth = random.nextDouble(maxWidth - minWidth) + minWidth;
         double gap = random.nextDouble(10, 50);
-        current_gap = gap;
+        currentGap = gap;
         // "platforms.get(0).block.getWidth() + gap" is the position for 2nd one
         platform = new GamePlatform(platformWidth, platforms.get(0).getBlock().getWidth() + gap, this);
         platforms.add(platform);
@@ -531,7 +514,7 @@ public class GameController implements Initializable {
         platform = new GamePlatform(platformWidth, 600, this);
         platforms.add(platform);
 
-        current_platform = platforms.get(0);
+        currentPlatform = platforms.get(0);
         System.out.println("initializePlatforms done");
 
     }
@@ -544,21 +527,21 @@ public class GameController implements Initializable {
             hero.flipHeroImage();
             return;
         }
-         current_stick.getStickGrowSound().play();
+         currentStick.getStickGrowSound().play();
         try
         {
             sleep(50);
         } catch (InterruptedException e) {
             System.out.println("InterruptedException");
         }
-        current_stick.getStickGrowSound().play();
+        currentStick.getStickGrowSound().play();
 
-        current_stick.setPress_count(current_stick.getPress_count() + 1);
+        currentStick.setPressCount(currentStick.getPressCount() + 1);
         // Run the time-consuming task in a separate thread
-        if (current_stick.getPress_count() == 1) {
+        if (currentStick.getPressCount() == 1) {
             Thread taskThread = new Thread(() -> {
                 pressing = true;
-                current_stick.startErectAnimation();
+                currentStick.startErectAnimation();
 
             });
 
@@ -575,69 +558,69 @@ public class GameController implements Initializable {
             return;
         }
 
-        if (current_stick.getPress_count() != 0) {
-            erection_allowed = false;
-            setRotation_allowed(true);
+        if (currentStick.getPressCount() != 0) {
+            erectionAllowed = false;
+            setRotationAllowed(true);
             System.out.println("pressing = false");
             System.out.println();
-            double upper_bound = current_gap + getPlatforms().get(1).getBlock().getWidth();
-            double lower_bound = current_gap;
-            hero.setWill_fall(!((this.current_stick.getStick_rectangle().getHeight() >= lower_bound)
-                    & (this.current_stick.getStick_rectangle().getHeight() <= upper_bound)));
-            current_stick.setMake_it_flat(true);
+            double upperBound = currentGap + getPlatforms().get(1).getBlock().getWidth();
+            double lowerBound = currentGap;
+            hero.setWillFall(!((this.currentStick.getStickRectangle().getHeight() >= lowerBound)
+                    & (this.currentStick.getStickRectangle().getHeight() <= upperBound)));
+            currentStick.setMakeItFlat(true);
 
-            current_stick.stopErectAnimation();
-            current_stick.startRotationAnimation();
+            currentStick.stopErectAnimation();
+            currentStick.startRotationAnimation();
         }
 
     }
 
-    public void move_All_Platforms() {
+    public void moveAllPlatforms() {
 
-        if (this.remaining_length_for_platform > 0) {
+        if (this.remainingLengthForPlatform > 0) {
             // move platforms
             platforms.get(0).move(-1000.0, 1);
-            this.remaining_length_for_platform = platforms.get(1).move(0.0, 1);
-            platforms.get(2).move(this.random_position_for_new_1, this.speed_for_new_1);
+            this.remainingLengthForPlatform = platforms.get(1).move(0.0, 1);
+            platforms.get(2).move(this.randomPositionForNew1, this.speedForNew1);
 
             // move sticks
-            current_stick.move(-1000.0, 1);
-            if (redundant_stick != null) {
-                redundant_stick.move(-1000.0, 1);
+            currentStick.move(-1000.0, 1);
+            if (redundantStick != null) {
+                redundantStick.move(-1000.0, 1);
             }
             // move hero
-            this.hero.setHeroImageX(this.hero_image.getX() - 1);
+            this.hero.setHeroImageX(this.heroImage.getX() - 1);
             // this.remaining_length_for_hero =
 
             // move cherry
-            if (cherry_List.get(0) != null) {
-                cherry_List.get(0).move(-1000, 1);
+            if (cherryList.get(0) != null) {
+                cherryList.get(0).move(-1000, 1);
             }
 
-            if (cherry_List.get(1) != null) {
+            if (cherryList.get(1) != null) {
                 // System.out.println(random_position_for_cherry_corner);
-                cherry_List.get(1).move(random_position_for_cherry_corner, this.speed_for_cherry);
+                cherryList.get(1).move(randomPositionForCherryCorner, this.speedForCherry);
             }
         }
 
-        if (this.remaining_length_for_platform <= 0) {
+        if (this.remainingLengthForPlatform <= 0) {
             // if hero , cherry, stick, and platform reached destination, then
             // System.out.println("remaining_length<=0");
-            double right_position_for_hero = platforms.get(1).getBlock().getWidth() - this.getStandard_stick_width();
-            hero_image.setX(right_position_for_hero);
-            moving_of_platform_Stopped = true;
-            stop_all_bridge_motion_Animation();
+            double rightPositionForHero = platforms.get(1).getBlock().getWidth() - this.getStandardStickWidth();
+            heroImage.setX(rightPositionForHero);
+            movingOfPlatformStopped = true;
+            stopAllBridgeMotionAnimation();
         }
     }
 
-    private Double get_position(double lower_bound, double upper_bound) {
-        double gap = random.nextDouble(lower_bound, upper_bound);
+    private Double getPosition(double lowerBound, double upperBound) {
+        double gap = random.nextDouble(lowerBound, upperBound);
         return platforms.get(1).getBlock().getWidth() + gap;
     }
 
-    private double get_cherry_position(double lower_bound, double upper_bound) {
-        double centre_position = random.nextDouble(lower_bound + 12, upper_bound - 12);
-        return centre_position - 10;
+    private double getCherryPosition(double lowerBound, double upperBound) {
+        double centrePosition = random.nextDouble(lowerBound + 12, upperBound - 12);
+        return centrePosition - 10;
     }
 
     @FXML
@@ -646,7 +629,7 @@ public class GameController implements Initializable {
     @FXML
     private Text perfectText2;
 
-    public void start_Perfect_Score_Animation() {
+    public void startPerfectScoreAnimation() {
         System.out.println("perfect");
         perfectText.setX(platforms.get(1).getMark().getX());
         perfectText.setText("+1");
@@ -699,9 +682,6 @@ public class GameController implements Initializable {
 
     }
 
-    public void stop_Perfect_Score_Animation() {
-
-    }
 
     boolean checkCollision(ImageView object1, Object object2) {
         Bounds bounds2 = null;
