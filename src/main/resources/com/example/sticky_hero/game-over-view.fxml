@@ -42,19 +42,19 @@
          </font>
       </Text>
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#9bceff" height="59.0" layoutX="161.0" layoutY="431.0" onMouseClicked="#playStartMouseClicked" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Text fx:id="replay_button_game_over_page" layoutX="216.0" layoutY="471.0" onMouseClicked="#playStartMouseClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="REPLAY" textAlignment="CENTER">
+      <Text fx:id="replayButtonGameOverPage" layoutX="216.0" layoutY="471.0" onMouseClicked="#playStartMouseClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="REPLAY" textAlignment="CENTER">
          <font>
             <Font size="28.0" />
          </font>
       </Text>
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#9bceff" height="59.0" layoutX="161.0" layoutY="511.0" onMouseClicked="#reviveClicked" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Text fx:id="replay_button_game_over_page1" layoutX="220.0" layoutY="551.0" onMouseClicked="#reviveClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="REVIVE" textAlignment="CENTER">
+      <Text fx:id="reviveButtonGameOverPage" layoutX="220.0" layoutY="551.0" onMouseClicked="#reviveClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="REVIVE" textAlignment="CENTER">
          <font>
             <Font size="28.0" />
          </font>
       </Text>
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#9bceff" height="59.0" layoutX="161.0" layoutY="589.0" onMouseClicked="#quitGame" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Text fx:id="replay_button_game_over_page11" layoutX="232.0" layoutY="629.0" onMouseClicked="#quitGame" strokeType="OUTSIDE" strokeWidth="0.0" text="QUIT" textAlignment="CENTER">
+      <Text fx:id="quitButtonGameOverPage" layoutX="232.0" layoutY="629.0" onMouseClicked="#quitGame" strokeType="OUTSIDE" strokeWidth="0.0" text="QUIT" textAlignment="CENTER">
          <font>
             <Font size="28.0" />
          </font>
