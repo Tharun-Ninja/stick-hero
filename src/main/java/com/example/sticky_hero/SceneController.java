@@ -9,8 +9,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import javafx.scene.text.Text;
-
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,19 +17,24 @@ public class SceneController implements Initializable
 {
     private final int cherriesToRevive = 5;
 
-    DeserializePoints deserializePoints = new DeserializePoints();
-    SerializePoints serializePoints = new SerializePoints();
+    private DeserializePoints deserializePoints = new DeserializePoints();
+    private SerializePoints serializePoints = new SerializePoints();
 
-    Points points;
+    private Points points;
     @FXML
     private Text bestScoreScreen;
 
     @FXML
     private Text currentScoreScreen;
 
-
     @FXML
     private Text cherryScoreDisplayGameOver;
+
+    @FXML
+    private Text notEnoughCherries;
+
+    private AudioClip buttonClickSound = new AudioClip(getClass().getResource("/click-button.mp3").toString());
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
@@ -57,11 +60,7 @@ public class SceneController implements Initializable
 
 
     @FXML
-    private Text notEnoughCherries;
-
-    AudioClip buttonClickSound = new AudioClip(getClass().getResource("/click-button.mp3").toString());
-    @FXML
-    void revive_clicked(MouseEvent e) throws IOException {
+    public void reviveClicked(MouseEvent e) throws IOException {
         buttonClickSound.play();
 
         if (points.getCherryCount()>= cherriesToRevive)
@@ -80,7 +79,7 @@ public class SceneController implements Initializable
 
 
 
-    private void startGameScene(MouseEvent e) throws IOException {
+    public  void startGameScene(MouseEvent e) throws IOException {
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("game-controller.fxml")));
         stage.setTitle("Game!");

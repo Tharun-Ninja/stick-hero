@@ -1,5 +1,4 @@
 package com.example.sticky_hero;
-
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -19,208 +18,131 @@ import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.animation.*;
-
 import static java.lang.Thread.sleep;
 
 public class GameController implements Initializable {
 
-
-
     @FXML
     private Text gameScore;
-
-    public void addGameScore(int x)
-    {
-        System.out.println("--1");
-        points.setCurrentScore(points.getCurrentScore() + x);
-
-        if( points.getCurrentScore() > points.getBestScore())
-        {
-            points.setBestScore( points.getCurrentScore());
-        }
-
-        gameScore.setText(String.valueOf(points.getCurrentScore()));
-
-        serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
-
-    }
-
-
-
-    @FXML
-    void saveButtonClicked(ActionEvent event)
-    {
-        serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", this.points);
-
-        try
-        {
-            Stage stage = (Stage) heroImage.getScene().getWindow();
-            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("home-view.fxml")));
-            stage.setTitle("Sticky Game!");
-            stage.setScene(scene);
-            stage.setWidth(500);
-            stage.setHeight(700);
-            stage.show();
-        }
-        catch (IOException e)
-        {
-            System.out.println("error on saveButtonClicked");
-            System.out.println(e.getMessage());
-        }
-
-    }
-
-    @FXML
-    void hintPressed(ActionEvent event)
-    {
-        hintLine.setVisible(!hintLine.isVisible());
-    }
-
-
-
     private double speedForCherry;
 
     public Text getCherryScoreDisplay() {
         return cherryScoreDisplay;
     }
-
     public void setCherryScoreDisplay(Text cherryScoreDisplay) {
         this.cherryScoreDisplay = cherryScoreDisplay;
     }
-
     @FXML
     private Text cherryScoreDisplay;
 
     public boolean isCherryIsPresent() {
         return cherryIsPresent;
     }
-
     public void setCherryIsPresent(boolean cherryIsPresent) {
         this.cherryIsPresent = cherryIsPresent;
     }
-
     private boolean cherryIsPresent = false;
 
     public boolean isRotationAllowed() {
         return rotationAllowed;
     }
-
     public void setRotationAllowed(boolean rotationAllowed) {
         this.rotationAllowed = rotationAllowed;
     }
-
     private boolean rotationAllowed = false;
 
     public boolean isErectionAllowed() {
         return erectionAllowed;
     }
-
     public void setErectionAllowed(boolean erectionAllowed) {
         this.erectionAllowed = erectionAllowed;
     }
-
     private boolean erectionAllowed = false;
 
     private double randomPositionForCherryCorner;
+
     private double remainingLengthForPlatform = Double.MAX_VALUE;
 
     public double getGapLandZenith() {
         return gapLandZenith;
     }
-
     private final double gapLandZenith = 250;
 
     public Stick getCurrentStick() {
         return currentStick;
     }
-
     public void setCurrentStick(Stick currentStick) {
         this.currentStick = currentStick;
     }
-
     private Stick currentStick;
 
     public Stick getRedundantStick() {
         return redundantStick;
     }
-
     public void setRedundantStick(Stick redundantStick) {
         this.redundantStick = redundantStick;
     }
-
     private Stick redundantStick;
 
     public boolean isPressing() {
         return pressing;
     }
-
     public void setPressing(boolean pressing) {
         this.pressing = pressing;
     }
-
     private boolean pressing;
 
 
     public ArrayList<GamePlatform> getPlatforms() {
         return platforms;
     }
-
     public void setPlatforms(ArrayList<GamePlatform> platforms) {
         this.platforms = platforms;
     }
-
     private ArrayList<GamePlatform> platforms;
 
     public ArrayList<Cherry> getCherryList() {
         return cherryList;
     }
-
     public void setCherryList(ArrayList<Cherry> cherryList) {
         this.cherryList = cherryList;
     }
-
     private ArrayList<Cherry> cherryList;
 
     public GamePlatform getCurrentPlatform() {
         return currentPlatform;
     }
-
     public void setCurrentPlatform(GamePlatform currentPlatform) {
         this.currentPlatform = currentPlatform;
     }
-
     private GamePlatform currentPlatform;
 
     public double getCurrentGap() {
         return currentGap;
     }
-
     public void setCurrentGap(double currentGap) {
         this.currentGap = currentGap;
     }
-
     private double currentGap;
 
     public ImageView getImageView() {
         return imageView;
     }
-
     @FXML
     private ImageView imageView;
 
     public AnchorPane getAnchorPane() {
         return anchorPane;
     }
-
     @FXML
     private AnchorPane anchorPane;
+
     @FXML
     private Line hintLine;
 
@@ -256,26 +178,16 @@ public class GameController implements Initializable {
     public Hero getHero() {
         return hero;
     }
-
-
     private Hero hero;
 
     public int getStandardStickWidth() {
         return standardStickWidth;
     }
-
     private final int standardStickWidth = 2;
 
     private final int minWidth = 30;
     private final int maxWidth = 60;
 
-    public Timeline getMotionOfAllBridgeTimeline() {
-        return motionOfAllBridgeTimeline;
-    }
-
-    public void setMotionOfAllBridgeTimeline(Timeline motionOfAllBridgeTimeline) {
-        this.motionOfAllBridgeTimeline = motionOfAllBridgeTimeline;
-    }
 
     private Timeline motionOfAllBridgeTimeline;
 
@@ -303,42 +215,11 @@ public class GameController implements Initializable {
 
     private Points points;
 
-//    public int getBest_score() {
-//        return points.getBest_score();
-//    }
-//
-//    public void setBest_score(int best_score)
-//    {
-//        System.out.println("set_best_score");
-//        System.out.println(best_score);
-//        points.setBest_score(best_score);
-//    }
-//
-//    public int getCherry_score()
-//    {
-//
-//        return points.getCherry_count();
-//    }
-//
-//    public void setCherry_score(int cherry_score)
-//    {
-//        System.out.println("set_cherry_score");
-//        System.out.println(cherry_score);
-//        points.setCherry_count(cherry_score);
-//    }
-//
-//
-//    public int get_current_score() {
-//        return points.getCurrent_score();
-//    }
-//
-//    public void set_current_score(int current_score)
-//    {
-//        System.out.println("set_current_score");
-//        System.out.println(current_score);
-//        points.setCurrent_score(current_score);
-//    }
-//
+    @FXML
+    private Text perfectText;
+
+    @FXML
+    private Text perfectText2;
 
     public GameController()
     {
@@ -350,7 +231,7 @@ public class GameController implements Initializable {
         currentStick = new Stick(this);
 
         motionOfAllBridgeTimeline = new Timeline();
-        KeyFrame keyFrameAllComponentMotion = new KeyFrame(Duration.seconds(0.001), e -> moveAllPlatforms());
+        KeyFrame keyFrameAllComponentMotion = new KeyFrame(Duration.seconds(0.1), e -> moveAllPlatforms());
         motionOfAllBridgeTimeline.getKeyFrames().add(keyFrameAllComponentMotion);
         motionOfAllBridgeTimeline.setCycleCount(Animation.INDEFINITE);
 
@@ -383,6 +264,55 @@ public class GameController implements Initializable {
 
         return new Cherry(1, this, cherryImageNew);
     }
+
+
+    public void addGameScore(int x)
+    {
+        System.out.println("--1");
+        points.setCurrentScore(points.getCurrentScore() + x);
+
+        if( points.getCurrentScore() > points.getBestScore())
+        {
+            points.setBestScore( points.getCurrentScore());
+        }
+
+        gameScore.setText(String.valueOf(points.getCurrentScore()));
+
+        serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
+
+    }
+
+    @FXML
+    public void saveButtonClicked(ActionEvent event)
+    {
+        serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", this.points);
+
+        try
+        {
+            Stage stage = (Stage) heroImage.getScene().getWindow();
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("home-view.fxml")));
+            stage.setTitle("Sticky Game!");
+            stage.setScene(scene);
+            stage.setWidth(500);
+            stage.setHeight(700);
+            stage.show();
+        }
+        catch (IOException e)
+        {
+            System.out.println("error on saveButtonClicked");
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    @FXML
+    public void hintPressed(ActionEvent event)
+    {
+        hintLine.setVisible(!hintLine.isVisible());
+    }
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
@@ -521,7 +451,7 @@ public class GameController implements Initializable {
 
 
     @FXML
-    void setOnMousePressed(MouseEvent event) {
+    public void setOnMousePressed(MouseEvent event) {
 
         if (hero.isWalking()) {
             hero.flipHeroImage();
@@ -550,7 +480,7 @@ public class GameController implements Initializable {
     }
 
     @FXML
-    void setOnMouseReleased(MouseEvent event) {
+    public void setOnMouseReleased(MouseEvent event) {
         pressing = false;
 
         if (hero.isWalking()) {
@@ -623,11 +553,6 @@ public class GameController implements Initializable {
         return centrePosition - 10;
     }
 
-    @FXML
-    private Text perfectText;
-
-    @FXML
-    private Text perfectText2;
 
     public void startPerfectScoreAnimation() {
         System.out.println("perfect");
@@ -683,7 +608,7 @@ public class GameController implements Initializable {
     }
 
 
-    boolean checkCollision(ImageView object1, Object object2) {
+    public boolean checkCollision(ImageView object1, Object object2) {
         Bounds bounds2 = null;
         if (object2.getClass() == Rectangle.class) {
             // System.out.println("(object2.getClass() == Rectangle.class)");

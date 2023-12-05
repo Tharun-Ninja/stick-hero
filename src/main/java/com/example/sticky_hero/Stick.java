@@ -16,19 +16,17 @@ public class Stick implements Movable
     public int getPressCount() {
         return pressCount;
     }
-
-    public void setPressCount(int press_count) {
-        this.pressCount = press_count;
+    public void setPressCount(int pressCount) {
+        this.pressCount = pressCount;
     }
-
     private int pressCount =0;
 
 
     public boolean isMakeItFlat() {
         return makeItFlat;
     }
-    public void setMakeItFlat(boolean make_it_flat) {
-        this.makeItFlat = make_it_flat;
+    public void setMakeItFlat(boolean makeItFlat) {
+        this.makeItFlat = makeItFlat;
     }
     private boolean makeItFlat = false;
 
@@ -113,23 +111,16 @@ public class Stick implements Movable
     public Timeline getFallingTimeline() {
         return fallingTimeline;
     }
-
     public void setFallingTimeline(Timeline fallingTimeline) {
         this.fallingTimeline = fallingTimeline;
     }
-
     private Timeline fallingTimeline;
 
     private Timeline growSoundTimeline;
-
-
-//    public double getMove_stick_Speed() {
-//        return move_stick_Speed;
-//    }
-//    public void setMove_stick_Speed(double move_stick_Speed) {
-//        this.move_stick_Speed = move_stick_Speed;
-//    }
-//    private double move_stick_Speed = 1;
+    public AudioClip getStickGrowSound()
+    {
+        return stickGrowSound;
+    }
 
 
     public RotateTransition getRotateTransition() {
@@ -140,7 +131,9 @@ public class Stick implements Movable
     }
     private RotateTransition rotateTransition;
 
-    Stick(GameController gameController)
+    private AudioClip stickGrowSound = new AudioClip(getClass().getResource("/stickSound.mp3").toString());
+
+    public Stick(GameController gameController)
     {
         stickWidth = gameController.getStandardStickWidth();
 
@@ -192,7 +185,7 @@ public class Stick implements Movable
 
 
 
-    private void makeStickFall()
+    public  void makeStickFall()
     {
 //        System.out.println("make_stick_fall");
         if (angleCovered >=180)
@@ -205,7 +198,7 @@ public class Stick implements Movable
         rotateHelper();
     }
 
-    private void rotateHelper()
+    public  void rotateHelper()
     {
         double pivotY = stickRectangle.getY() + stickRectangle.getHeight();
         double pivotX = stickRectangle.getX() + stickRectangle.getWidth()/2;
@@ -260,14 +253,6 @@ public class Stick implements Movable
     {
         rotatingTimeline.play();
     }
-
-    public AudioClip getStickGrowSound()
-    {
-        return stickGrowSound;
-    }
-
-
-    private AudioClip stickGrowSound = new AudioClip(getClass().getResource("/stickSound.mp3").toString());
 
     public void erectStick()
     {

@@ -5,7 +5,6 @@ import javafx.scene.shape.Rectangle;
 import java.util.Random;
 
 public class GamePlatform implements Movable {
-
     private GameController gameController;
 
     public Rectangle getBlock() {
@@ -28,7 +27,7 @@ public class GamePlatform implements Movable {
 
 
 
-    GamePlatform(double length, double position, GameController gameController)
+    public GamePlatform(double length, double position, GameController gameController)
     {
         this.gameController = gameController;
 //        int length = rand.nextInt(25, 50);

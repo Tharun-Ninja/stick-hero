@@ -10,7 +10,7 @@ public class Hero {
 
 
 
-//    private int current_score;
+
 
 
     private GameController gameController;
@@ -19,94 +19,77 @@ public class Hero {
     public boolean isWillFall() {
         return willFall;
     }
-
     public void setWillFall(boolean willFall) {
         this.willFall = willFall;
     }
-
     private boolean willFall;
 
     public boolean isWalking() {
         return walking;
     }
-
     public void setWalking(boolean walking) {
         this.walking = walking;
     }
-
     private boolean walking = false;
 
     public ImageView getHeroImage() {
         return heroImage;
     }
-
     public void setHeroImage(ImageView heroImage) {
         this.heroImage = heroImage;
     }
-
     private ImageView heroImage;
 
     public double getHorizontalMotionSpeed() {
         return horizontalMotionSpeed;
     }
-
     public void setHorizontalMotionSpeed(double horizontalMotionSpeed) {
         this.horizontalMotionSpeed = horizontalMotionSpeed;
     }
-
     private double horizontalMotionSpeed = 1;
 
     public double getVerticalMotionSpeed() {
         return verticalMotionSpeed;
     }
-
     public void setVerticalMotionSpeed(double verticalMotionSpeed) {
         this.verticalMotionSpeed = verticalMotionSpeed;
     }
-
     private double verticalMotionSpeed = 5;
 
     public double getLengthMovedOnCurrentBridge() {
         return lengthMovedOnCurrentBridge;
     }
-
     public void setLengthMovedOnCurrentBridge(double lengthMovedOnCurrentBridge) {
         this.lengthMovedOnCurrentBridge = lengthMovedOnCurrentBridge;
     }
-
     private double lengthMovedOnCurrentBridge = 0;
 
     public double getLengthFallen() {
         return lengthFallen;
     }
-
     public void setLengthFallen(double lengthFallen) {
         this.lengthFallen = lengthFallen;
     }
-
     private double lengthFallen = 0;
 
     public Timeline getMotionOnBridgeTimeline() {
         return motionOnBridgeTimeline;
     }
-
     public void setMotionOnBridgeTimeline(Timeline motionOnBridgeTimeline) {
         this.motionOnBridgeTimeline = motionOnBridgeTimeline;
     }
-
     private Timeline motionOnBridgeTimeline;
 
     public Timeline getHeroFallMotionTimeline() {
         return heroFallMotionTimeline;
     }
-
     public void setHeroFallMotionTimeline(Timeline heroFallMotionTimeline) {
         this.heroFallMotionTimeline = heroFallMotionTimeline;
     }
     private Timeline heroFallMotionTimeline;
 
 
-    Hero(GameController gameController, ImageView heroImage)
+    public Hero(GameController gameController, ImageView heroImage)
     {
 
 
@@ -139,7 +122,7 @@ public class Hero {
         }
     }
 
-    private void verticalMotion() {
+    public void verticalMotion() {
         this.setHeroImageY(this.heroImage.getY() + verticalMotionSpeed);
         lengthFallen += verticalMotionSpeed;
         // System.out.println("OKK");
@@ -153,12 +136,12 @@ public class Hero {
 
     }
 
-    private void startVerticalMotionAnimation() {
+    public  void startVerticalMotionAnimation() {
         heroFallMotionTimeline.play();
     }
 
 
-    private void stopVerticalMotionAnimation()
+    public  void stopVerticalMotionAnimation()
     {
 
         heroFallMotionTimeline.stop();
@@ -193,17 +176,7 @@ public class Hero {
                 gameController.getCherryScoreDisplay().setText(String.valueOf(gameController.getPoints().getCherryCount()));
             }
         }
-//        public static void main(String[] args) {
-//            // Create an instance of the Person class
-//            Person person = new Person("John", 25);
-//
-//            // Serialization
-//
-//
-//            // Deserialization
-//            Person deserializedPerson = deserializePerson("person.ser");
-//            System.out.println("Deserialized Person: " + deserializedPerson);
-//        }
+
 
         if (gameController.getHero().isWalking()
                 & gameController.checkCollision(heroImage, gameController.getPlatforms().get(1).getBlock())) {

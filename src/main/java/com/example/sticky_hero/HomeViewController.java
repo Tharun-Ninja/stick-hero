@@ -13,13 +13,11 @@ import java.util.ResourceBundle;
 
 public class HomeViewController implements Initializable
 {
+    private DeserializePoints deserializePoints = new DeserializePoints();
+    private SerializePoints serializePoints = new SerializePoints();
+    private AudioClip buttonClickSound = new AudioClip(getClass().getResource("/click-button.mp3").toString());
 
-
-    DeserializePoints deserializePoints = new DeserializePoints();
-    SerializePoints serializePoints = new SerializePoints();
-    AudioClip buttonClickSound = new AudioClip(getClass().getResource("/click-button.mp3").toString());
-
-    Points points;
+    private Points points;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
@@ -43,7 +41,7 @@ public class HomeViewController implements Initializable
 
 
     @FXML
-    void loadLastSavedClicked(MouseEvent event)
+    public void loadLastSavedClicked(MouseEvent event)
     {
         buttonClickSound.play();
         serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
@@ -60,7 +58,7 @@ public class HomeViewController implements Initializable
         startGameScene(e);
     }
 
-    private void startGameScene(MouseEvent e) {
+    public void startGameScene(MouseEvent e) {
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Scene scene = null;
         try
@@ -77,7 +75,4 @@ public class HomeViewController implements Initializable
         stage.setHeight(700);
         stage.show();
     }
-
-
-
 }

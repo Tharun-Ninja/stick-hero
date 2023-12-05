@@ -7,7 +7,6 @@ import java.io.IOException;
 
 public class StickApplication extends javafx.application.Application {
     @Override
-
     public void start(Stage stage) throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader(StickApplication.class.getResource("home-view.fxml"));

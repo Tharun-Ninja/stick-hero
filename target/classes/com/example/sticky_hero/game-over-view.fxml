@@ -47,8 +47,8 @@
             <Font size="28.0" />
          </font>
       </Text>
-      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#9bceff" height="59.0" layoutX="161.0" layoutY="511.0" onMouseClicked="#revive_clicked" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Text fx:id="replay_button_game_over_page1" layoutX="220.0" layoutY="551.0" onMouseClicked="#revive_clicked" strokeType="OUTSIDE" strokeWidth="0.0" text="REVIVE" textAlignment="CENTER">
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#9bceff" height="59.0" layoutX="161.0" layoutY="511.0" onMouseClicked="#reviveClicked" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Text fx:id="replay_button_game_over_page1" layoutX="220.0" layoutY="551.0" onMouseClicked="#reviveClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="REVIVE" textAlignment="CENTER">
          <font>
             <Font size="28.0" />
          </font>

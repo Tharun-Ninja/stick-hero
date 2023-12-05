@@ -6,7 +6,6 @@ public class Points implements Serializable {
     public int getCherryCount() {
         return cherryCount;
     }
-
     public void setCherryCount(int cherryCount)
     {
 
@@ -14,31 +13,26 @@ public class Points implements Serializable {
         System.out.println(cherryCount);
         this.cherryCount = cherryCount;
     }
-
     private int cherryCount;
 
     public int getCurrentScore()
     {
         return currentScore;
     }
-
     public void setCurrentScore(int currentScore)
     {
         System.out.println("setCurrent_score");
         System.out.println(currentScore);
         this.currentScore = currentScore;
     }
-
     private int currentScore;
 
     public int getBestScore() {
         return bestScore;
     }
-
     public void setBestScore(int bestScore) {
         this.bestScore = bestScore;
     }
-
     private int bestScore;
 
     public Points (int cherryCount, int currentScore, int bestScore) {
