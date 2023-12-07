@@ -32,6 +32,16 @@ public class GameController implements Initializable {
     private Text gameScore;
     private double speedForCherry;
 
+    public boolean isMotionOfAllHappening() {
+        return motionOfAllHappening;
+    }
+
+    public void setMotionOfAllHappening(boolean motionOfAllHappening) {
+        this.motionOfAllHappening = motionOfAllHappening;
+    }
+
+    private boolean motionOfAllHappening = false;
+
     public Text getCherryScoreDisplay() {
         return cherryScoreDisplay;
     }
@@ -231,7 +241,8 @@ public class GameController implements Initializable {
         currentStick = new Stick(this);
 
         motionOfAllBridgeTimeline = new Timeline();
-        KeyFrame keyFrameAllComponentMotion = new KeyFrame(Duration.seconds(0.1), e -> moveAllPlatforms());
+
+        KeyFrame keyFrameAllComponentMotion = new KeyFrame(Duration.seconds(0.001), e -> moveAllPlatforms());
         motionOfAllBridgeTimeline.getKeyFrames().add(keyFrameAllComponentMotion);
         motionOfAllBridgeTimeline.setCycleCount(Animation.INDEFINITE);
 
@@ -374,16 +385,20 @@ public class GameController implements Initializable {
                     this.randomPositionForNew1);
             this.speedForCherry = (cherryList.get(1).getCherryImage().getX() - randomPositionForCherryCorner)
                     / (platforms.get(1).getBlock().getX());
-        } else {
+        } else
+        {
             this.cherryIsPresent = false;
             cherryList.get(1).getCherryImage().setVisible(false);
         }
-
+        this.motionOfAllHappening = true;
         motionOfAllBridgeTimeline.play();
     }
 
-    public void stopAllBridgeMotionAnimation() {
+    public void stopAllBridgeMotionAnimation()
+    {
+        this.motionOfAllHappening = false;
         motionOfAllBridgeTimeline.stop();
+
         // transition_place
         // spawn new stick, platform, cherry
 
@@ -451,26 +466,29 @@ public class GameController implements Initializable {
 
 
     @FXML
-    public void setOnMousePressed(MouseEvent event) {
+    public void setOnMousePressed(MouseEvent event)
+    {
+
+        if (motionOfAllHappening)
+        {
+            return;
+        }
+        pressing = true;
 
         if (hero.isWalking()) {
             hero.flipHeroImage();
             return;
         }
-         currentStick.getStickGrowSound().play();
-        try
-        {
-            sleep(50);
-        } catch (InterruptedException e) {
-            System.out.println("InterruptedException");
-        }
         currentStick.getStickGrowSound().play();
+
 
         currentStick.setPressCount(currentStick.getPressCount() + 1);
         // Run the time-consuming task in a separate thread
-        if (currentStick.getPressCount() == 1) {
-            Thread taskThread = new Thread(() -> {
-                pressing = true;
+        if (currentStick.getPressCount() == 1)
+        {
+            Thread taskThread = new Thread(() ->
+            {
+
                 currentStick.startErectAnimation();
 
             });
@@ -480,7 +498,12 @@ public class GameController implements Initializable {
     }
 
     @FXML
-    public void setOnMouseReleased(MouseEvent event) {
+    public void setOnMouseReleased(MouseEvent event)
+    {
+        if (motionOfAllHappening)
+        {
+            return;
+        }
         pressing = false;
 
         if (hero.isWalking()) {

@@ -159,9 +159,12 @@ public class Hero {
         }
     }
 
-    public void moveHorizontalMotion() {
+    public void moveHorizontalMotion()
+   {
 
-        if (gameController.getCherryList().get(0) != null) {
+
+        if (gameController.getCherryList().get(0) != null)
+        {
             if (gameController.isCherryIsPresent() & gameController.getHero().isWalking() & gameController
                     .checkCollision(heroImage, gameController.getCherryList().get(0).getCherryImage())) {
 
@@ -179,7 +182,8 @@ public class Hero {
 
 
         if (gameController.getHero().isWalking()
-                & gameController.checkCollision(heroImage, gameController.getPlatforms().get(1).getBlock())) {
+                & gameController.checkCollision(heroImage, gameController.getPlatforms().get(1).getBlock()))
+        {
             System.out.println("Game Over");
             stopHorizontalMotionAnimation();
             startVerticalMotionAnimation();
