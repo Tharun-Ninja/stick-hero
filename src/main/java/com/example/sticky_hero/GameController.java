@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -233,7 +234,6 @@ public class GameController implements Initializable {
 
     public GameController()
     {
-
         System.out.println("GameController called");
 
         platforms = new ArrayList<>();
@@ -265,7 +265,7 @@ public class GameController implements Initializable {
     }
     public Cherry cherryFactory(double setX)
     {
-        ImageView cherryImageNew = new ImageView("file:C:\\Users\\hp\\IdeaProjects\\Sticky Hero\\src\\main\\java\\com\\example\\sticky_hero\\assets\\cherry.png");
+        ImageView cherryImageNew = new ImageView(new Image(getClass().getResource("/assets/cherry.png").toExternalForm()));
         cherryImageNew.setX(setX);
         cherryImageNew.setY(getGapLandZenith()+5);
         cherryImageNew.setPickOnBounds(true);
@@ -329,12 +329,11 @@ public class GameController implements Initializable {
     {
         System.out.println("initialize called");
 
-        ImageView wall = new ImageView("file:C:\\Users\\hp\\IdeaProjects\\Sticky Hero\\src\\main\\java\\com\\example\\sticky_hero\\assets\\wall.jpg");
-        ImageView wall2 = new ImageView("file:C:\\Users\\hp\\IdeaProjects\\Sticky Hero\\src\\main\\java\\com\\example\\sticky_hero\\assets\\wall2.jpg");
+        Image image1 = new Image(getClass().getResource("/assets/wall.jpg").toExternalForm());
+        Image image2 = new Image(getClass().getResource("/assets/wall2.jpg").toExternalForm());
 
-        ImageView selectedWall = (Math.random() < 0.5) ? wall : wall2;
 
-        imageView.setImage(selectedWall.getImage());
+        imageView.setImage((Math.random() < 0.5) ? image1 : image2);
 
         anchorPane.getChildren().add(currentStick.getStickRectangle());
 
