@@ -478,16 +478,20 @@ public class GameController implements Initializable {
             hero.flipHeroImage();
             return;
         }
-        currentStick.getStickGrowSound().play();
+
 
 
         currentStick.setPressCount(currentStick.getPressCount() + 1);
         // Run the time-consuming task in a separate thread
         if (currentStick.getPressCount() == 1)
         {
+//            first sound bit played immediately
+            currentStick.getStickGrowSound().play();
+//            second sound play for whole timeline
+
+            currentStick.getGrowSoundTimeline().play();
             Thread taskThread = new Thread(() ->
             {
-
                 currentStick.startErectAnimation();
 
             });

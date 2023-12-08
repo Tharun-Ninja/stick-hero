@@ -116,7 +116,15 @@ public class Stick implements Movable
     }
     private Timeline fallingTimeline;
 
+    public Timeline getGrowSoundTimeline() {
+        return growSoundTimeline;
+    }
+    public void setGrowSoundTimeline(Timeline growSoundTimeline) {
+        this.growSoundTimeline = growSoundTimeline;
+    }
     private Timeline growSoundTimeline;
+
+
     public AudioClip getStickGrowSound()
     {
         return stickGrowSound;
@@ -218,10 +226,11 @@ public class Stick implements Movable
         gameController.setErectionAllowed(true);
 
         erectingTimeline.play();
-        Platform.runLater(() -> {
-            growSoundTimeline.play();
-        });
-//        grow_sound_timeline.play();
+
+//        Platform.runLater(() ->
+//        {
+//
+//        });
     }
     public void stopRotationAnimation()
     {
