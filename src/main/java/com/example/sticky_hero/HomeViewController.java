@@ -6,21 +6,39 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.io.InputStream;
 
 public class HomeViewController implements Initializable
 {
     private DeserializePoints deserializePoints = new DeserializePoints();
     private SerializePoints serializePoints = new SerializePoints();
-    private AudioClip buttonClickSound = new AudioClip(getClass().getResource("/click-button.mp3").toString());
+    private AudioClip buttonClickSound = new AudioClip(getClass().getResource("/assets/click-button.mp3").toString());
 
     private Points points;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
+
+        try (InputStream audioStream = getClass().getResourceAsStream("/assets/click-button.mp3"))
+        {
+//            if (audioStream != null)
+//            {
+//                Media media = new Media(audioStream.toString());
+//                buttonClickSound = new MediaPlayer(media);
+//            } else
+//            {
+//                System.err.println("Failed to load audio file: /assets/click-button.mp3");
+//            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         points = null;
         try
         {

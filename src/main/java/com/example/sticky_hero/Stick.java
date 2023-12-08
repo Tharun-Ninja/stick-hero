@@ -131,7 +131,7 @@ public class Stick implements Movable
     }
     private RotateTransition rotateTransition;
 
-    private AudioClip stickGrowSound = new AudioClip(getClass().getResource("/stickSound.mp3").toString());
+    private AudioClip stickGrowSound = new AudioClip(getClass().getResource("/assets/stickSound.mp3").toString());
 
     public Stick(GameController gameController)
     {

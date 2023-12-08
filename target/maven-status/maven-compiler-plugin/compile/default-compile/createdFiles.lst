@@ -9,5 +9,6 @@ com\example\sticky_hero\GamePlatform.class
 com\example\sticky_hero\GameController.class
 com\example\sticky_hero\SerializePoints.class
 com\example\sticky_hero\Points.class
+com\example\sticky_hero\MainClass.class
 com\example\sticky_hero\HomeViewController.class
 com\example\sticky_hero\StickApplication.class

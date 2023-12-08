@@ -33,7 +33,7 @@ public class SceneController implements Initializable
     @FXML
     private Text notEnoughCherries;
 
-    private AudioClip buttonClickSound = new AudioClip(getClass().getResource("/click-button.mp3").toString());
+    private AudioClip buttonClickSound = new AudioClip(getClass().getResource("/assets/click-button.mp3").toString());
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
