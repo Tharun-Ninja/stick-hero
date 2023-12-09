@@ -1,7 +1,9 @@
 package com.example.sticky_hero;
 
-import javafx.animation.*;
-import javafx.application.Platform;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.RotateTransition;
+import javafx.animation.Timeline;
 import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -140,6 +142,7 @@ public class Stick implements Movable
     private RotateTransition rotateTransition;
 
     private AudioClip stickGrowSound = new AudioClip(getClass().getResource("/assets/stickSound.mp3").toString());
+    private AudioClip perfectSound = new AudioClip(getClass().getResource("/assets/achive-sound.mp3").toString());
 
     public Stick(GameController gameController)
     {
@@ -239,16 +242,17 @@ public class Stick implements Movable
 
 //        if (this.press_count == 1)
 //        {
-            GamePlatform plat1=  gameController.getPlatforms().get(1);
-            // try to make start_Perfect_Score_Animation and startHorizontal_Motion_Animation
-            //        PARALLEL
-            if ((stickRectangle.getHeight() > (gameController.getCurrentGap())+plat1.getBlock().getWidth()/2-plat1.getDelta())&((stickRectangle.getHeight() < (gameController.getCurrentGap())+plat1.getBlock().getWidth()/2+plat1.getDelta())))
-            {
-                gameController.addGameScore(1);
-                this.gameController.startPerfectScoreAnimation();
-            }
+        GamePlatform plat1=  gameController.getPlatforms().get(1);
+        // try to make start_Perfect_Score_Animation and startHorizontal_Motion_Animation
+        //        PARALLEL
+        if ((stickRectangle.getHeight() > (gameController.getCurrentGap())+plat1.getBlock().getWidth()/2-plat1.getDelta())&((stickRectangle.getHeight() < (gameController.getCurrentGap())+plat1.getBlock().getWidth()/2+plat1.getDelta())))
+        {
+            gameController.addGameScore(1);
+            perfectSound.play();
+            this.gameController.startPerfectScoreAnimation();
+        }
 
-            this.gameController.getHero().startHorizontalMotionAnimation();
+        this.gameController.getHero().startHorizontalMotionAnimation();
 //        }
 
     }
