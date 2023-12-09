@@ -4,6 +4,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.IOException;
 
 public class StickApplication extends javafx.application.Application {
@@ -12,6 +14,7 @@ public class StickApplication extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException
     {
+        stage.initStyle(StageStyle.UNDECORATED);
         FXMLLoader fxmlLoader = new FXMLLoader(StickApplication.class.getResource("home-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 

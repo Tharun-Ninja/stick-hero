@@ -17,21 +17,21 @@
             <Image url="@../../../assets/hero.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="cherryImageTopLeft" fitHeight="30.0" fitWidth="20.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cherryImageTopLeft" fitHeight="30.0" fitWidth="20.0" layoutX="60.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/cherry.png" />
          </image>
       </ImageView>
-      <Line fx:id="hintLine" endX="100.0" layoutX="130.0" startX="-100.0" />
-      <Text fx:id="cherryScoreDisplay" layoutX="23.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="27.192718505859375">
+      <Line fx:id="hintLine" endX="100.0" layoutX="130.0" startX="-100.0" visible="false" />
+      <Text fx:id="cherryScoreDisplay" layoutX="83.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="27.192718505859375">
          <font>
             <Font size="22.0" />
          </font>
       </Text>
       <Text fx:id="perfectText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text fx:id="perfectText2" strokeType="OUTSIDE" strokeWidth="0.0" text="PERFECT!!" />
-      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#b9ddff" height="52.0" layoutX="210.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="80.0" />
-      <Text fx:id="gameScore" boundsType="VISUAL" layoutX="243.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textOrigin="CENTER" wrappingWidth="36.21630859375">
+      <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#b7dafc" height="52.0" layoutX="210.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="80.0" />
+      <Text fx:id="gameScore" boundsType="VISUAL" layoutX="241.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="1.0">
          <font>
             <Font size="24.0" />
          </font>

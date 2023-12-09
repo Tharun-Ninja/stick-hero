@@ -16,7 +16,7 @@
             <Image url="@../../../assets/homeBackGround2.jpg" />
          </image>
       </ImageView>
-      <Circle fx:id="playStart" fill="#ff5e5e" layoutX="253.0" layoutY="348.0" onMouseClicked="#playStartMouseClicked" radius="77.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fx:id="playStart" fill="#f55f3ded" layoutX="253.0" layoutY="348.0" onMouseClicked="#playStartMouseClicked" radius="77.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <Text layoutX="96.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STICK HERO" textAlignment="CENTER" wrappingWidth="331.953125">
          <font>
             <Font name="Arial Hebrew Bold" size="80.0" />
