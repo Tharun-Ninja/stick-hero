@@ -65,6 +65,7 @@ public class SceneController implements Initializable
         if (points.getCherryCount()>= cherriesToRevive)
         {
             points.setCherryCount(points.getCherryCount()- cherriesToRevive);
+            points.setDead(false);
             serializePoints.serialize("saved.txt", points);
             startGameScene(e);
         }
