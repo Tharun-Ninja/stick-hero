@@ -31,12 +31,12 @@
       <Text fx:id="perfectText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text fx:id="perfectText2" strokeType="OUTSIDE" strokeWidth="0.0" text="PERFECT!!" />
       <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#b7dafc" height="52.0" layoutX="210.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="80.0" />
-      <Text fx:id="gameScore" boundsType="VISUAL" layoutX="241.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="1.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
       <Button layoutX="427.0" layoutY="35.0" mnemonicParsing="false" onAction="#hintPressed" prefHeight="25.0" prefWidth="41.0" text="Hint" />
       <Button fx:id="saveButton" layoutX="427.0" layoutY="69.0" mnemonicParsing="false" onAction="#saveButtonClicked" text="Save" />
+      <Text fx:id="gameScore" layoutX="209.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="80.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

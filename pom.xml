@@ -71,12 +71,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-swing</artifactId>
-            <version>20</version>
-            <scope>test</scope>
-        </dependency>
 
         <dependency>
             <groupId>org.testfx</groupId>
@@ -125,6 +119,7 @@
                 <configuration>
                     <source>20</source>
                     <target>20</target>
+
                 </configuration>
             </plugin>
 
@@ -169,41 +164,6 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.1</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.example.sticky_hero.MainClass</mainClass>
-                                </transformer>
-                            </transformers>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/StickTest.java</exclude>
-                    </excludes>
-                    <argLine>
-                        --add-opens=com.example.sticky_hero/com.example.sticky_hero=ALL-UNNAMED
-                        --add-opens=javafx.embed.swing/com.sun.javafx.logging=ALL-UNNAMED
-                    </argLine>
-                </configuration>
-            </plugin>
 
 
         </plugins>
