@@ -15,6 +15,11 @@ public class Points implements Serializable {
     }
     private int cherryCount;
 
+    public void addCurrentScore(int x)
+    {
+        this.setCurrentScore(this.currentScore + x);
+    }
+
     public int getCurrentScore()
     {
         return currentScore;

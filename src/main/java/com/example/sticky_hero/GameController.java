@@ -1,7 +1,6 @@
 package com.example.sticky_hero;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+
+import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,13 +18,12 @@ import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
 import java.io.IOException;
-import java.util.ArrayList;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
-import javafx.animation.*;
-import static java.lang.Thread.sleep;
 
 public class GameController implements Initializable {
 
@@ -300,7 +298,7 @@ public class GameController implements Initializable {
     public void addGameScore(int x)
     {
         System.out.println("--1");
-        points.setCurrentScore(points.getCurrentScore() + x);
+        points.addCurrentScore(x);
 
         if( points.getCurrentScore() > points.getBestScore())
         {
