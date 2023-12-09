@@ -19,7 +19,7 @@ public class StickApplication extends javafx.application.Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public void launchCall() {
         launch();
     }
 

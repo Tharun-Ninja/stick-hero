@@ -32,7 +32,7 @@ public class CherryFactory {
         return toReturn;
     }
 
-    public CherryFactory(GameController g){
-        this.gameController = g;
+    public CherryFactory(GameController gameController){
+        this.gameController = gameController;
     }
 }

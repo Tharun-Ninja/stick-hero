@@ -1,4 +1,5 @@
 com\example\sticky_hero\DeserializePoints.class
+com\example\sticky_hero\CherryFactory.class
 com\example\sticky_hero\Movable.class
 com\example\sticky_hero\Hero.class
 com\example\sticky_hero\SceneController.class
