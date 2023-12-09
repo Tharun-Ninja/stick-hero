@@ -3,6 +3,7 @@ package com.example.sticky_hero;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GameTest {
     @Test
@@ -24,6 +25,20 @@ class GameTest {
     }
 
 
+    @Test
+    public void testCherryPosition(){
+        Cherry cherry = new Cherry("", null, null);
+        int lowerBound = 50;
+        int upperBound = 200;
+        boolean check = false;
+        double cherryPosition = cherry.getCherryPosition(lowerBound, upperBound);
+
+        if(cherryPosition >= 52 && cherryPosition <= 178){
+            check = true;
+        }
+
+        assertTrue(check);
+    }
 
 
 }

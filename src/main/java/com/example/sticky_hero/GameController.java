@@ -368,7 +368,7 @@ public class GameController implements Initializable {
         double minWidthForCherrySpawn = 70;
         if ((this.randomPositionForNew1 - platforms.get(1).getBlock().getWidth()) > minWidthForCherrySpawn) {
             this.cherryIsPresent = true;
-            this.randomPositionForCherryCorner = getCherryPosition(platforms.get(1).getBlock().getWidth(),
+            this.randomPositionForCherryCorner = cherryList.get(1).getCherryPosition(platforms.get(1).getBlock().getWidth(),
                     this.randomPositionForNew1);
             this.speedForCherry = (cherryList.get(1).getCherryImage().getX() - randomPositionForCherryCorner)
                     / (platforms.get(1).getBlock().getX());
@@ -562,10 +562,7 @@ public class GameController implements Initializable {
         return platforms.get(1).getBlock().getWidth() + gap;
     }
 
-    private double getCherryPosition(double lowerBound, double upperBound) {
-        double centrePosition = random.nextDouble(lowerBound + 12, upperBound - 12);
-        return centrePosition - 10;
-    }
+
 
 
     public void startPerfectScoreAnimation() {

@@ -2,6 +2,8 @@ package com.example.sticky_hero;
 
 import javafx.scene.image.ImageView;
 
+import java.util.Random;
+
 public class Cherry implements Movable
 {
 
@@ -21,8 +23,11 @@ public class Cherry implements Movable
         this.cherryImage = cherryImage;
     }
     private ImageView cherryImage;
-
-
+    Random random = new Random();
+    public double getCherryPosition(double lowerBound, double upperBound) {
+        double centrePosition = random.nextDouble(lowerBound + 12, upperBound - 12);
+        return centrePosition - 10;
+    }
 
     public int getReward() {
         return reward;
