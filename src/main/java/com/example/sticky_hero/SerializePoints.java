@@ -8,6 +8,7 @@ public class SerializePoints
 {
     public void serialize(String fileName, Points points)
     {
+
         try
         {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName));

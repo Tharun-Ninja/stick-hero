@@ -8,7 +8,10 @@ public class DeserializePoints
 
     public Points deserialize (String fileName) throws IOException , ClassNotFoundException
     {
+
         Points points  = null;
+//        fileName = "saved.txt";
+
 
         ObjectInputStream oos = new ObjectInputStream(new FileInputStream(fileName));
         points = (Points) oos.readObject();

@@ -40,13 +40,13 @@ public class SceneController implements Initializable
     {
         try
         {
-            this.points =  deserializePoints.deserialize("src/main/java/com/example/sticky_hero/saved.txt");
+            this.points =  deserializePoints.deserialize("saved.txt");
         }
         catch (IOException | ClassNotFoundException e)
         {
             points = new Points(0, 0, 0 );
             System.out.println("Invalid file found during initialize of SceneController. new Points(0, 0, 0 );");
-            serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
+            serializePoints.serialize("saved.txt", points);
 
         }
 
@@ -66,7 +66,7 @@ public class SceneController implements Initializable
         if (points.getCherryCount()>= cherriesToRevive)
         {
             points.setCherryCount(points.getCherryCount()- cherriesToRevive);
-            serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
+            serializePoints.serialize("saved.txt", points);
             startGameScene(e);
         }
 
@@ -110,7 +110,7 @@ public class SceneController implements Initializable
         {
             points = new Points(0,0,0);
         }
-        serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
+        serializePoints.serialize("saved.txt", points);
         startGameScene(e);
     }
     public void switchHomeScreen(MouseEvent e) throws IOException {

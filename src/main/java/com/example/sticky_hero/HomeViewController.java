@@ -42,7 +42,7 @@ public class HomeViewController implements Initializable
         points = null;
         try
         {
-            points = deserializePoints.deserialize("src/main/java/com/example/sticky_hero/saved.txt" );
+            points = deserializePoints.deserialize("saved.txt" );
             if (points ==null)
             {
                 throw new Exception("points ==null");
@@ -53,7 +53,7 @@ public class HomeViewController implements Initializable
 
             points = new Points(0, 0, 0 );
             System.out.println("Invalid file found during initialize of HomeViewController. new Points(0, 0, 0 );");
-            serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
+            serializePoints.serialize("saved.txt", points);
         }
     }
 
@@ -62,7 +62,7 @@ public class HomeViewController implements Initializable
     public void loadLastSavedClicked(MouseEvent event)
     {
         buttonClickSound.play();
-        serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
+        serializePoints.serialize("saved.txt", points);
         startGameScene(event);
 
 
@@ -72,7 +72,7 @@ public class HomeViewController implements Initializable
     {
         buttonClickSound.play();
         points.setCurrentScore(0);
-        serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
+        serializePoints.serialize("saved.txt", points);
         startGameScene(e);
     }
 

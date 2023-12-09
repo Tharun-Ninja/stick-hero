@@ -251,7 +251,7 @@ public class GameController implements Initializable {
         points = null;
         try
         {
-            points = deserializePoints.deserialize("src/main/java/com/example/sticky_hero/saved.txt" );
+            points = deserializePoints.deserialize("saved.txt" );
         }
         catch (IOException | ClassNotFoundException e)
         {
@@ -265,15 +265,35 @@ public class GameController implements Initializable {
     }
     public Cherry cherryFactory(double setX)
     {
-        ImageView cherryImageNew = new ImageView(new Image(getClass().getResource("/assets/cherry.png").toExternalForm()));
+        ImageView cherryImageNew;
+        Cherry toReturn;
+        double random =  Math.random();
+        if (random< 0.8)
+        {
+            cherryImageNew = new ImageView(new Image(getClass().getResource("/assets/cherry.png").toExternalForm()));
+            toReturn = new Cherry(1, this, cherryImageNew);
+        }
+        else
+        {
+            cherryImageNew = new ImageView(new Image(getClass().getResource("/assets/goldenCherry.png").toExternalForm()));
+            toReturn = new Cherry(5, this, cherryImageNew);
+        }
+
         cherryImageNew.setX(setX);
         cherryImageNew.setY(getGapLandZenith()+5);
         cherryImageNew.setPickOnBounds(true);
         cherryImageNew.setFitHeight(20);
         cherryImageNew.setFitWidth(20);
         getAnchorPane().getChildren().add(cherryImageNew);
-
-        return new Cherry(1, this, cherryImageNew);
+//        if (random< 0.8)
+//        {
+//            cherryImageNew = new ImageView(new Image(getClass().getResource("/assets/cherry.png").toExternalForm()));
+//        }
+//        else
+//        {
+//            cherryImageNew = new ImageView(new Image(getClass().getResource("/assets/goldenCherry.png").toExternalForm()));
+//        }
+        return toReturn;
     }
 
 
@@ -289,14 +309,14 @@ public class GameController implements Initializable {
 
         gameScore.setText(String.valueOf(points.getCurrentScore()));
 
-        serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", points);
+        serializePoints.serialize("saved.txt", points);
 
     }
 
     @FXML
     public void saveButtonClicked(ActionEvent event)
     {
-        serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", this.points);
+        serializePoints.serialize("saved.txt", this.points);
 
         try
         {

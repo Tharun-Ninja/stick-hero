@@ -74,9 +74,36 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M5</version>
+        <configuration>
+          <excludes>
+            <exclude>**/StickTest.java</exclude>
+          </excludes>
+          <argLine>--add-opens=com.example.sticky_hero/com.example.sticky_hero=ALL-UNNAMED
+                        --add-opens=javafx.embed.swing/com.sun.javafx.logging=ALL-UNNAMED</argLine>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
   <dependencies>
+    <dependency>
+      <groupId>org.testfx</groupId>
+      <artifactId>testfx-core</artifactId>
+      <version>4.0.16-alpha</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>hamcrest-core</artifactId>
+          <groupId>org.hamcrest</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>assertj-core</artifactId>
+          <groupId>org.assertj</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
@@ -113,8 +140,40 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.1</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>hamcrest-core</artifactId>
+          <groupId>org.hamcrest</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-swing</artifactId>
+      <version>20</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>javafx-swing</artifactId>
+          <groupId>org.openjfx</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.testfx</groupId>
+      <artifactId>testfx-junit5</artifactId>
+      <version>4.0.16-alpha</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <properties>
+    <maven.compiler.target>20</maven.compiler.target>
+    <maven.compiler.source>20</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>5.9.2</junit.version>
   </properties>

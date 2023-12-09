@@ -174,7 +174,7 @@ public class Hero {
                 int newCherryCount =  gameController.getPoints().getCherryCount()+ gameController.getCherryList().get(1).getReward();
                 gameController.getPoints().setCherryCount(  newCherryCount );
 
-                gameController.serializePoints.serialize("src/main/java/com/example/sticky_hero/saved.txt", gameController.getPoints());
+                gameController.serializePoints.serialize("saved.txt", gameController.getPoints());
 
                 gameController.getCherryScoreDisplay().setText(String.valueOf(gameController.getPoints().getCherryCount()));
             }

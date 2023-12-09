@@ -4,7 +4,8 @@ public class MainClass
 {
     public static void main(String[] args)
     {
-        StickApplication.main(args);
+        StickApplication stickApplication = new StickApplication();
+        stickApplication.main(args);
     }
 
 }
