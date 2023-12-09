@@ -2,10 +2,13 @@ package com.example.sticky_hero;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import java.io.IOException;
 
 public class StickApplication extends javafx.application.Application {
+    private static AudioClip buttonClickSound;
+
     @Override
     public void start(Stage stage) throws IOException
     {
@@ -17,10 +20,21 @@ public class StickApplication extends javafx.application.Application {
         stage.setWidth(500);
         stage.setHeight(700);
         stage.show();
+
+        AudioClip bgMusic = new AudioClip(getClass().getResource("/assets/arcade.mp3").toString());
+        bgMusic.play(0.2);
+
+        buttonClickSound = new AudioClip(getClass().getResource("/assets/click-button.mp3").toString());
+
     }
 
     public void launchCall() {
         launch();
+    }
+
+
+    public static AudioClip getButtonClickSound(){
+        return buttonClickSound;
     }
 
 }

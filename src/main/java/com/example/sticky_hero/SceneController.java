@@ -6,9 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.media.AudioClip;
-import javafx.stage.Stage;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,7 +33,6 @@ public class SceneController implements Initializable
     @FXML
     private Text notEnoughCherries;
 
-    private AudioClip buttonClickSound = new AudioClip(getClass().getResource("/assets/click-button.mp3").toString());
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
@@ -61,7 +60,7 @@ public class SceneController implements Initializable
 
     @FXML
     public void reviveClicked(MouseEvent e) throws IOException {
-        buttonClickSound.play();
+        StickApplication.getButtonClickSound().play();
 
         if (points.getCherryCount()>= cherriesToRevive)
         {
@@ -90,7 +89,6 @@ public class SceneController implements Initializable
     }
 
     public void switchGameOver(Stage stage) throws IOException {
-
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("game-over-view.fxml")));
         stage.setTitle("GameOver!");
         stage.setScene(scene);
@@ -101,7 +99,8 @@ public class SceneController implements Initializable
 
 
     public void playStartMouseClicked(MouseEvent e) throws IOException {
-        buttonClickSound.play();
+        StickApplication.getButtonClickSound().play();
+
         if (points!=null)
         {
             points.setCurrentScore(0);
@@ -114,7 +113,8 @@ public class SceneController implements Initializable
         startGameScene(e);
     }
     public void switchHomeScreen(MouseEvent e) throws IOException {
-        buttonClickSound.play();
+        StickApplication.getButtonClickSound().play();
+
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("home-view.fxml")));
         stage.setTitle("Game!");
@@ -125,7 +125,8 @@ public class SceneController implements Initializable
     }
 
     public void quitGame(MouseEvent e) throws IOException {
-        buttonClickSound.play();
+        StickApplication.getButtonClickSound().play();
+
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.close();
     }

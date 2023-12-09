@@ -1,8 +1,11 @@
 package com.example.sticky_hero;
 
-import javafx.animation.*;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -20,6 +23,10 @@ public class Hero {
     public boolean isWillFall() {
         return willFall;
     }
+
+
+
+
     public void setWillFall(boolean willFall) {
         this.willFall = willFall;
     }
@@ -89,10 +96,11 @@ public class Hero {
     }
     private Timeline heroFallMotionTimeline;
 
-
+    AudioClip fallSound;
     public Hero(GameController gameController, ImageView heroImage)
     {
-
+        fallSound = new AudioClip(getClass().getResource("/assets/stickHitSound.mp3").toString());
+        fallSound.play(0);
 
         this.gameController = gameController;
         this.heroImage = heroImage;
@@ -139,6 +147,8 @@ public class Hero {
 
     public  void startVerticalMotionAnimation() {
         heroFallMotionTimeline.play();
+        fallSound.play(100);
+
     }
 
 
@@ -179,7 +189,7 @@ public class Hero {
                 gameController.setCherryIsPresent(false);
                 gameController.getCherryList().get(0).getCherryImage().setVisible(false);
 
-                int newCherryCount =  gameController.getPoints().getCherryCount()+ gameController.getCherryList().get(1).getReward();
+                int newCherryCount =  gameController.getPoints().getCherryCount()+ gameController.getCherryList().get(0).getReward();
                 gameController.getPoints().setCherryCount(  newCherryCount );
 
                 gameController.serializePoints.serialize("saved.txt", gameController.getPoints());

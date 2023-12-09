@@ -479,7 +479,7 @@ public class GameController implements Initializable {
         if (currentStick.getPressCount() == 1)
         {
 //            first sound bit played immediately
-            currentStick.getStickGrowSound().play();
+//            currentStick.getStickGrowSound().play();
 //            second sound play for whole timeline
 
             currentStick.getGrowSoundTimeline().play();

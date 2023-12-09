@@ -146,6 +146,7 @@ public class Stick implements Movable
 
     public Stick(GameController gameController)
     {
+
         stickWidth = gameController.getStandardStickWidth();
 
         this.gameController = gameController;
@@ -162,7 +163,7 @@ public class Stick implements Movable
         KeyFrame keyFrameErect  = new KeyFrame(Duration.seconds(0.01), e-> erectStick());
         KeyFrame keyFrameRotate = new KeyFrame(Duration.seconds(0.01), e-> rotateStick());
         KeyFrame keyFrameFall = new KeyFrame(Duration.seconds(0.01), e-> makeStickFall());
-        KeyFrame keyFrameGrowSound = new KeyFrame(Duration.seconds(0.1), e-> stickGrowSound.play());
+        KeyFrame keyFrameGrowSound = new KeyFrame(Duration.seconds(0.1), e-> stickGrowSound.play(0.5));
 
         erectingTimeline.getKeyFrames().add(keyFrameErect);
         growSoundTimeline.getKeyFrames().add(keyFrameGrowSound);
@@ -227,7 +228,6 @@ public class Stick implements Movable
     public void startErectAnimation()
     {
         gameController.setErectionAllowed(true);
-
         erectingTimeline.play();
 
 //        Platform.runLater(() ->
@@ -260,7 +260,9 @@ public class Stick implements Movable
     public void stopErectAnimation() {
         erectingTimeline.stop();
         growSoundTimeline.stop();
+
     }
+
 
     public void startRotationAnimation()
     {
