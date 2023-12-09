@@ -37,7 +37,14 @@ Note: Make sure you have the necessary dependencies and resources (images, sound
 
 ## Additional Information
 - The game utilizes threads for implementing key press and release functionality.
-- Design patterns employed include Singleton Design Pattern (for creating a single instance of Scene and other classes) and Observer Design Pattern (triggering reallocation of game elements when the stick falls on a platform).
+- Design patterns employed include Singleton Design Pattern (for creating a single instance of StickApplication class) 
+- Observer Design Pattern (triggering reallocation of game elements (3 platform, red mark, cherries, hero) to left when the stick falls to be in horizontal position).
+- Factory Pattern: CherryFactory class and its method has been created to handle the creation of Cherry Object and setting cherry in right position. (Factory): A method or object whose primary purpose is to manage the
+creation of other objects (usually of a different type)
+
+## Bonus
+- Golden Cherry
+- Hint line
 
 ## Image and Sound Credits
 - **Images:**
