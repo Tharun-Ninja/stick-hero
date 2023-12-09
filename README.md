@@ -26,31 +26,38 @@ To compile and run the game from the command line:
 2. Navigate to the directory containing the Java files.
 3. Compile the code using the following command on the project folder:
    ```bash
-    mvn  clean compile package
+   mvn clean compile package
    ```
-4. Run the jar file using the following command :
+4. Run the jar file using the following command:
    ```bash
-   java -jar  .\target\Sticky_Hero-1.0-SNAPSHOT.jar
+   java -jar .\target\Sticky_Hero-1.0-SNAPSHOT.jar
    ```
 
 Note: Make sure you have the necessary dependencies and resources (images, sounds) in the correct directories for the game to run successfully.
 
 ## Additional Information
 - The game utilizes threads for implementing key press and release functionality.
-- Design patterns employed include Singleton Design Pattern (for creating a single instance of StickApplication class) 
-- Observer Design Pattern (triggering reallocation of game elements (3 platform, red mark, cherries, hero) to left when the stick falls to be in horizontal position).
-- Factory Pattern: CherryFactory class and its method has been created to handle the creation of Cherry Object and setting cherry in right position. (Factory): A method or object whose primary purpose is to manage the
-creation of other objects (usually of a different type)
+- Design patterns employed include Singleton Design Pattern (for creating a single instance of StickApplication class)
+- Observer Design Pattern (triggering reallocation of game elements (3 platforms, red mark, cherries, hero) to the left when the stick falls to be in the horizontal position).
+- Factory Pattern: CherryFactory class and its method have been created to handle the creation of the Cherry object and setting the cherry in the right position. (Factory): A method or object whose primary purpose is to manage the creation of other objects (usually of a different type)
 
 ## Bonus
 - Golden Cherry
 - Hint line
 
+## Assumptions
+- It wasn't explicitly asked to create and extend from an abstract class. So, we have not done that.
+- No need to double-press the mouse to eat the cherry; only a single press and release is enough.
+- Our program saves the user's latest progress until it dies.
+- If the user can save the game score just before dying, the last score is stored and will be reflected when the user reloads the progress.
+- If a user manually deletes the saved.txt file, all the saved scores are set to zero.
+- We increase the score due to the perfect landing of the stick and increase the cherry Count after eating the cherry, even if the user doesn't reach the end of the stick successfully.
+
 ## Image and Sound Credits
 - **Images:**
     - "wall.jpg" - [Mountain Sunset](https://www.pinterest.com/)
     - "hero.png" - [Stick Hero Game](https://play.google.com/store/apps/details?id=com.ketchapp.stickhero)
-    - "cherry.png" - [How to Draw a Cherry](https://easydrawingart.com/how-to-draw-a-cherry/)
+    - "cherry.png" - [Easy drawing art](https://easydrawingart.com/how-to-draw-a-cherry/)
 - **Sounds:**
     - [Pixabay Sound Effects](https://pixabay.com/sound-effects/)
 
