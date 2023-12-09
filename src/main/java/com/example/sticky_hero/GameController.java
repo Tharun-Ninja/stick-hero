@@ -250,7 +250,12 @@ public class GameController implements Initializable {
         try
         {
             points = deserializePoints.deserialize("saved.txt" );
+            if (points.isDead())
+            {
+                points = new Points(points.getCherryCount(), 0, points.getBestScore());
+            }
         }
+
         catch (IOException | ClassNotFoundException e)
         {
             points = new Points(0, 0, 0 );

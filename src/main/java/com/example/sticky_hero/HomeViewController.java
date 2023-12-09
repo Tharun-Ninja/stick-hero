@@ -76,7 +76,8 @@ public class HomeViewController implements Initializable
         startGameScene(e);
     }
 
-    public void startGameScene(MouseEvent e) {
+    public void startGameScene(MouseEvent e)
+    {
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         Scene scene = null;
         try

@@ -9,6 +9,7 @@ import javafx.util.Duration;
 public class Hero {
 
 
+    private SerializePoints serializePoints = new SerializePoints();
 
 
 
@@ -147,6 +148,13 @@ public class Hero {
         heroFallMotionTimeline.stop();
         System.out.println("Game Over");
 
+        Points currentPoints  = gameController.getPoints();
+        currentPoints.setDead(true);
+        serializePoints.serialize("saved.txt", currentPoints);
+        System.out.println("currentPoints");
+        System.out.println(currentPoints);
+
+
         try
         {
             SceneController sceneController = new SceneController();
@@ -185,6 +193,13 @@ public class Hero {
                 & gameController.checkCollision(heroImage, gameController.getPlatforms().get(1).getBlock()))
         {
             System.out.println("Game Over");
+
+            Points currentPoints  = gameController.getPoints();
+            currentPoints.setDead(true);
+            serializePoints.serialize("saved.txt", currentPoints);
+            System.out.println("currentPoints");
+            System.out.println(currentPoints);
+
             stopHorizontalMotionAnimation();
             startVerticalMotionAnimation();
 

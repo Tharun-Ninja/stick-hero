@@ -40,6 +40,15 @@ public class Points implements Serializable {
     }
     private int bestScore;
 
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
+    }
+
+    private boolean isDead  = false;
     public Points (int cherryCount, int currentScore, int bestScore) {
 
         this.cherryCount = cherryCount;
