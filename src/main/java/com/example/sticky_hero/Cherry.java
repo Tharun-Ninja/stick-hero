@@ -27,11 +27,16 @@ public class Cherry implements Movable
     public int getReward() {
         return reward;
     }
-    private int reward;
+    private final int reward;
 
-    Cherry(int reward, GameController gameController , ImageView cherryImage )
+    Cherry(String type, GameController gameController , ImageView cherryImage )
     {
-        this.reward = reward;
+        if(type.equalsIgnoreCase("golden")){
+            this.reward = 5;
+        }
+        else{
+            this.reward = 1;
+        }
         this.gameController = gameController;
         this.cherryImage = cherryImage;
     }

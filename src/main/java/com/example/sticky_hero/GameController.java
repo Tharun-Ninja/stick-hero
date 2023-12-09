@@ -261,38 +261,8 @@ public class GameController implements Initializable {
         System.out.println("GameController done");
 
     }
-    public Cherry cherryFactory(double setX)
-    {
-        ImageView cherryImageNew;
-        Cherry toReturn;
-        double random =  Math.random();
-        if (random< 0.8)
-        {
-            cherryImageNew = new ImageView(new Image(getClass().getResource("/assets/cherry.png").toExternalForm()));
-            toReturn = new Cherry(1, this, cherryImageNew);
-        }
-        else
-        {
-            cherryImageNew = new ImageView(new Image(getClass().getResource("/assets/goldenCherry.png").toExternalForm()));
-            toReturn = new Cherry(5, this, cherryImageNew);
-        }
 
-        cherryImageNew.setX(setX);
-        cherryImageNew.setY(getGapLandZenith()+5);
-        cherryImageNew.setPickOnBounds(true);
-        cherryImageNew.setFitHeight(20);
-        cherryImageNew.setFitWidth(20);
-        getAnchorPane().getChildren().add(cherryImageNew);
-//        if (random< 0.8)
-//        {
-//            cherryImageNew = new ImageView(new Image(getClass().getResource("/assets/cherry.png").toExternalForm()));
-//        }
-//        else
-//        {
-//            cherryImageNew = new ImageView(new Image(getClass().getResource("/assets/goldenCherry.png").toExternalForm()));
-//        }
-        return toReturn;
-    }
+    private final CherryFactory cherryFactory = new CherryFactory(this);
 
 
     public void addGameScore(int x)
@@ -367,7 +337,7 @@ public class GameController implements Initializable {
         System.out.println(points);
         cherryList.add(null);
 
-        cherryList.add(cherryFactory(600));
+        cherryList.add(cherryFactory.makeCherry(600));
 
         heroImage.setRotationAxis(Rotate.X_AXIS);
         // https://gist.github.com/jewelsea/1436941
@@ -444,7 +414,7 @@ public class GameController implements Initializable {
         anchorPane.getChildren().add(currentStick.getStickRectangle());
         // at this point cherry_1 has been moved from 600 to position
         cherryList.set(0, cherryList.get(1));
-        cherryList.set(1, cherryFactory(600));
+        cherryList.set(1, cherryFactory.makeCherry(600));
 
     }
 

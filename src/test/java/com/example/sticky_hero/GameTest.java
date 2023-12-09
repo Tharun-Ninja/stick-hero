@@ -2,7 +2,7 @@ package com.example.sticky_hero;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GameTest {
     @Test
@@ -13,6 +13,17 @@ class GameTest {
         int newCurrentScore = currentScore + 2;
         assertEquals(newCurrentScore, points.getCurrentScore());
     }
+
+    @Test
+    public void testGoldenAndNormalCherry(){
+        Cherry cherry = new Cherry("golden", null, null);
+        Cherry cherry2 = new Cherry("normal", null, null);
+
+        assertEquals(5, cherry.getReward());
+        assertEquals(1, cherry2.getReward());
+    }
+
+
 
 
 }
