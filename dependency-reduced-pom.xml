@@ -74,17 +74,6 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M5</version>
-        <configuration>
-          <excludes>
-            <exclude>**/StickTest.java</exclude>
-          </excludes>
-          <argLine>--add-opens=com.example.sticky_hero/com.example.sticky_hero=ALL-UNNAMED
-                        --add-opens=javafx.embed.swing/com.sun.javafx.logging=ALL-UNNAMED</argLine>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
   <dependencies>
@@ -149,18 +138,6 @@
         <exclusion>
           <artifactId>hamcrest-core</artifactId>
           <groupId>org.hamcrest</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.openjfx</groupId>
-      <artifactId>javafx-swing</artifactId>
-      <version>20</version>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>javafx-swing</artifactId>
-          <groupId>org.openjfx</groupId>
         </exclusion>
       </exclusions>
     </dependency>

@@ -1,69 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.sticky_hero.GameTest" time="0.035" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.sticky_hero.GameTest" time="0.092" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="20"/>
-    <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.class.path" value="/Users/tharun/IIITD/SEM3/AP_CS201/stick-hero/target/test-classes:/Users/tharun/.m2/repository/org/openjfx/javafx-controls/20/javafx-controls-20.jar:/Users/tharun/.m2/repository/org/openjfx/javafx-media/20/javafx-media-20.jar:/Users/tharun/.m2/repository/org/openjfx/javafx-fxml/20/javafx-fxml-20.jar:/Users/tharun/.m2/repository/org/openjfx/javafx-graphics/20/javafx-graphics-20.jar:/Users/tharun/.m2/repository/org/openjfx/javafx-base/20/javafx-base-20.jar:/Users/tharun/.m2/repository/org/testfx/testfx-core/4.0.16-alpha/testfx-core-4.0.16-alpha.jar:/Users/tharun/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/tharun/.m2/repository/org/assertj/assertj-core/3.13.2/assertj-core-3.13.2.jar:/Users/tharun/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/Users/tharun/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/tharun/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/Users/tharun/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/tharun/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/Users/tharun/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/Users/tharun/.m2/repository/junit/junit/4.13.1/junit-4.13.1.jar:/Users/tharun/.m2/repository/org/testfx/testfx-junit5/4.0.16-alpha/testfx-junit5-4.0.16-alpha.jar:"/>
-    <property name="java.vm.vendor" value="Homebrew"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\hp\IdeaProjects\stick-hero\target\test-classes;C:\Users\hp\.m2\repository\org\openjfx\javafx-controls\20\javafx-controls-20.jar;C:\Users\hp\.m2\repository\org\openjfx\javafx-media\20\javafx-media-20.jar;C:\Users\hp\.m2\repository\org\openjfx\javafx-fxml\20\javafx-fxml-20.jar;C:\Users\hp\.m2\repository\org\openjfx\javafx-graphics\20\javafx-graphics-20.jar;C:\Users\hp\.m2\repository\org\openjfx\javafx-base\20\javafx-base-20.jar;C:\Users\hp\.m2\repository\org\testfx\testfx-core\4.0.16-alpha\testfx-core-4.0.16-alpha.jar;C:\Users\hp\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\hp\.m2\repository\org\assertj\assertj-core\3.13.2\assertj-core-3.13.2.jar;C:\Users\hp\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\hp\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\hp\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\hp\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\hp\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\hp\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;C:\Users\hp\.m2\repository\junit\junit\4.13.1\junit-4.13.1.jar;C:\Users\hp\.m2\repository\org\testfx\testfx-junit5\4.0.16-alpha\testfx-junit5-4.0.16-alpha.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
-    <property name="os.name" value="Mac OS X"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Calcutta"/>
+    <property name="os.name" value="Windows 10"/>
     <property name="java.vm.specification.version" value="20"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="IN"/>
-    <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/20.0.1/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter /Users/tharun/IIITD/SEM3/AP_CS201/stick-hero/target/surefire 2023-12-10T05-16-02_791-jvmRun1 surefire-20231210051603129_1tmp surefire_0-20231210051603129_2tmp"/>
-    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-20\bin"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\hp\AppData\Local\Temp\surefire1218672087172564620 2023-12-10T16-41-30_869-jvmRun1 surefire-20231210164131404_1tmp surefire_0-20231210164131404_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="/Users/tharun/IIITD/SEM3/AP_CS201/stick-hero/target/test-classes:/Users/tharun/.m2/repository/org/openjfx/javafx-controls/20/javafx-controls-20.jar:/Users/tharun/.m2/repository/org/openjfx/javafx-media/20/javafx-media-20.jar:/Users/tharun/.m2/repository/org/openjfx/javafx-fxml/20/javafx-fxml-20.jar:/Users/tharun/.m2/repository/org/openjfx/javafx-graphics/20/javafx-graphics-20.jar:/Users/tharun/.m2/repository/org/openjfx/javafx-base/20/javafx-base-20.jar:/Users/tharun/.m2/repository/org/testfx/testfx-core/4.0.16-alpha/testfx-core-4.0.16-alpha.jar:/Users/tharun/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/tharun/.m2/repository/org/assertj/assertj-core/3.13.2/assertj-core-3.13.2.jar:/Users/tharun/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/Users/tharun/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/tharun/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/Users/tharun/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/tharun/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/Users/tharun/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/Users/tharun/.m2/repository/junit/junit/4.13.1/junit-4.13.1.jar:/Users/tharun/.m2/repository/org/testfx/testfx-junit5/4.0.16-alpha/testfx-junit5-4.0.16-alpha.jar:"/>
+    <property name="surefire.test.class.path" value="C:\Users\hp\IdeaProjects\stick-hero\target\test-classes;C:\Users\hp\.m2\repository\org\openjfx\javafx-controls\20\javafx-controls-20.jar;C:\Users\hp\.m2\repository\org\openjfx\javafx-media\20\javafx-media-20.jar;C:\Users\hp\.m2\repository\org\openjfx\javafx-fxml\20\javafx-fxml-20.jar;C:\Users\hp\.m2\repository\org\openjfx\javafx-graphics\20\javafx-graphics-20.jar;C:\Users\hp\.m2\repository\org\openjfx\javafx-base\20\javafx-base-20.jar;C:\Users\hp\.m2\repository\org\testfx\testfx-core\4.0.16-alpha\testfx-core-4.0.16-alpha.jar;C:\Users\hp\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\hp\.m2\repository\org\assertj\assertj-core\3.13.2\assertj-core-3.13.2.jar;C:\Users\hp\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\hp\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\hp\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\hp\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\hp\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\hp\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;C:\Users\hp\.m2\repository\junit\junit\4.13.1\junit-4.13.1.jar;C:\Users\hp\.m2\repository\org\testfx\testfx-junit5\4.0.16-alpha\testfx-junit5-4.0.16-alpha.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="/Users/tharun"/>
+    <property name="user.home" value="C:\Users\hp"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="jdk.module.path" value="/Users/tharun/IIITD/SEM3/AP_CS201/stick-hero/target/classes:/Users/tharun/.m2/repository/org/openjfx/javafx-controls/20/javafx-controls-20-mac-aarch64.jar:/Users/tharun/.m2/repository/org/openjfx/javafx-media/20/javafx-media-20-mac-aarch64.jar:/Users/tharun/.m2/repository/org/openjfx/javafx-fxml/20/javafx-fxml-20-mac-aarch64.jar:/Users/tharun/.m2/repository/org/openjfx/javafx-graphics/20/javafx-graphics-20-mac-aarch64.jar:/Users/tharun/.m2/repository/org/openjfx/javafx-base/20/javafx-base-20-mac-aarch64.jar"/>
-    <property name="java.version.date" value="2023-04-18"/>
-    <property name="java.home" value="/opt/homebrew/Cellar/openjdk/20.0.1/libexec/openjdk.jdk/Contents/Home"/>
-    <property name="file.separator" value="/"/>
-    <property name="basedir" value="/Users/tharun/IIITD/SEM3/AP_CS201/stick-hero"/>
+    <property name="jdk.module.path" value="C:\Users\hp\IdeaProjects\stick-hero\target\classes;C:\Users\hp\.m2\repository\org\openjfx\javafx-controls\20\javafx-controls-20-win.jar;C:\Users\hp\.m2\repository\org\openjfx\javafx-media\20\javafx-media-20-win.jar;C:\Users\hp\.m2\repository\org\openjfx\javafx-fxml\20\javafx-fxml-20-win.jar;C:\Users\hp\.m2\repository\org\openjfx\javafx-graphics\20\javafx-graphics-20-win.jar;C:\Users\hp\.m2\repository\org\openjfx\javafx-base\20\javafx-base-20-win.jar"/>
+    <property name="java.version.date" value="2023-07-18"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-20"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\hp\IdeaProjects\stick-hero"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/tharun/.m2/repository/org/apache/maven/surefire/surefire-api/3.1.2/surefire-api-3.1.2.jar:/Users/tharun/.m2/repository/org/apache/maven/surefire/surefire-booter/3.1.2/surefire-booter-3.1.2.jar:/Users/tharun/.m2/repository/org/apache/maven/surefire/surefire-extensions-spi/3.1.2/surefire-extensions-spi-3.1.2.jar:/Users/tharun/.m2/repository/org/apache/maven/surefire/surefire-logger-api/3.1.2/surefire-logger-api-3.1.2.jar:/Users/tharun/.m2/repository/org/apache/maven/surefire/surefire-shared-utils/3.1.2/surefire-shared-utils-3.1.2.jar:/Users/tharun/IIITD/SEM3/AP_CS201/stick-hero/target/test-classes:/Users/tharun/.m2/repository/org/openjfx/javafx-controls/20/javafx-controls-20.jar:/Users/tharun/.m2/repository/org/openjfx/javafx-media/20/javafx-media-20.jar:/Users/tharun/.m2/repository/org/openjfx/javafx-fxml/20/javafx-fxml-20.jar:/Users/tharun/.m2/repository/org/openjfx/javafx-graphics/20/javafx-graphics-20.jar:/Users/tharun/.m2/repository/org/openjfx/javafx-base/20/javafx-base-20.jar:/Users/tharun/.m2/repository/org/testfx/testfx-core/4.0.16-alpha/testfx-core-4.0.16-alpha.jar:/Users/tharun/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/tharun/.m2/repository/org/assertj/assertj-core/3.13.2/assertj-core-3.13.2.jar:/Users/tharun/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/Users/tharun/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/tharun/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/Users/tharun/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/tharun/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/Users/tharun/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/Users/tharun/.m2/repository/junit/junit/4.13.1/junit-4.13.1.jar:/Users/tharun/.m2/repository/org/testfx/testfx-junit5/4.0.16-alpha/testfx-junit5-4.0.16-alpha.jar:/Users/tharun/.m2/repository/org/apache/maven/surefire/surefire-junit-platform/3.1.2/surefire-junit-platform-3.1.2.jar:/Users/tharun/.m2/repository/org/apache/maven/surefire/common-java5/3.1.2/common-java5-3.1.2.jar:/Users/tharun/.m2/repository/org/junit/platform/junit-platform-launcher/1.9.2/junit-platform-launcher-1.9.2.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\hp\.m2\repository\org\apache\maven\surefire\surefire-api\3.1.2\surefire-api-3.1.2.jar;C:\Users\hp\.m2\repository\org\apache\maven\surefire\surefire-booter\3.1.2\surefire-booter-3.1.2.jar;C:\Users\hp\.m2\repository\org\apache\maven\surefire\surefire-extensions-spi\3.1.2\surefire-extensions-spi-3.1.2.jar;C:\Users\hp\.m2\repository\org\apache\maven\surefire\surefire-logger-api\3.1.2\surefire-logger-api-3.1.2.jar;C:\Users\hp\.m2\repository\org\apache\maven\surefire\surefire-shared-utils\3.1.2\surefire-shared-utils-3.1.2.jar;C:\Users\hp\IdeaProjects\stick-hero\target\test-classes;C:\Users\hp\.m2\repository\org\openjfx\javafx-controls\20\javafx-controls-20.jar;C:\Users\hp\.m2\repository\org\openjfx\javafx-media\20\javafx-media-20.jar;C:\Users\hp\.m2\repository\org\openjfx\javafx-fxml\20\javafx-fxml-20.jar;C:\Users\hp\.m2\repository\org\openjfx\javafx-graphics\20\javafx-graphics-20.jar;C:\Users\hp\.m2\repository\org\openjfx\javafx-base\20\javafx-base-20.jar;C:\Users\hp\.m2\repository\org\testfx\testfx-core\4.0.16-alpha\testfx-core-4.0.16-alpha.jar;C:\Users\hp\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\hp\.m2\repository\org\assertj\assertj-core\3.13.2\assertj-core-3.13.2.jar;C:\Users\hp\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.2\junit-jupiter-api-5.9.2.jar;C:\Users\hp\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\hp\.m2\repository\org\junit\platform\junit-platform-commons\1.9.2\junit-platform-commons-1.9.2.jar;C:\Users\hp\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\hp\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.2\junit-jupiter-engine-5.9.2.jar;C:\Users\hp\.m2\repository\org\junit\platform\junit-platform-engine\1.9.2\junit-platform-engine-1.9.2.jar;C:\Users\hp\.m2\repository\junit\junit\4.13.1\junit-4.13.1.jar;C:\Users\hp\.m2\repository\org\testfx\testfx-junit5\4.0.16-alpha\testfx-junit5-4.0.16-alpha.jar;C:\Users\hp\.m2\repository\org\apache\maven\surefire\surefire-junit-platform\3.1.2\surefire-junit-platform-3.1.2.jar;C:\Users\hp\.m2\repository\org\apache\maven\surefire\common-java5\3.1.2\common-java5-3.1.2.jar;C:\Users\hp\.m2\repository\org\junit\platform\junit-platform-launcher\1.9.2\junit-platform-launcher-1.9.2.jar"/>
+    <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
-    <property name="java.runtime.version" value="20.0.1"/>
-    <property name="user.name" value="tharun"/>
-    <property name="stdout.encoding" value="UTF-8"/>
-    <property name="path.separator" value=":"/>
-    <property name="os.version" value="14.0"/>
-    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="java.runtime.version" value="20.0.2+9-78"/>
+    <property name="user.name" value="hp"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
-    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
-    <property name="java.vendor.version" value="Homebrew"/>
-    <property name="localRepository" value="/Users/tharun/.m2/repository"/>
-    <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
-    <property name="java.io.tmpdir" value="/var/folders/tn/9v3t7ssj0jnccf_yq6ssytgr0000gn/T/"/>
-    <property name="java.version" value="20.0.1"/>
-    <property name="user.dir" value="/Users/tharun/IIITD/SEM3/AP_CS201/stick-hero"/>
-    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\hp\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\hp\AppData\Local\Temp\"/>
+    <property name="java.version" value="20.0.2"/>
+    <property name="user.dir" value="C:\Users\hp\IdeaProjects\stick-hero"/>
+    <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="native.encoding" value="UTF-8"/>
-    <property name="java.library.path" value="/Users/tharun/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-20\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files\Common Files\Oracle\Java\javapath;;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.3\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.3\libnvvp;C:\Python310\Scripts\;C:\Python310\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\NVIDIA Corporation\Nsight Compute 2021.1.1\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\dotnet\;C:\Program Files\Git_hp\Git\cmd;C:\msys64\mingw64\bin;;C:\Program Files\Docker\Docker\resources\bin;C:\Users\hp\anaconda3;C:\Users\hp\anaconda3\Library\mingw-w64\bin;C:\Users\hp\anaconda3\Library\usr\bin;C:\Users\hp\anaconda3\Library\bin;C:\Users\hp\anaconda3\Scripts;C:\Users\hp\.elan\bin;C:\Users\hp\AppData\Local\Microsoft\WindowsApps;C:\Users\hp\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\heroku\bin;C:\mingw64\bin;C:\Users\hp\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2023.2\bin;;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.2\bin;;C:\Program Files\apache-maven-3.9.5-bin\apache-maven-3.9.5\bin;;."/>
     <property name="java.vm.info" value="mixed mode"/>
-    <property name="stderr.encoding" value="UTF-8"/>
-    <property name="java.vendor" value="Homebrew"/>
-    <property name="java.vm.version" value="20.0.1"/>
-    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
-    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="20.0.2+9-78"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="64.0"/>
   </properties>
-  <testcase name="testGoldenAndNormalCherry" classname="com.example.sticky_hero.GameTest" time="0.018"/>
-  <testcase name="testIncrementScore" classname="com.example.sticky_hero.GameTest" time="0.002">
+  <testcase name="testGoldenAndNormalCherry" classname="com.example.sticky_hero.GameTest" time="0.054"/>
+  <testcase name="testIncrementScore" classname="com.example.sticky_hero.GameTest" time="0.004">
     <system-out><![CDATA[setCurrent_score
 7
 ]]></system-out>
   </testcase>
-  <testcase name="testCherryPosition" classname="com.example.sticky_hero.GameTest" time="0.001"/>
+  <testcase name="testCherryPosition" classname="com.example.sticky_hero.GameTest" time="0.005"/>
 </testsuite>

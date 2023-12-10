@@ -5,10 +5,10 @@ import javafx.scene.Scene;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+import javafx.application.Application;
 import java.io.IOException;
 
-public class StickApplication extends javafx.application.Application {
+public class StickApplication extends  Application {
     private static AudioClip buttonClickSound;
 
     @Override
