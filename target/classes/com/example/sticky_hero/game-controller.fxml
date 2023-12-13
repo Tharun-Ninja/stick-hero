@@ -17,13 +17,13 @@
             <Image url="@../../../assets/hero.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="cherryImageTopLeft" fitHeight="30.0" fitWidth="20.0" layoutX="60.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cherryImageTopLeft" fitHeight="30.0" fitWidth="20.0" layoutX="8.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/cherry.png" />
          </image>
       </ImageView>
       <Line fx:id="hintLine" endX="100.0" layoutX="130.0" startX="-100.0" visible="false" />
-      <Text fx:id="cherryScoreDisplay" layoutX="83.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="27.192718505859375">
+      <Text fx:id="cherryScoreDisplay" layoutX="31.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="69.85937881469727">
          <font>
             <Font size="22.0" />
          </font>

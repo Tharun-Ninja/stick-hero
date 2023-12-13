@@ -132,12 +132,12 @@
          </font>
       </Text>
       <Text fx:id="notEnoughCherries" fill="RED" layoutX="170.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="!!You don't have enough cherries!!" visible="false" />
-      <ImageView fx:id="cherry_image_game_over" fitHeight="30.0" fitWidth="20.0" layoutX="153.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cherry_image_game_over" fitHeight="30.0" fitWidth="20.0" layoutX="141.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/cherry.png" />
          </image>
       </ImageView>
-      <Text fx:id="cherryScoreDisplayGameOver" fill="WHITE" layoutX="176.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="27.192718505859375">
+      <Text fx:id="cherryScoreDisplayGameOver" fill="WHITE" layoutX="165.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="62.466796875">
          <font>
             <Font size="22.0" />
          </font>
